@@ -6,21 +6,30 @@ namespace GameTest
     [TestFixture]
     public class GameTest
     {
+        Game game;
+        [SetUp]
+        public void StartANewGame()
+        {
+            game = new Game();
+            game.Start();
+        }
+
         [Test]
         public void GameStartsWithoutAWinner()
         {
-            Game game = new Game();
-            game.Start();
             Assert.IsFalse(game.Won());
         }
 
         [Test]
         public void GameStartsWithTwoPlayers()
         {
-            Game game = new Game();
-            game.Start();
             int playerCount = game.players.Length;
             Assert.AreEqual(2, playerCount);
+        }
+
+        [Test]
+        public void GameAsksPlayerForTheirName()
+        {
         }
     }
 }
