@@ -1,17 +1,42 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TicTacToe;
 namespace UnitTestProject1
 {
-    [TestClass]
+    using NUnit.Framework;
+
+    [TestFixture]
     public class BoardTest
     {
-        [TestMethod]
-        public void TestEmptyBoard()
+
+        Board board;
+
+        [SetUp]
+        public void CreateEmptyBoard()
         {
-            Board board = new Board();
-            int[] emptyBoard = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-            CollectionAssert.AreEquivalent(emptyBoard, board.spaces);
+            board = new Board();
         }
+
+        [Test]
+        public void IsEmptyByDefault()
+        {
+            string[] emptyBoard = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            Assert.AreEqual(emptyBoard, board.spaces);
+        }
+
+        [Test]
+        public void OrganizesSpacesAsRows()
+        {
+            string[,] rows = { { "0", "1", "2" }, { "3", "4", "5" }, { "6", "7", "8 " } };
+            Assert.AreEqual(rows, board.Rows());
+        }
+
+        [Test]
+        public void MarksSpaceWithGivenPiece()
+        {
+            board.Mark(4, "X");
+            Assert.AreEqual("X", board.GetSpaceAt(4));
+        }
+
+        
     }
 }
