@@ -8,9 +8,17 @@ namespace TicTacToe
 {
     public class BoardEvaluator
     {
-        public static bool WinningSet()
+        public const string xMarker = "X";
+        public const string oMarker = "O";
+
+        public static bool IsNotAnEmptySpace(string space)
         {
-            return true;
+            return space == xMarker || space == oMarker;
+        }
+
+        public static bool AllSpacesTheSame(string[] spaces)
+        {
+            return 1 == spaces.Distinct().ToArray().Length;
         }
     }
 }

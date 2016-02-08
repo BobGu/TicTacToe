@@ -61,9 +61,9 @@ namespace GameTest
         [Test]
         public void GameIsNotOverWhenBoardIsEmpty()
         {
-            string[] emptyBoardSpaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            bool gameOver = game.Over(emptyBoardSpaces);
-            Assert.IsFalse(gameOver);
+            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            bool result = game.Over(spaces);
+            Assert.IsFalse(result);
         }
 
         [Test]
@@ -72,6 +72,7 @@ namespace GameTest
             string[] xFilledTopRow = { "X", "X", "X", "3", "4", "5", "6", "7", "8" };
             bool gameWonForX = game.Won(xFilledTopRow);
             Assert.IsTrue(gameWonForX);
+
             string[] oFilledTopRow = { "O", "O", "O", "3", "4", "5", "6", "7", "8" };
             bool gameWonForO = game.Won(oFilledTopRow);
             Assert.IsTrue(gameWonForO);
@@ -86,11 +87,19 @@ namespace GameTest
         }
 
         [Test]
-        public void GameISWonWhenOnePieceHasFilledSecondRow()
+        public void GameIsWonWhenOnePieceHasFilledSecondRow()
         {
-            string[] xFilledSecondRow = { "0", "1", "2", "X", "X", "X", "6", "7", "8" };
-            bool gameWonForX = game.Won(xFilledSecondRow);
-            Assert.IsTrue(gameWonForX);
+            string[] spaces= { "0", "1", "2", "X", "X", "X", "6", "7", "8" };
+            bool result = game.Won(spaces);
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void GameIsWonWhenBottomRowFilled()
+        {
+            string[] spaces = { "0", "1", "2", "3", "4", "5", "X", "X", "X" };
+            bool result = game.Won(spaces);
+            Assert.IsTrue(result);
         }
 
 

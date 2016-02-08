@@ -1,14 +1,13 @@
 ﻿using System;
 using My.Extensions;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace TicTacToe
 {
     public class Game
     {
-        public const string xMarker = "X";
-        public const string oMarker = "O";
-        public string[] players { get; set;}
+        public string[] players { get; private set;}
 
         public void Start()
         {
@@ -32,26 +31,23 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
-        public bool IsNotAnEmptySpace(string space)
-        {
-            return space == xMarker || space == oMarker;
-        }
-
-        public bool AllSpacesTheSame(string[] spaces)
-        {
-            return 1 == spaces.Distinct().ToArray().Length;
-        }
-
         public bool Over(string[] spaces)
         {
-            return Array.TrueForAll(spaces, IsNotAnEmptySpace);
+            return Array.TrueForAll(spaces, BoardEvaluator.IsNotAnEmptySpace);
         }
 
         public bool Won(string[] spaces)
         {
-            string[] firstRow = spaces.SubArray(0, 3);
-            string[] secondRow = spaces.SubArray(3, 3);
-            return AllSpacesTheSame(firstRow) || AllSpacesTheSame(secondRow);
+            int lengthOfRow = Convert.ToInt32(Math.Sqrt(spaces.Length));
+            for (int i = 0; i < 9; i += 3)
+            {
+                string[] row = spaces.SubArray(i, lengthOfRow);
+                if (BoardEvaluator.AllSpacesTheSame(row))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
