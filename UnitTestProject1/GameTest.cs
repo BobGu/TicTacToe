@@ -28,12 +28,6 @@ namespace GameTest
             Assert.AreEqual(2, playerCount);
         }
 
-        [Test]
-        public void GameAsksPlayerForTheirName()
-        {
-            string namePrompt = game.AskPlayerForName();
-            Assert.AreEqual("What is your name?", namePrompt);
-        }
 
         [Test]
         public void GameGetsPlayerName()
@@ -44,13 +38,6 @@ namespace GameTest
             Assert.AreEqual("Kirby", name);
         }
 
-        [Test]
-        public void GameAsksPlayerForMove()
-        {
-            string name = "Robert";
-            string movePrompt = game.AskPlayerForMove(name);
-            Assert.AreEqual(movePrompt, "Where would you like to move Robert");
-        }
 
     }
     

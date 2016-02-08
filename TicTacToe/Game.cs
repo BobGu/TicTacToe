@@ -19,20 +19,11 @@ namespace TicTacToe
             return false;
         }
 
-        public string AskPlayerForName()
-        {
-            return "What is your name?";
-        }
-
         public string GetPlayerName()
         {
-            AskPlayerForName();
+            MessageFactory.AskPlayerForName();
             return Console.ReadLine();
         }
 
-        public string AskPlayerForMove(string name)
-        {
-            return "Where would you like to move " + name;
-        }
     }
 }
