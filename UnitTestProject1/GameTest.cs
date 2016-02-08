@@ -50,22 +50,48 @@ namespace GameTest
         [Test]
         public void GameIsOverWhenBoardIsFilled()
         {
-            string[] filledBoard = { "X", "X", "X", "X", "X", "X", "X", "X", "X" };
-            bool gameOverFilledBoard = game.Over(filledBoard);
-            Assert.IsTrue(gameOverFilledBoard);
-            string[] mixedBoard = { "O", "X", "O", "X", "O", "X", "O", "X", "O" };
-            bool gameOverMixedBoard = game.Over(mixedBoard);
-            Assert.IsTrue(gameOverMixedBoard);
+            string[] filledBoardSpaces = { "X", "X", "X", "X", "X", "X", "X", "X", "X" };
+            bool gameOverFilledBoardSpaces = game.Over(filledBoardSpaces);
+            Assert.IsTrue(gameOverFilledBoardSpaces);
+            string[] mixedBoardSpaces = { "O", "X", "O", "X", "O", "X", "O", "X", "O" };
+            bool gameOverMixedBoardSpaces = game.Over(mixedBoardSpaces);
+            Assert.IsTrue(gameOverMixedBoardSpaces);
         }
 
         [Test]
         public void GameIsNotOverWhenBoardIsEmpty()
         {
-            string[] emptyBoard = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            bool gameOverEmptyBoard = game.Over(emptyBoard);
-            Assert.IsFalse(gameOverEmptyBoard);
+            string[] emptyBoardSpaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            bool gameOver = game.Over(emptyBoardSpaces);
+            Assert.IsFalse(gameOver);
         }
 
+        [Test]
+        public void GameIsWonWhenOnePieceHasFilledTopRow()
+        {
+            string[] xFilledTopRow = { "X", "X", "X", "3", "4", "5", "6", "7", "8" };
+            bool gameWonForX = game.Won(xFilledTopRow);
+            Assert.IsTrue(gameWonForX);
+            string[] oFilledTopRow = { "O", "O", "O", "3", "4", "5", "6", "7", "8" };
+            bool gameWonForO = game.Won(oFilledTopRow);
+            Assert.IsTrue(gameWonForO);
+        }
+
+        [Test]
+        public void GameIsNotWonTopRowIsFilledWithMixedPieces()
+        {
+            string[] spaces = { "X", "O", "X", "3", "4", "5", "6", "7", "8" };
+            bool gameWon = game.Won(spaces);
+            Assert.IsFalse(gameWon);
+        }
+
+        [Test]
+        public void GameISWonWhenOnePieceHasFilledSecondRow()
+        {
+            string[] xFilledSecondRow = { "0", "1", "2", "X", "X", "X", "6", "7", "8" };
+            bool gameWonForX = game.Won(xFilledSecondRow);
+            Assert.IsTrue(gameWonForX);
+        }
 
 
     }
