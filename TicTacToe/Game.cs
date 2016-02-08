@@ -8,6 +8,8 @@ namespace TicTacToe
 {
     public class Game
     {
+        public const string xMarker = "X";
+        public const string oMarker = "O";
         public string[] players { get; set;}
         public void Start()
         {
@@ -29,6 +31,16 @@ namespace TicTacToe
         {
             MessageFactory.AskPlayerForMove(name);
             return Console.ReadLine();
+        }
+
+        public bool IsNotAnEmptySpace(string space)
+        {
+            return space == xMarker || space == oMarker;
+        }
+
+        public bool Over(string[] spaces)
+        {
+            return Array.TrueForAll(spaces, IsNotAnEmptySpace);
         }
 
     }
