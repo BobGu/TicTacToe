@@ -25,5 +25,11 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
+        public string GetPlayerMove(string name)
+        {
+            MessageFactory.AskPlayerForMove(name);
+            return Console.ReadLine();
+        }
+
     }
 }

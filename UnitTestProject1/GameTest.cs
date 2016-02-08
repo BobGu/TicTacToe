@@ -38,7 +38,14 @@ namespace GameTest
             Assert.AreEqual("Kirby", name);
         }
 
-
+        [Test]
+        public void GameGetsPlayerMove()
+        {
+            StringReader reader = new StringReader("4\n");
+            Console.SetIn(reader);
+            string move = game.GetPlayerMove("Bob");
+            Assert.AreEqual("4", move);
+        }
     }
     
 }
