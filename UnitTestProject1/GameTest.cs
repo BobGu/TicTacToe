@@ -1,6 +1,7 @@
 ﻿using System;
 using TicTacToe;
 using NUnit.Framework;
+using System.IO;
 namespace GameTest
 {
     [TestFixture]
@@ -30,6 +31,19 @@ namespace GameTest
         [Test]
         public void GameAsksPlayerForTheirName()
         {
+            string namePrompt = game.AskPlayerForName();
+            Assert.AreEqual("What is your name?", namePrompt);
         }
+
+        [Test]
+        public void GameGetsPlayerName()
+        {
+            StringReader reader = new StringReader("Kirby\n");
+            Console.SetIn(reader);
+            string name = game.GetPlayerName();
+            Assert.AreEqual("Kirby", name);
+        }
+
     }
+    
 }

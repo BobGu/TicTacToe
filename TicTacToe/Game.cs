@@ -18,5 +18,16 @@ namespace TicTacToe
         {
             return false;
         }
+
+        public string AskPlayerForName()
+        {
+            return "What is your name?";
+        }
+
+        public string GetPlayerName()
+        {
+            AskPlayerForName();
+            return Console.ReadLine();
+        }
     }
 }
