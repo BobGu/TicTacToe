@@ -44,6 +44,14 @@ namespace GameTest
             Assert.AreEqual("Kirby", name);
         }
 
+        [Test]
+        public void GameAsksPlayerForMove()
+        {
+            string name = "Robert";
+            string movePrompt = game.AskPlayerForMove(name);
+            Assert.AreEqual(movePrompt, "Where would you like to move Robert");
+        }
+
     }
     
 }

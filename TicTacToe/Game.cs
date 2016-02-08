@@ -29,5 +29,10 @@ namespace TicTacToe
             AskPlayerForName();
             return Console.ReadLine();
         }
+
+        public string AskPlayerForMove(string name)
+        {
+            return "Where would you like to move " + name;
+        }
     }
 }
