@@ -62,43 +62,46 @@ namespace GameTest
         public void GameIsNotOverWhenBoardIsEmpty()
         {
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            bool result = game.Over(spaces);
-            Assert.IsFalse(result);
+            Assert.IsFalse(game.Over(spaces));
         }
 
         [Test]
         public void GameIsWonWhenOnePieceHasFilledTopRow()
         {
-            string[] xFilledTopRow = { "X", "X", "X", "3", "4", "5", "6", "7", "8" };
-            bool gameWonForX = game.Won(xFilledTopRow);
+            game.board.spaces[0] = "X";
+            game.board.spaces[1] = "X";
+            game.board.spaces[2] = "X";
+            bool gameWonForX = game.Won();
             Assert.IsTrue(gameWonForX);
-
-            string[] oFilledTopRow = { "O", "O", "O", "3", "4", "5", "6", "7", "8" };
-            bool gameWonForO = game.Won(oFilledTopRow);
-            Assert.IsTrue(gameWonForO);
         }
 
         [Test]
         public void GameIsNotWonTopRowIsFilledWithMixedPieces()
         {
-            string[] spaces = { "X", "O", "X", "3", "4", "5", "6", "7", "8" };
-            bool gameWon = game.Won(spaces);
+            game.board.spaces[0] = "X";
+            game.board.spaces[1] = "O";
+            game.board.spaces[2] = "X";
+            bool gameWon = game.Won();
             Assert.IsFalse(gameWon);
         }
 
         [Test]
         public void GameIsWonWhenOnePieceHasFilledSecondRow()
         {
-            string[] spaces= { "0", "1", "2", "X", "X", "X", "6", "7", "8" };
-            bool result = game.Won(spaces);
+            game.board.spaces[3] = "X";
+            game.board.spaces[4] = "X";
+            game.board.spaces[5] = "X";
+            bool result = game.Won();
             Assert.IsTrue(result);
         }
 
         [Test]
         public void GameIsWonWhenBottomRowFilled()
         {
-            string[] spaces = { "0", "1", "2", "3", "4", "5", "X", "X", "X" };
-            bool result = game.Won(spaces);
+            game.board.spaces[6] = "O";
+            game.board.spaces[7] = "O";
+            game.board.spaces[8] = "O";
+            bool result = game.Won();
             Assert.IsTrue(result);
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using My.Extensions;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -8,15 +7,17 @@ namespace TicTacToe
     public class Game
     {
         public string[] players { get; private set;}
+        public Board board;
 
         public void Start()
         {
             players = new string[] { "player1", "player2" };
+            board = new Board();
         }
 
         public bool Won()
         {
-            return false;
+            return board.Rows().Any(row => BoardEvaluator.AllSpacesTheSame(row));
         }
 
         public string GetPlayerName()
@@ -34,20 +35,6 @@ namespace TicTacToe
         public bool Over(string[] spaces)
         {
             return Array.TrueForAll(spaces, BoardEvaluator.IsNotAnEmptySpace);
-        }
-
-        public bool Won(string[] spaces)
-        {
-            int lengthOfRow = Convert.ToInt32(Math.Sqrt(spaces.Length));
-            for (int i = 0; i < 9; i += 3)
-            {
-                string[] row = spaces.SubArray(i, lengthOfRow);
-                if (BoardEvaluator.AllSpacesTheSame(row))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using My.Extensions;
 
 namespace TicTacToe
 {
@@ -21,9 +22,15 @@ namespace TicTacToe
         }
         
 
-        public string[,] Rows()
+        public string[][] Rows()
         {
-            string[,] rows = { { "0", "1", "2" }, { "3", "4", "5" }, { "6", "7", "8 " } };
+            string[][] rows = new string[3][];
+            int lengthOfRow = Convert.ToInt32(Math.Sqrt(spaces.Length));
+            for (int i = 0; i < 3; i += 1)
+            {
+                string[] row = spaces.SubArray(i * lengthOfRow, lengthOfRow);
+                rows[i] = row;
+            }
             return rows;
         }
 
