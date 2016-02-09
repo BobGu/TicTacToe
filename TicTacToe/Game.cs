@@ -15,11 +15,6 @@ namespace TicTacToe
             board = new Board();
         }
 
-        public bool Won()
-        {
-            return board.Rows().Any(row => BoardEvaluator.AllSpacesTheSame(row));
-        }
-
         public string GetPlayerName()
         {
             MessageFactory.AskPlayerForName();
@@ -32,9 +27,15 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
-        public bool Over(string[] spaces)
+        public bool Won()
         {
-            return Array.TrueForAll(spaces, BoardEvaluator.IsNotAnEmptySpace);
+            return board.Rows().Any(row => BoardEvaluator.AllSpacesTheSame(row));
+        }
+
+        public bool Over()
+        {
+            return Array.TrueForAll(board.spaces, BoardEvaluator.IsNotAnEmptySpace) || Won();
+              
         }
 
     }

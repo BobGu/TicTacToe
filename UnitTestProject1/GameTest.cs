@@ -2,6 +2,7 @@
 using TicTacToe;
 using NUnit.Framework;
 using System.IO;
+using UnitTestProject1;
 namespace GameTest
 {
     [TestFixture]
@@ -50,27 +51,29 @@ namespace GameTest
         [Test]
         public void GameIsOverWhenBoardIsFilled()
         {
-            string[] filledBoardSpaces = { "X", "X", "X", "X", "X", "X", "X", "X", "X" };
-            bool gameOverFilledBoardSpaces = game.Over(filledBoardSpaces);
+            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 8);
+            bool gameOverFilledBoardSpaces = game.Over();
             Assert.IsTrue(gameOverFilledBoardSpaces);
-            string[] mixedBoardSpaces = { "O", "X", "O", "X", "O", "X", "O", "X", "O" };
-            bool gameOverMixedBoardSpaces = game.Over(mixedBoardSpaces);
-            Assert.IsTrue(gameOverMixedBoardSpaces);
         }
 
         [Test]
         public void GameIsNotOverWhenBoardIsEmpty()
         {
-            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            Assert.IsFalse(game.Over(spaces));
+            Assert.IsFalse(game.Over());
+        }
+
+        [Test]
+        public void GameIsOverWhenGameIsWon()
+        {
+            string[][] rows = game.board.Rows();
+            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 2);
+            Assert.IsTrue(game.Over());
         }
 
         [Test]
         public void GameIsWonWhenOnePieceHasFilledTopRow()
         {
-            game.board.spaces[0] = "X";
-            game.board.spaces[1] = "X";
-            game.board.spaces[2] = "X";
+            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 2);
             bool gameWonForX = game.Won();
             Assert.IsTrue(gameWonForX);
         }
@@ -88,9 +91,7 @@ namespace GameTest
         [Test]
         public void GameIsWonWhenOnePieceHasFilledSecondRow()
         {
-            game.board.spaces[3] = "X";
-            game.board.spaces[4] = "X";
-            game.board.spaces[5] = "X";
+            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 3, 5);
             bool result = game.Won();
             Assert.IsTrue(result);
         }
@@ -98,9 +99,7 @@ namespace GameTest
         [Test]
         public void GameIsWonWhenBottomRowFilled()
         {
-            game.board.spaces[6] = "O";
-            game.board.spaces[7] = "O";
-            game.board.spaces[8] = "O";
+            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 6, 8);
             bool result = game.Won();
             Assert.IsTrue(result);
         }
