@@ -3,6 +3,7 @@ using TicTacToe;
 using NUnit.Framework;
 using System.IO;
 using UnitTestProject1;
+using Moq;
 namespace GameTest
 {
     [TestFixture]
@@ -77,8 +78,7 @@ namespace GameTest
         {
             int[] spacesToBeMarked = { 0, 1, 2 };
             TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            bool gameWonForX = game.Won();
-            Assert.IsTrue(gameWonForX);
+            Assert.IsTrue(game.Won());
         }
 
         [Test]
@@ -87,8 +87,7 @@ namespace GameTest
             game.board.spaces[0] = "X";
             game.board.spaces[1] = "O";
             game.board.spaces[2] = "X";
-            bool gameWon = game.Won();
-            Assert.IsFalse(gameWon);
+            Assert.IsFalse(game.Won());
         }
 
         [Test]
@@ -96,8 +95,7 @@ namespace GameTest
         {
             int[] spacesToBeMarked = { 3, 4, 5 };
             TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            bool result = game.Won();
-            Assert.IsTrue(result);
+            Assert.IsTrue(game.Won());
         }
 
         [Test]
@@ -105,8 +103,7 @@ namespace GameTest
         {
             int[] spacesToBeMarked = { 6, 7, 8 };
             TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            bool result = game.Won();
-            Assert.IsTrue(result);
+            Assert.IsTrue(game.Won());
         }
 
         [Test]
@@ -114,8 +111,7 @@ namespace GameTest
         {
             int[] spacesToBeMarked = { 0, 3, 6 };
             TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            bool result = game.Won();
-            Assert.IsTrue(result);
+            Assert.IsTrue(game.Won());
         }
 
         [Test]
@@ -123,8 +119,20 @@ namespace GameTest
         {
             game.board.spaces[0] = "X";
             game.board.spaces[1] = "X";
-            bool result = game.Won();
-            Assert.IsFalse(result);
+            Assert.IsFalse(game.Won());
+        }
+
+        [Test]
+        public void GameIsWonWhenOneMarkerHasFilledTheSecondColumn()
+        {
+            int[] spacesToBeMarked = { 1, 4, 7 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
+            Assert.IsTrue(game.Won());
+        }
+        [Test]
+        public void GameCanUpdateBoard()
+        {
+            game.UpdateBoard("4", "X");
         }
     }
     

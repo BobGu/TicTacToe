@@ -34,6 +34,12 @@ namespace TicTacToe
             {
                 firstColumn[i] = board.spaces[i * 3];
             }
+
+            string[] secondColumn = new string[3];
+            for (int i = 0; i < secondColumn.Length; i++)
+            {
+                secondColumn[i] < board.spaces
+            }
             return board.Rows().Any(row => BoardEvaluator.AllSpacesTheSame(row)) ||
             BoardEvaluator.AllSpacesTheSame(firstColumn);
         }
