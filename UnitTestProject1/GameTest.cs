@@ -130,9 +130,11 @@ namespace GameTest
             Assert.IsTrue(game.Won());
         }
         [Test]
-        public void GameCanUpdateBoard()
+        public void GameCanTellBoardToMarkItself()
         {
-            game.UpdateBoard("4", "X");
+            Board board = new Board();
+            game.MarkBoard(board, 4, "X");
+            Assert.AreEqual("X", board.GetSpaceAt(4));
         }
     }
     

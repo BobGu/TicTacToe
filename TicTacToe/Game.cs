@@ -50,5 +50,10 @@ namespace TicTacToe
               
         }
 
+        public void MarkBoard(Board board, int space, string marker)
+        {
+            board.Mark(space, marker);
+        }
+
     }
 }
