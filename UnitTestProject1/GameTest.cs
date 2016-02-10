@@ -51,7 +51,8 @@ namespace GameTest
         [Test]
         public void GameIsOverWhenBoardIsFilled()
         {
-            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 8);
+            int[] spacesToBeMarked = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
             bool gameOverFilledBoardSpaces = game.Over();
             Assert.IsTrue(gameOverFilledBoardSpaces);
         }
@@ -65,21 +66,23 @@ namespace GameTest
         [Test]
         public void GameIsOverWhenGameIsWon()
         {
+            int[] spacesToBeMarked = { 0, 1, 2};
             string[][] rows = game.board.Rows();
-            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 2);
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
             Assert.IsTrue(game.Over());
         }
 
         [Test]
-        public void GameIsWonWhenOnePieceHasFilledTopRow()
+        public void GameIsWonWhenOneMarkerHasFilledTopRow()
         {
-            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 0, 2);
+            int[] spacesToBeMarked = { 0, 1, 2 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
             bool gameWonForX = game.Won();
             Assert.IsTrue(gameWonForX);
         }
 
         [Test]
-        public void GameIsNotWonTopRowIsFilledWithMixedPieces()
+        public void GameIsNotWonTopRowIsFilledWithMixedMarkers()
         {
             game.board.spaces[0] = "X";
             game.board.spaces[1] = "O";
@@ -89,22 +92,31 @@ namespace GameTest
         }
 
         [Test]
-        public void GameIsWonWhenOnePieceHasFilledSecondRow()
+        public void GameIsWonWhenOneMarkerHasFilledSecondRow()
         {
-            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 3, 5);
+            int[] spacesToBeMarked = { 3, 4, 5 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
             bool result = game.Won();
             Assert.IsTrue(result);
         }
 
         [Test]
-        public void GameIsWonWhenBottomRowFilled()
+        public void GameIsWonWhenOneMarkerHasFilledBottomRow()
         {
-            TestHelper.MarkBoardWithXsBeginningToEnd(game.board, 6, 8);
+            int[] spacesToBeMarked = { 6, 7, 8 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
             bool result = game.Won();
             Assert.IsTrue(result);
         }
 
-
+        [Test]
+        public void GameIsWonWhenOneMarkerHasFilledFirstColumn()
+        {
+            int[] spacesToBeMarked = { 0, 3, 6 };
+            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
+            bool result = game.Won();
+            Assert.IsTrue(result);
+        }
     }
     
 }

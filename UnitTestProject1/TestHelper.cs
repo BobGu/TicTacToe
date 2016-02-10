@@ -6,11 +6,11 @@ namespace UnitTestProject1
 {
     public class TestHelper
     {
-        public static void MarkBoardWithXsBeginningToEnd(Board board, int beginMarking, int endMarking)
+        public static void MarkBoardWithXsAtSpaces(Board board, int[] indexes)
         {
-            for (int i = beginMarking; i <= endMarking; i++)
+            foreach(int index in indexes)
             {
-                board.spaces[i] = "X";
+                board.spaces[index] = "X";
             }
         }
     }

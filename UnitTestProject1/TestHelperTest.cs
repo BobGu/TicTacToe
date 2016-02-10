@@ -7,12 +7,12 @@ namespace UnitTestProject1
     public class TestHelperTest
     {
         [Test]
-        public void BoardGetsFilledWithXs()
+        public void BoardsFirstRowGetsFilledWithXs()
         {
             Board board = new Board();
-            TestHelper.MarkBoardWithXsBeginningToEnd(board, 0, 8);
-            string[] filledSpaces = { "X", "X", "X", "X", "X", "X", "X", "X", "X" };
-            CollectionAssert.AreEqual(filledSpaces, board.spaces);
+            int[] spacesToBeMarked = { 0, 1, 2 };
+            TestHelper.MarkBoardWithXsAtSpaces(board, spacesToBeMarked);
         }
+
     }
 }
