@@ -117,6 +117,15 @@ namespace GameTest
             bool result = game.Won();
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void GameIsNotWonWhenFirstColumnSpacesAreNotTheSame()
+        {
+            game.board.spaces[0] = "X";
+            game.board.spaces[1] = "X";
+            bool result = game.Won();
+            Assert.IsFalse(result);
+        }
     }
     
 }
