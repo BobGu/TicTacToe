@@ -108,6 +108,42 @@ namespace GameTest
         }
 
         [Test]
+        public void GameIsWonWhenSecondColumnIsFilledWithOneMarker()
+        {
+            string[] spaces = {"0", "X", "2",
+                               "3", "X", "5",
+                               "6", "X", "8"};
+            Assert.IsTrue(game.Won(spaces));
+        }
+
+        [Test]
+        public void GameIsWonWhenThirdColumnIsFilledWithOneMarker()
+        {
+            string[] spaces = {"0", "1", "X",
+                               "3", "4", "X",
+                               "6", "7", "X"};
+            Assert.IsTrue(game.Won(spaces));
+        }
+
+        [Test]
+        public void GameIsWonWhenFirstDigonalIsFilledWithOneMarker()
+        {
+            string[] spaces = {"X", "1", "2",
+                               "3", "X", "5",
+                               "6", "7", "X"};
+            Assert.IsTrue(game.Won(spaces)); 
+        }
+
+        [Test]
+        public void GameIsWonWhenSecondDigonalIsFilledWithOneMarker()
+        {
+            string[] spaces = {"0", "1", "X",
+                               "3", "X", "5",
+                               "X", "7", "8"};
+            Assert.IsTrue(game.Won(spaces));
+        }
+
+        [Test]
         public void GameCanTellBoardToMarkItself()
         {
             Board board = new Board();

@@ -64,6 +64,14 @@ namespace TicTacToe
             columns[2] = thirdColumn.ToArray();
             return columns;
         }
+
+        public static string[][] Diagonals(string[] spaces)
+        {
+            string[][] diagonals = new string[2][];
+            diagonals[0] = new string[] { spaces[0], spaces[4], spaces[8] };
+            diagonals[1] = new string[] { spaces[2], spaces[4], spaces[6] };
+            return diagonals;
+        }
     }
 
 }
