@@ -62,5 +62,16 @@ namespace UnitTestProject1
             CollectionAssert.AreEqual(rows, BoardEvaluator.Rows(spaces));
         }
 
+        [Test]
+        public void CanFindTheColumns()
+        {
+            string[] spaces = { "X", "O", "X", "3", "4", "5", "6", "7", "8" };
+            string[][] columns = new string[3][];
+            columns[0] = new string[] { "X", "3", "6" };
+            columns[1] = new string[] { "O", "4", "7" };
+            columns[2] = new string[] { "X", "5", "8" };
+            CollectionAssert.AreEqual(columns, BoardEvaluator.Columns(spaces));
+        }
+
     }
 }

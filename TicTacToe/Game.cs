@@ -27,10 +27,10 @@ namespace TicTacToe
 
         public bool Won(string[] spaces)
         {
-            string[] firstColumn = BoardEvaluator.Columns(spaces);
+            string[][] columns = BoardEvaluator.Columns(spaces);
             string[][] rows = BoardEvaluator.Rows(spaces);
             return rows.Any(row => BoardEvaluator.AllSpacesTheSame(row)) ||
-            BoardEvaluator.AllSpacesTheSame(firstColumn);
+                   columns.Any(column => BoardEvaluator.AllSpacesTheSame(column));
         }
 
         public bool Over(string[] spaces)

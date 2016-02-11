@@ -37,14 +37,32 @@ namespace TicTacToe
             return rows;
         }
 
-        public static string[] Columns(string[] spaces)
+        public static string[][] Columns(string[] spaces)
         {
-            string[] firstColumn = new string[3];
-            for (int i = 0; i < firstColumn.Length; i++)
+            List<string> firstColumn = new List<string>();
+            List<string> secondColumn = new List<string>();
+            List<string> thirdColumn= new List<string>();
+            for (int i = 0; i < spaces.Length; i++)
             {
-                firstColumn[i] = spaces[i * 3];
+                if (i % 3 == 0)
+                {
+                    firstColumn.Add(spaces[i]);
+                }
+                else if (i % 3 == 1)
+                {
+                    secondColumn.Add(spaces[i]);
+                }
+                else
+                {
+                    thirdColumn.Add(spaces[i]);
+                }
             }
-            return firstColumn;
+
+            string[][] columns = new string[3][];
+            columns[0] = firstColumn.ToArray();
+            columns[1] = secondColumn.ToArray();
+            columns[2] = thirdColumn.ToArray();
+            return columns;
         }
     }
 
