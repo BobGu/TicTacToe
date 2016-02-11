@@ -18,7 +18,7 @@ namespace TicTacToe
         public static bool AllSpacesNotEmpty(string[] spaces)
         {
             return spaces.All(space => IsNotAnEmptySpace(space));
-        } 
+        }
 
         public static bool AllSpacesTheSame(string[] spaces)
         {
@@ -35,6 +35,16 @@ namespace TicTacToe
                 rows[i] = row;
             }
             return rows;
+        }
+
+        public static string[] Columns(string[] spaces)
+        {
+            string[] firstColumn = new string[3];
+            for (int i = 0; i < firstColumn.Length; i++)
+            {
+                firstColumn[i] = spaces[i * 3];
+            }
+            return firstColumn;
         }
     }
 

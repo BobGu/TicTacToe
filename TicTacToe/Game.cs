@@ -6,12 +6,10 @@ namespace TicTacToe
 {
     public class Game
     {
-        public string[] players { get; private set;}
         public Board board;
 
         public void Start()
         {
-            players = new string[] { "player1", "player2" };
             board = new Board();
         }
 
@@ -29,11 +27,7 @@ namespace TicTacToe
 
         public bool Won(string[] spaces)
         {
-            string[] firstColumn = new string[3];
-            for (int i = 0; i < firstColumn.Length; i++)
-            {
-                firstColumn[i] = board.spaces[i * 3];
-            }
+            string[] firstColumn = BoardEvaluator.Columns(spaces);
             string[][] rows = BoardEvaluator.Rows(spaces);
             return rows.Any(row => BoardEvaluator.AllSpacesTheSame(row)) ||
             BoardEvaluator.AllSpacesTheSame(firstColumn);

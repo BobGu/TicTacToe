@@ -18,14 +18,6 @@ namespace GameTest
         }
 
         [Test]
-        public void GameStartsWithTwoPlayers()
-        {
-            int playerCount = game.players.Length;
-            Assert.AreEqual(2, playerCount);
-        }
-
-
-        [Test]
         public void GameGetsPlayerName()
         {
             StringReader reader = new StringReader("Kirby\n");
@@ -89,7 +81,7 @@ namespace GameTest
         }
 
         [Test]
-        public void GameIsWonWhenThereIsAWinningSet()
+        public void GameIsWonWhenSecondRowIsFilledWithOneMarker()
         {
             string[] spaces = { "0", "1", "2", 
                                 "X", "X", "X", 
@@ -98,11 +90,20 @@ namespace GameTest
         }
 
         [Test]
-        public void GameIsWonWhenWinningSet()
+        public void GameIsWonWhenThirdRowIsFilledWithOneMarker()
         {
             string[] spaces = { "0", "1", "2",
                                 "3", "4", "5", 
                                 "X", "X", "X" };
+            Assert.IsTrue(game.Won(spaces));
+        }
+
+        [Test]
+        public void GameIsWonWhenFirstColumnIsFilledWithOneMarker()
+        {
+            string[] spaces = { "O", "1", "2",
+                                "O", "4", "5",
+                                "O", "7", "8"};
             Assert.IsTrue(game.Won(spaces));
         }
 
