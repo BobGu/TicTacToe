@@ -28,10 +28,9 @@ namespace TicTacToe
         public static string[][] Rows(string[] spaces)
         {
             string[][] rows = new string[3][];
-            int lengthOfRow = Convert.ToInt32(Math.Sqrt(spaces.Length));
             for (int i = 0; i < 3; i += 1)
             {
-                string[] row = spaces.SubArray(i * lengthOfRow, lengthOfRow);
+                string[] row = spaces.SubArray(i * 3, 3);
                 rows[i] = row;
             }
             return rows;
@@ -39,29 +38,10 @@ namespace TicTacToe
 
         public static string[][] Columns(string[] spaces)
         {
-            List<string> firstColumn = new List<string>();
-            List<string> secondColumn = new List<string>();
-            List<string> thirdColumn= new List<string>();
-            for (int i = 0; i < spaces.Length; i++)
-            {
-                if (i % 3 == 0)
-                {
-                    firstColumn.Add(spaces[i]);
-                }
-                else if (i % 3 == 1)
-                {
-                    secondColumn.Add(spaces[i]);
-                }
-                else
-                {
-                    thirdColumn.Add(spaces[i]);
-                }
-            }
-
             string[][] columns = new string[3][];
-            columns[0] = firstColumn.ToArray();
-            columns[1] = secondColumn.ToArray();
-            columns[2] = thirdColumn.ToArray();
+            columns[0] = new string[] { spaces[0], spaces[3], spaces[6] };
+            columns[1] = new string[] { spaces[1], spaces[4], spaces[7] };
+            columns[2] = new string[] { spaces[2], spaces[5], spaces[8] };
             return columns;
         }
 
