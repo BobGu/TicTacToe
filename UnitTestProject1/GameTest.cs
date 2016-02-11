@@ -18,12 +18,6 @@ namespace GameTest
         }
 
         [Test]
-        public void GameStartsWithoutAWinner()
-        {
-            Assert.IsFalse(game.Won());
-        }
-
-        [Test]
         public void GameStartsWithTwoPlayers()
         {
             int playerCount = game.players.Length;
@@ -50,85 +44,68 @@ namespace GameTest
         }
 
         [Test]
-        public void GameIsOverWhenBoardIsFilled()
+        public void GameIsOverWhenBoardIsFilledAndNotWon()
         {
-            int[] spacesToBeMarked = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            bool gameOverFilledBoardSpaces = game.Over();
-            Assert.IsTrue(gameOverFilledBoardSpaces);
+            string[] spaces = { "X", "O", "X",
+                                "X", "X", "O",
+                                "O", "X", "O" };
+            Assert.IsTrue(game.Over(spaces));
         }
 
         [Test]
         public void GameIsNotOverWhenBoardIsEmpty()
         {
-            Assert.IsFalse(game.Over());
+            string[] spaces = { "0", "1", "2",
+                                "3", "4", "5",
+                                "6", "7", "8" };
+            Assert.IsFalse(game.Over(spaces));
         }
 
         [Test]
         public void GameIsOverWhenGameIsWon()
         {
-            int[] spacesToBeMarked = { 0, 1, 2};
-            string[][] rows = game.board.Rows();
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Over());
+            string[] spaces = { "X", "X", "X",
+                                "3", "4", "5",
+                                "6", "7", "8"};
+            Assert.IsTrue(game.Over(spaces));
         }
 
         [Test]
         public void GameIsWonWhenOneMarkerHasFilledTopRow()
         {
-            int[] spacesToBeMarked = { 0, 1, 2 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Won());
+            string[] spaces = { "X", "X", "X",
+                                "3", "4", "5",
+                                "6", "7", "8" };
+            Assert.IsTrue(game.Won(spaces));
         }
 
         [Test]
         public void GameIsNotWonTopRowIsFilledWithMixedMarkers()
         {
-            game.board.spaces[0] = "X";
-            game.board.spaces[1] = "O";
-            game.board.spaces[2] = "X";
-            Assert.IsFalse(game.Won());
+            string[] spaces = { "X", "O", "X",
+                                "3", "4", "5",
+                                "6", "7", "8" };
+            Assert.IsFalse(game.Won(spaces));
         }
 
         [Test]
-        public void GameIsWonWhenOneMarkerHasFilledSecondRow()
+        public void GameIsWonWhenThereIsAWinningSet()
         {
-            int[] spacesToBeMarked = { 3, 4, 5 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Won());
+            string[] spaces = { "0", "1", "2", 
+                                "X", "X", "X", 
+                                "6", "7", "8" };
+            Assert.IsTrue(game.Won(spaces));
         }
 
         [Test]
-        public void GameIsWonWhenOneMarkerHasFilledBottomRow()
+        public void GameIsWonWhenWinningSet()
         {
-            int[] spacesToBeMarked = { 6, 7, 8 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Won());
+            string[] spaces = { "0", "1", "2",
+                                "3", "4", "5", 
+                                "X", "X", "X" };
+            Assert.IsTrue(game.Won(spaces));
         }
 
-        [Test]
-        public void GameIsWonWhenOneMarkerHasFilledFirstColumn()
-        {
-            int[] spacesToBeMarked = { 0, 3, 6 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Won());
-        }
-
-        [Test]
-        public void GameIsNotWonWhenFirstColumnSpacesAreNotTheSame()
-        {
-            game.board.spaces[0] = "X";
-            game.board.spaces[1] = "X";
-            Assert.IsFalse(game.Won());
-        }
-
-        [Test]
-        public void GameIsWonWhenOneMarkerHasFilledTheSecondColumn()
-        {
-            int[] spacesToBeMarked = { 1, 4, 7 };
-            TestHelper.MarkBoardWithXsAtSpaces(game.board, spacesToBeMarked);
-            Assert.IsTrue(game.Won());
-        }
         [Test]
         public void GameCanTellBoardToMarkItself()
         {

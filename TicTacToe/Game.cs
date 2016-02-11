@@ -27,22 +27,21 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
-        public bool Won()
+        public bool Won(string[] spaces)
         {
             string[] firstColumn = new string[3];
             for (int i = 0; i < firstColumn.Length; i++)
             {
                 firstColumn[i] = board.spaces[i * 3];
             }
-
-            return board.Rows().Any(row => BoardEvaluator.AllSpacesTheSame(row)) ||
+            string[][] rows = BoardEvaluator.Rows(spaces);
+            return rows.Any(row => BoardEvaluator.AllSpacesTheSame(row)) ||
             BoardEvaluator.AllSpacesTheSame(firstColumn);
         }
 
-        public bool Over()
+        public bool Over(string[] spaces)
         {
-            return Array.TrueForAll(board.spaces, BoardEvaluator.IsNotAnEmptySpace) || Won();
-              
+            return Won(spaces) || BoardEvaluator.AllSpacesNotEmpty(spaces);
         }
 
         public void MarkBoard(Board board, int space, string marker)
