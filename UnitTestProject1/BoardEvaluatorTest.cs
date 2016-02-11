@@ -73,5 +73,17 @@ namespace UnitTestProject1
             CollectionAssert.AreEqual(columns, BoardEvaluator.Columns(spaces));
         }
 
+        [Test]
+        public void CanFindTheDiagonals()
+        {
+            string[] spaces = { "X", "O", "X",
+                                "3", "4", "5",
+                                "6", "7", "8" };
+            string[][] diagonals = new string[2][];
+            diagonals[0] = new string[] { "X", "4", "8" };
+            diagonals[1] = new string[] { "X", "4", "6" };
+            CollectionAssert.AreEqual(diagonals, BoardEvaluator.Diagonals(spaces));
+        }
+
     }
 }
