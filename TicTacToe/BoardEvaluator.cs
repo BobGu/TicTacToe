@@ -20,15 +20,6 @@ namespace TicTacToe
             return spaces.All(space => IsNotAnEmptySpace(space));
         }
 
-        public static bool AllSpacesTheSame(string[] spaces)
-        {
-            return 1 == spaces.Distinct().ToArray().Length;
-        }
-
-        public static bool AnySetsTheSame(string[] spaces)
-        {
-            return RowsColumnsDiagonals(spaces).Any(set => AllSpacesTheSame(set));
-        }
 
         public static string[][] Rows(string[] spaces)
         {
@@ -66,6 +57,16 @@ namespace TicTacToe
             Diagonals(spaces).CopyTo(rowsColumnsDiagonals, 6);
             return rowsColumnsDiagonals;
         } 
+        public static bool AllSpacesTheSame(string[] spaces)
+        {
+            return 1 == spaces.Distinct().Count();
+        }
+
+        public static bool AnySetsTheSame(string[] spaces)
+        {
+            return RowsColumnsDiagonals(spaces).Any(set => AllSpacesTheSame(set));
+        }
+
     }
 
 }
