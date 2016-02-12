@@ -52,6 +52,15 @@ namespace TicTacToe
             diagonals[1] = new string[] { spaces[2], spaces[4], spaces[6] };
             return diagonals;
         }
+
+        public static string[][] RowsColumnsDiagonals(string[] spaces)
+        {
+            string[][] rowsColumnsDiagonals = new string[8][];
+            Rows(spaces).CopyTo(rowsColumnsDiagonals, 0);
+            Columns(spaces).CopyTo(rowsColumnsDiagonals, 3);
+            Diagonals(spaces).CopyTo(rowsColumnsDiagonals, 6);
+            return rowsColumnsDiagonals;
+        } 
     }
 
 }
