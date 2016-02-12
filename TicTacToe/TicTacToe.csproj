@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrayExtensions.cs" />
+    <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEvaluator.cs" />
     <Compile Include="MessageFactory.cs" />
