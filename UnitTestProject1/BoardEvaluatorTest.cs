@@ -103,5 +103,18 @@ namespace UnitTestProject1
             CollectionAssert.AreEqual(rowsColumnsDiagonals, BoardEvaluator.RowsColumnsDiagonals(spaces));
         }
 
+        [Test]
+        public void ReturnTrueIfAnySetsAreTheSame()
+        {
+            string[] spaces = { "X", "X", "X", "3", "4", "5", "6", "7", "8" };
+            Assert.IsTrue(BoardEvaluator.AnySetsTheSame(spaces));
+        }
+
+        [Test]
+        public void ReturnFalseIfAnySetsAreTheSame()
+        {
+            string[] spaces = { "X", "X", "2", "3", "4", "5", "6", "7", "8" };
+            Assert.IsFalse(BoardEvaluator.AnySetsTheSame(spaces));
+        }
     }
 }

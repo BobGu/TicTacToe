@@ -25,6 +25,11 @@ namespace TicTacToe
             return 1 == spaces.Distinct().ToArray().Length;
         }
 
+        public static bool AnySetsTheSame(string[] spaces)
+        {
+            return RowsColumnsDiagonals(spaces).Any(set => AllSpacesTheSame(set));
+        }
+
         public static string[][] Rows(string[] spaces)
         {
             string[][] rows = new string[3][];

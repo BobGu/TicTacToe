@@ -27,8 +27,7 @@ namespace TicTacToe
 
         public bool Won(string[] spaces)
         {
-            string[][] rowsColumnsDiagonals = BoardEvaluator.RowsColumnsDiagonals(spaces);
-            return rowsColumnsDiagonals.Any(sets => BoardEvaluator.AllSpacesTheSame(sets));
+            return BoardEvaluator.AnySetsTheSame(spaces);
         }
 
         public bool Over(string[] spaces)
