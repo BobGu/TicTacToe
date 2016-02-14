@@ -7,6 +7,12 @@ namespace TicTacToe
     public class Game
     {
         public Board board;
+        public Player[] players { get; private set;}
+
+        public Game()
+        {
+            players = new Player[] { new Player(), new Player()};
+        }
 
         public void Start()
         {
@@ -23,6 +29,16 @@ namespace TicTacToe
         {
             MessageFactory.AskPlayerForMove(name);
             return Console.ReadLine();
+        }
+
+        public Player FirstPlayer()
+        {
+            return players.First();
+        }
+
+        public Player SecondPlayer()
+        {
+            return players.Last();
         }
 
         public void SetPlayerName(Player player, string name)

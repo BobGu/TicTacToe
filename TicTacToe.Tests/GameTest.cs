@@ -156,8 +156,15 @@ namespace GameTest
         {
             string name = "Robert";
             Player player = new Player();
-            game.SetPlayerName( player, name);
+            game.SetPlayerName(player, name);
             Assert.AreEqual(name, game.PlayerName(player));
+        }
+
+        [Test]
+        public void GameStartsWithTwoPlayers()
+        {
+            Assert.IsInstanceOf<Player>(game.FirstPlayer());
+            Assert.IsInstanceOf<Player>(game.SecondPlayer());
         }
 
     }
