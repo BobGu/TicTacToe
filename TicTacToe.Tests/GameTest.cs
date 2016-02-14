@@ -131,6 +131,7 @@ namespace GameTest
             game.MarkBoard(board, 4, "X");
             Assert.AreEqual("X", board.GetSpaceAt(4));
         }
+
         [Test]
         public void GameSetAndReturnPlayersName()
         {
@@ -138,6 +139,15 @@ namespace GameTest
             Player player = new Player();
             game.SetPlayerName(player, name);
             Assert.AreEqual(name, game.PlayerName(player));
+        }
+
+        [Test]
+        public void GameSetAndReturnPlayerPiece()
+        {
+            string piece = "X";
+            Player player = new Player();
+            game.SetPlayerPiece(player, piece);
+            Assert.AreEqual(piece, game.PlayerPiece(player));
         }
 
         [Test]

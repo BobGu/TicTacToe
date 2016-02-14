@@ -7,11 +7,11 @@ namespace TicTacToe
     public class Game
     {
         public Board board;
-        public Player[] players { get; private set;}
+        public Player[] players { get; private set; }
 
         public Game()
         {
-            players = new Player[] { new Player(), new Player()};
+            players = new Player[] { new Player(), new Player() };
         }
 
         public Player FirstPlayer()
@@ -32,6 +32,16 @@ namespace TicTacToe
         public string PlayerName(Player player)
         {
             return player.Name();
+        }
+
+        public void SetPlayerPiece(Player player, string piece)
+        {
+            player.AssignPiece(piece);
+        }
+
+        public string PlayerPiece(Player player)
+        {
+            return player.Piece();
         }
 
         public bool Won(string[] spaces)

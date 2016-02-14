@@ -10,10 +10,17 @@ namespace UnitTestProject1
         [Test]
         public void CanAssignAndRetrieveAPlayersName()
         {
-            string name = "Bob";
             Player player = new Player();
-            player.AssignName(name);
+            player.AssignName("Bob");
             Assert.AreEqual("Bob", player.Name());
+        }
+
+        [Test]
+        public void CanAssignAndRetrieveAPlayerPiece()
+        {
+            Player player = new Player();
+            player.AssignPiece("X");
+            Assert.AreEqual("X", player.Piece());
         }
     }
 }
