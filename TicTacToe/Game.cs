@@ -14,23 +14,6 @@ namespace TicTacToe
             players = new Player[] { new Player(), new Player()};
         }
 
-        public void Start()
-        {
-            board = new Board();
-        }
-
-        public string GetPlayerName()
-        {
-            MessageFactory.AskPlayerForName();
-            return Console.ReadLine();
-        }
-
-        public string GetPlayerMove(string name)
-        {
-            MessageFactory.AskPlayerForMove(name);
-            return Console.ReadLine();
-        }
-
         public Player FirstPlayer()
         {
             return players.First();
@@ -40,6 +23,25 @@ namespace TicTacToe
         {
             return players.Last();
         }
+
+        public string GetPlayerName()
+        {
+            MessageFactory.AskPlayerForName();
+            return Console.ReadLine();
+        }
+
+        public string GetPlayerPiece()
+        {
+            MessageFactory.AskPlayerForPiece();
+            return Console.ReadLine();
+        }
+
+        public string GetPlayerMove(string name)
+        {
+            MessageFactory.AskPlayerForMove(name);
+            return Console.ReadLine();
+        }
+
 
         public void SetPlayerName(Player player, string name)
         {
@@ -64,6 +66,11 @@ namespace TicTacToe
         public void MarkBoard(Board board, int space, string marker)
         {
             board.Mark(space, marker);
+        }
+
+        public void Start()
+        {
+            board = new Board();
         }
 
     }

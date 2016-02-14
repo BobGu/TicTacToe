@@ -142,6 +142,15 @@ namespace GameTest
             Assert.AreEqual("Kirby", name);
         }
 
+        [Test]
+        public void Game_Gets_Players_Piece()
+        {
+            StringReader reader = new StringReader("X\n");
+            Console.SetIn(reader);
+            string name = game.GetPlayerPiece();
+            Assert.AreEqual("X", name);
+        }
+
 
         [Test]
         public void GameGetsPlayerMove()
@@ -174,7 +183,6 @@ namespace GameTest
             StringReader reader = new StringReader("Kirby\n");
             Console.SetIn(reader);
         }
-
 
     }
     
