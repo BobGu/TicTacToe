@@ -146,8 +146,7 @@ namespace GameTest
         [Test]
         public void GameCanTellBoardToMarkItself()
         {
-            Board board = new Board();
-            game.MarkBoard(board, 4, "X");
+            game.MarkBoard(4, "X");
             Assert.AreEqual("X", board.GetSpaceAt(4));
         }
     }
