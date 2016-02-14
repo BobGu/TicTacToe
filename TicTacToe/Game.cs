@@ -44,6 +44,11 @@ namespace TicTacToe
             return player.Piece();
         }
 
+        public string OppositePiece(string piece)
+        {
+            return piece == "X" ? "O" : "X";
+        }
+
         public bool Won(string[] spaces)
         {
             return BoardEvaluator.AnySetsTheSame(spaces);

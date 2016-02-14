@@ -26,5 +26,11 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
+        public static string GetTurnOrder(string name)
+        {
+            MessageFactory.AskForTurnOrder(name);
+            return Console.ReadLine();
+        }
+
     }
 }

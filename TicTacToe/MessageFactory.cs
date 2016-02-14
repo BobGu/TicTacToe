@@ -18,5 +18,10 @@ namespace TicTacToe
         {
             return "What piece would you like to be?";
         }
+
+        public static string AskForTurnOrder(string name)
+        {
+            return "Type 1 if you would like " + name + " to go first, and 2 to go second";
+        }
     }
 }

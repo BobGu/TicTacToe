@@ -83,6 +83,7 @@
     <Compile Include="BoardEvaluatorTest.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="PromptTest.cs" />
+    <Compile Include="TestHelper\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj">

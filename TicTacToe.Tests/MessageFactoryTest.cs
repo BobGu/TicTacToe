@@ -3,7 +3,7 @@ using TicTacToe;
 using NUnit.Framework;
 using System.IO;
 
-namespace UnitTestProject1
+namespace TicTacToeTests
 {
     [TestFixture]
     public class MessageFactoryTest
@@ -12,22 +12,30 @@ namespace UnitTestProject1
         public void Ask_For_Move()
         {
             string name = "Robert";
-            string movePrompt = MessageFactory.AskPlayerForMove(name);
-            Assert.AreEqual(movePrompt, "Where would you like to move Robert");
+            string moveMessage = MessageFactory.AskPlayerForMove(name);
+            Assert.AreEqual(moveMessage, "Where would you like to move Robert");
         }
 
         [Test]
         public void Ask_For_A_Name()
         {
-            string namePrompt = MessageFactory.AskPlayerForName();
-            Assert.AreEqual("What is your name?", namePrompt);
+            string nameMessage = MessageFactory.AskPlayerForName();
+            Assert.AreEqual("What is your name?", nameMessage);
         }
 
         [Test]
-        public void Ask_for_A_Piece()
+        public void Ask_For_A_Piece()
         {
-            string piecePrompt = MessageFactory.AskPlayerForPiece();
-            Assert.AreEqual("What piece would you like to be?", piecePrompt);
+            string pieceMessage = MessageFactory.AskPlayerForPiece();
+            Assert.AreEqual("What piece would you like to be?", pieceMessage);
+        }
+
+        [Test]
+        public void Ask_For_Turn_Order()
+        {
+            string turnOrderMessage = MessageFactory.AskForTurnOrder("Tony");
+            string expected = "Type 1 if you would like Tony to go first, and 2 to go second";
+            Assert.AreEqual(expected, turnOrderMessage);
         }
     }
 }

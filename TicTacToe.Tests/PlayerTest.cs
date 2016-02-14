@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using TicTacToe;
 
-namespace UnitTestProject1
+namespace TicTacToeTests
 {
     [TestFixture]
     public class PlayerTest

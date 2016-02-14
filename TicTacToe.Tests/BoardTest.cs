@@ -1,6 +1,6 @@
 ﻿using System;
 using TicTacToe;
-namespace UnitTestProject1
+namespace TicTacToeTests
 {
     using NUnit.Framework;
 

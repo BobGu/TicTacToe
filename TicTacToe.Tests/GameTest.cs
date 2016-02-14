@@ -1,7 +1,7 @@
 ﻿using System;
 using TicTacToe;
 using NUnit.Framework;
-using System.IO;
+using TicTacToeTests.TestHelper;
 
 namespace GameTest
 {
@@ -160,8 +160,18 @@ namespace GameTest
         [Test]
         public void GameIsSetupWithPlayersInfo()
         {
-            StringReader reader = new StringReader("Kirby\n");
-            Console.SetIn(reader);
+            TestHelper.SetInput("Robert\nX\nDon\n1\n");
+            game.SetUp();
+            Player firstPlayer = game.FirstPlayer;
+            Player secondPlayer = game.SecondPlayer;
+            string firstPlayerName = game.PlayerName(firstPlayer);
+            string secondPlayerName = game.PlayerName(secondPlayer);
+            string firstPlayerPiece = game.PlayerPiece(firstPlayer);
+            string secondPlayerPiece = game.SecondPlayerPiece(secondPlayer);
+            Assert.AreEqual("Robert", firstPlayerName);
+            Assert.AreEqual("Don", secondPlayerName);
+            Assert.AreEqual("X", firstPlayerPiece);
+            Assert.AreEqual("O", secondPlayerPiece);
         }
 
     }
