@@ -25,6 +25,16 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
+        public void SetPlayerName(Player player, string name)
+        {
+            player.AssignName(name);
+        }
+
+        public string PlayerName(Player player)
+        {
+            return player.Name();
+        }
+
         public bool Won(string[] spaces)
         {
             return BoardEvaluator.AnySetsTheSame(spaces);

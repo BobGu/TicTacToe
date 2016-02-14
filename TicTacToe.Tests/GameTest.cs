@@ -18,24 +18,6 @@ namespace GameTest
         }
 
         [Test]
-        public void GameGetsPlayerName()
-        {
-            StringReader reader = new StringReader("Kirby\n");
-            Console.SetIn(reader);
-            string name = game.GetPlayerName();
-            Assert.AreEqual("Kirby", name);
-        }
-
-        [Test]
-        public void GameGetsPlayerMove()
-        {
-            StringReader reader = new StringReader("4\n");
-            Console.SetIn(reader);
-            string move = game.GetPlayerMove("Bob");
-            Assert.AreEqual("4", move);
-        }
-
-        [Test]
         public void GameIsOverWhenBoardIsFilledAndNotWon()
         {
             string[] spaces = { "X", "O", "X",
@@ -146,9 +128,38 @@ namespace GameTest
         [Test]
         public void GameCanTellBoardToMarkItself()
         {
-            game.MarkBoard(4, "X");
+            Board board = new Board();
+            game.MarkBoard(board, 4, "X");
             Assert.AreEqual("X", board.GetSpaceAt(4));
         }
+
+        [Test]
+        public void GameGetsPlayerName()
+        {
+            StringReader reader = new StringReader("Kirby\n");
+            Console.SetIn(reader);
+            string name = game.GetPlayerName();
+            Assert.AreEqual("Kirby", name);
+        }
+
+        [Test]
+        public void GameGetsPlayerMove()
+        {
+            StringReader reader = new StringReader("4\n");
+            Console.SetIn(reader);
+            string move = game.GetPlayerMove("Bob");
+            Assert.AreEqual("4", move);
+        }
+
+        [Test]
+        public void GameSetAndReturnPlayersName()
+        {
+            string name = "Robert";
+            Player player = new Player();
+            game.SetPlayerName( player, name);
+            Assert.AreEqual(name, game.PlayerName(player));
+        }
+
     }
     
 }
