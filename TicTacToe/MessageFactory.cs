@@ -13,5 +13,10 @@ namespace TicTacToe
         {
             return "Where would you like to move " + name;
         }
+
+        public static string AskPlayerForPiece()
+        {
+            return "What piece would you like to be?";
+        }
     }
 }

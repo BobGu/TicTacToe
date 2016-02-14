@@ -9,7 +9,7 @@ namespace UnitTestProject1
     public class MessageFactoryTest
     {
         [Test]
-        public void GameAsksPlayerForMove()
+        public void Ask_For_Move()
         {
             string name = "Robert";
             string movePrompt = MessageFactory.AskPlayerForMove(name);
@@ -17,10 +17,17 @@ namespace UnitTestProject1
         }
 
         [Test]
-        public void GameAsksPlayerForTheirName()
+        public void Ask_For_A_Name()
         {
             string namePrompt = MessageFactory.AskPlayerForName();
             Assert.AreEqual("What is your name?", namePrompt);
+        }
+
+        [Test]
+        public void Ask_for_A_Piece()
+        {
+            string piecePrompt = MessageFactory.AskPlayerForPiece();
+            Assert.AreEqual("What piece would you like to be?", piecePrompt);
         }
     }
 }

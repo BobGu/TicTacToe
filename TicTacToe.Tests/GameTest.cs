@@ -142,6 +142,7 @@ namespace GameTest
             Assert.AreEqual("Kirby", name);
         }
 
+
         [Test]
         public void GameGetsPlayerMove()
         {
@@ -166,6 +167,14 @@ namespace GameTest
             Assert.IsInstanceOf<Player>(game.FirstPlayer());
             Assert.IsInstanceOf<Player>(game.SecondPlayer());
         }
+
+        [Test]
+        public void GameIsSetupWithPlayersInfo()
+        {
+            StringReader reader = new StringReader("Kirby\n");
+            Console.SetIn(reader);
+        }
+
 
     }
     
