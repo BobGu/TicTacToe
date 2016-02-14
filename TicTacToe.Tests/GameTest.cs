@@ -2,8 +2,7 @@
 using TicTacToe;
 using NUnit.Framework;
 using System.IO;
-using UnitTestProject1;
-using Moq;
+
 namespace GameTest
 {
     [TestFixture]
@@ -132,35 +131,6 @@ namespace GameTest
             game.MarkBoard(board, 4, "X");
             Assert.AreEqual("X", board.GetSpaceAt(4));
         }
-
-        [Test]
-        public void GameGetsPlayerName()
-        {
-            StringReader reader = new StringReader("Kirby\n");
-            Console.SetIn(reader);
-            string name = game.GetPlayerName();
-            Assert.AreEqual("Kirby", name);
-        }
-
-        [Test]
-        public void Game_Gets_Players_Piece()
-        {
-            StringReader reader = new StringReader("X\n");
-            Console.SetIn(reader);
-            string name = game.GetPlayerPiece();
-            Assert.AreEqual("X", name);
-        }
-
-
-        [Test]
-        public void GameGetsPlayerMove()
-        {
-            StringReader reader = new StringReader("4\n");
-            Console.SetIn(reader);
-            string move = game.GetPlayerMove("Bob");
-            Assert.AreEqual("4", move);
-        }
-
         [Test]
         public void GameSetAndReturnPlayersName()
         {

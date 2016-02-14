@@ -24,25 +24,6 @@ namespace TicTacToe
             return players.Last();
         }
 
-        public string GetPlayerName()
-        {
-            MessageFactory.AskPlayerForName();
-            return Console.ReadLine();
-        }
-
-        public string GetPlayerPiece()
-        {
-            MessageFactory.AskPlayerForPiece();
-            return Console.ReadLine();
-        }
-
-        public string GetPlayerMove(string name)
-        {
-            MessageFactory.AskPlayerForMove(name);
-            return Console.ReadLine();
-        }
-
-
         public void SetPlayerName(Player player, string name)
         {
             player.AssignName(name);
