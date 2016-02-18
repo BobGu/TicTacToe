@@ -10,7 +10,7 @@ namespace TicTacToe
     {
         public static string GetPlayerName()
         {
-            MessageFactory.AskPlayerForName();
+            Console.WriteLine(MessageFactory.AskPlayerForName());
             return Console.ReadLine();
         }
 

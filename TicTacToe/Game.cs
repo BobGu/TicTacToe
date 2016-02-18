@@ -64,9 +64,15 @@ namespace TicTacToe
             board.Mark(space, marker);
         }
 
+        public void SetUp()
+        {
+            Prompt.GetPlayerName();
+        }
+
         public void Start()
         {
             board = new Board();
+            SetUp();
         }
 
     }

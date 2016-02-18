@@ -9,6 +9,12 @@ namespace TicTacToeTest
     [TestFixture]
     public class PromptTest
     {
+        [SetUp]
+        public void Capture_The_Output()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+        }
         [Test]
         public void Get_Name()
         {
