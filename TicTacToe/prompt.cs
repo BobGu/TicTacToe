@@ -16,7 +16,7 @@ namespace TicTacToe
 
         public static string GetPlayerPiece()
         {
-            MessageFactory.AskPlayerForPiece();
+            Console.WriteLine(MessageFactory.AskPlayerForPiece());
             return Console.ReadLine();
         }
 
