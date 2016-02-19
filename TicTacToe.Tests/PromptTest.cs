@@ -27,7 +27,7 @@ namespace TicTacToeTest
         public void Get_Piece()
         {
             TestHelper.SetInput("X\n");
-            string name = Prompt.GetPlayerPiece();
+            string name = Prompt.GetPlayerMarker();
             Assert.AreEqual("X", name);
         }
 

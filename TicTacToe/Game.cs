@@ -9,6 +9,11 @@ namespace TicTacToe
         public Board board;
         public Player[] players { get; private set; }
 
+        public void Main()
+        {
+            Start();
+        }
+
         public Game()
         {
             players = new Player[] { new Player(), new Player() };
@@ -34,19 +39,14 @@ namespace TicTacToe
             return player.Name();
         }
 
-        public void SetPlayerPiece(Player player, string piece)
+        public void SetPlayerMarker(Player player, string marker)
         {
-            player.AssignPiece(piece);
+            player.AssignMarker(marker);
         }
 
-        public string PlayerPiece(Player player)
+        public string PlayerMarker(Player player)
         {
-            return player.Piece();
-        }
-
-        public string OppositePiece(string piece)
-        {
-            return piece == "X" ? "O" : "X";
+            return player.Marker();
         }
 
         public bool Won(string[] spaces)
@@ -64,13 +64,32 @@ namespace TicTacToe
             board.Mark(space, marker);
         }
 
+        public string OppositeMarker(string marker)
+        {
+            return marker == "X" ? "O" : "X";
+        }
+
+        public void AssignTurnOrder(string turnOrder)
+        {
+            if (turnOrder == "2")
+            {
+                players = new Player[] { SecondPlayer(), FirstPlayer() };
+            }
+        }
+
+        public void Moves()
+        {
+            Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
+        }
+
         public void SetUp()
         {
-            string firstPlayerName = Prompt.GetPlayerName();
-            Prompt.GetPlayerPiece();
-            Prompt.GetPlayerName();
-            Prompt.GetTurnOrder(firstPlayerName);
-            Prompt.GetPlayerMove(firstPlayerName);
+            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
+            SetPlayerMarker(FirstPlayer(), Prompt.GetPlayerMarker());
+            SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
+            SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
+            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
+            Moves();
         }
 
         public void Start()

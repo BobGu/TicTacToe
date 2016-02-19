@@ -43,6 +43,7 @@ namespace UnitTestProject1
         [Then(@"I should be asked for my name")]
         public void ThenIShouldBeAskedForMyName()
         {
+            TestHelper.SetInput(gameInput);
             string expected = string.Format("What is your name?", Environment.NewLine);
             Assert.AreEqual(expected, gameOutput[0]);
         }
@@ -106,7 +107,7 @@ namespace UnitTestProject1
         [Given(@"player one chooses to go second")]
         public void PlayerOneChoosesToGoSecond()
         {
-            gameInput = gameInput + "1\n";
+            gameInput = gameInput + "2\n";
         }
 
         [Then(@"I expect player two to be asked where they would like to move")]

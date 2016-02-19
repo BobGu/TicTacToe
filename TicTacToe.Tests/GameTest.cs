@@ -145,8 +145,19 @@ namespace GameTest
         {
             string piece = "X";
             Player player = new Player();
-            game.SetPlayerPiece(player, piece);
-            Assert.AreEqual(piece, game.PlayerPiece(player));
+            game.SetPlayerMarker(player, piece);
+            Assert.AreEqual(piece, game.PlayerMarker(player));
+        }
+
+        [Test]
+        public void GameCanAssignTurnOrder()
+        {
+            game.SetPlayerName(game.FirstPlayer(), "Bob");
+            game.SetPlayerName(game.SecondPlayer(), "John");
+            game.AssignTurnOrder("1");
+            Assert.AreEqual("Bob", game.PlayerName(game.FirstPlayer()));
+            game.AssignTurnOrder("2");
+            Assert.AreEqual("John", game.PlayerName(game.FirstPlayer()));
         }
 
 
