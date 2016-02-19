@@ -22,7 +22,7 @@ namespace TicTacToe
 
         public static string GetPlayerMove(string name)
         {
-            MessageFactory.AskPlayerForMove(name);
+            Console.WriteLine(MessageFactory.AskPlayerForMove(name));
             return Console.ReadLine();
         }
 

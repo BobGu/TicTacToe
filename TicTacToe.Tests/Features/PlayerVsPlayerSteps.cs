@@ -60,7 +60,7 @@ namespace UnitTestProject1
         [Given(@"players have entered all their info")]
         public void PlayersHaveEnteredAllTheirInfo()
         {
-            TestHelper.SetInput("Robert\nX\nJohn");
+            TestHelper.SetInput("Robert\nX\nJohn\n");
         }
 
         [Then(@"I expect to be asked about the turn order")]
@@ -69,6 +69,20 @@ namespace UnitTestProject1
             string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
             Assert.AreEqual(expected, gameOutput[3]);
         }
+
+        [Given(@"player one chooses to go first")]
+        public void PlayerOneChoosesToGoFirst()
+        {
+            TestHelper.SetInput("1\n");
+        }
+
+        [Then(@"I expect player one to be asked where they would like to move")]
+        public void IExpectPlayerOneToBeAskedWhereTheyWouldLikeToMove()
+        {
+            string expected = "Where would you like to move Robert?";
+            Assert.AreEqual(expected, gameOutput[4]);
+        }
+
 
         
 

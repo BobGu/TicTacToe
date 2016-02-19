@@ -11,7 +11,7 @@ namespace TicTacToe
 
         public static string AskPlayerForMove(string name)
         {
-            return "Where would you like to move " + name;
+            return "Where would you like to move " + name + "?";
         }
 
         public static string AskPlayerForPiece()

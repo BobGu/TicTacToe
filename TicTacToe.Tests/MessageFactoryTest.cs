@@ -13,7 +13,7 @@ namespace TicTacToeTests
         {
             string name = "Robert";
             string moveMessage = MessageFactory.AskPlayerForMove(name);
-            Assert.AreEqual(moveMessage, "Where would you like to move Robert");
+            Assert.AreEqual("Where would you like to move Robert?", moveMessage);
         }
 
         [Test]
