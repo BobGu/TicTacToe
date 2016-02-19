@@ -42,7 +42,35 @@ namespace UnitTestProject1
         {
             string expected = "What piece would you like to be?";
             Assert.AreEqual(expected, gameOutput[1]);
-        } 
+        }
+
+        [Given(@"the first player has entered their info")]
+        public void TheFirstPayerHasEnteredTheirInfo()
+        {
+            TestHelper.SetInput("Robert\nX\n");
+        }
+
+        [Then(@"the second player should be asked for their name")]
+        public void TheSecondPlayerShouldBeAskedForTheirName()
+        {
+            string expected = "What is your name?";
+            Assert.AreEqual(expected, gameOutput[2]);
+        }
+
+        [Given(@"players have entered all their info")]
+        public void PlayersHaveEnteredAllTheirInfo()
+        {
+            TestHelper.SetInput("Robert\nX\nJohn");
+        }
+
+        [Then(@"I expect to be asked about the turn order")]
+        public void IExpectToBeAskedAboutTheTurnOrder()
+        {
+            string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
+            Assert.AreEqual(expected, gameOutput[3]);
+        }
+
+        
 
     }
 }

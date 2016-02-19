@@ -66,8 +66,10 @@ namespace TicTacToe
 
         public void SetUp()
         {
-            Prompt.GetPlayerName();
+            string firstPlayerName = Prompt.GetPlayerName();
             Prompt.GetPlayerPiece();
+            Prompt.GetPlayerName();
+            Prompt.GetTurnOrder(firstPlayerName);
         }
 
         public void Start()
