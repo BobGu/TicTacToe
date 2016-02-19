@@ -24,9 +24,16 @@ Scenario: Players are asked who would like to move first
 	And players have entered all their info
 	Then I expect to be asked about the turn order
 
-Scenario: Player who chooses to go first, should be asked for their move first
+Scenario: Player one chooses to go first
     Given the game has started
 	And players have entered all their info
 	And player one chooses to go first
 	Then I expect player one to be asked where they would like to move
+
+Scenario: Player one chooses to go second
+    Given the game has started
+	And players have entered all their info
+	And player one chooses to go second
+	Then I expect player two to be asked where they would like to move
+
 

@@ -149,12 +149,6 @@ namespace GameTest
             Assert.AreEqual(piece, game.PlayerPiece(player));
         }
 
-        [Test]
-        public void GameStartsWithTwoPlayers()
-        {
-            Assert.IsInstanceOf<Player>(game.FirstPlayer());
-            Assert.IsInstanceOf<Player>(game.SecondPlayer());
-        }
 
     }
     
