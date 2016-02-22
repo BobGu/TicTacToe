@@ -175,5 +175,31 @@ namespace UnitTestProject1
         
         }
 
+        [When(@"I choose the center space")]
+        public void IChooseTheCenterSpace()
+        {
+            gameInput = gameInput + "4\n";
+        }
+
+        [Then(@"I expect to see that space marked")]
+        public void IExpectToSeeThatSpaceMarked()
+        {
+            TestHelper.SetInput(gameInput);
+            string expected = 
+                @"     |     |     |
+                   0   |  1  |  2  |
+                  _____|_____|_____|
+                       |     |     |
+                   3   |  X  |  5  |
+                  _____|_____|_____|
+                       |     |     |
+                   6   |  7  |  8  |
+                  _____|_____|_____|";
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            string output = sw.ToString();
+            StringAssert.Contains(expected, output);
+        }
+
     }
 }

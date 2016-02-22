@@ -40,5 +40,7 @@ Scenario: Expect to see an empty board
     Given game setup is already done
 	Then I expect to see an empty board
 
-
-
+Scenario: Player can mark a space
+    Given game setup is already done
+	When I choose the center space 
+	Then I expect to see that space marked
