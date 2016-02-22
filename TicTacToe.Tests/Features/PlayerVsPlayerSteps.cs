@@ -68,13 +68,8 @@ namespace UnitTestProject1
         [Then(@"I expect to be asked what piece I would like to be")]
         public void IExpectToBeAskedWhatPieceIWouldLikeToBe()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "What piece would you like to be?";
             Assert.AreEqual(expected, gameOutput[1]);
         }
@@ -88,13 +83,8 @@ namespace UnitTestProject1
         [Then(@"the second player should be asked for their name")]
         public void TheSecondPlayerShouldBeAskedForTheirName()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "What is your name?";
             Assert.AreEqual(expected, gameOutput[2]);
         }
@@ -108,13 +98,8 @@ namespace UnitTestProject1
         [Then(@"I expect to be asked about the turn order")]
         public void IExpectToBeAskedAboutTheTurnOrder()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
             Assert.AreEqual(expected, gameOutput[3]);
         }
@@ -128,13 +113,8 @@ namespace UnitTestProject1
         [Then(@"I expect player one to be asked where they would like to move")]
         public void IExpectPlayerOneToBeAskedWhereTheyWouldLikeToMove()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "Where would you like to move Robert?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
@@ -148,13 +128,9 @@ namespace UnitTestProject1
         [Then(@"I expect player two to be asked where they would like to move")]
         public void IExpectPlayerTwoToBeAskedWhereTheyWouldLikeToMove()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
             Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "Where would you like to move John?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
