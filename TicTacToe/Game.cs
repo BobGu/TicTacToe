@@ -90,13 +90,13 @@ namespace TicTacToe
             SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
             SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
-            Moves();
         }
 
         public void Start()
         {
             board = new Board();
             SetUp();
+            Moves();
         }
 
     }

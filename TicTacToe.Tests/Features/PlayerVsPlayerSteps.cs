@@ -34,9 +34,8 @@ namespace UnitTestProject1
             return sw;
         }
 
-        public string[] StartGameAndCaptureOutput(StringWriter sw)
+        public string[] CaptureOutput(StringWriter sw)
         {
-            game.Start();
             string output = sw.ToString();
             return gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
         }
@@ -54,7 +53,9 @@ namespace UnitTestProject1
         public void ThenIShouldBeAskedForMyName()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.SetUp();
+            CaptureOutput(sw);
             string expected = string.Format("What is your name?", Environment.NewLine);
             Assert.AreEqual(expected, gameOutput[0]);
         }
@@ -69,7 +70,9 @@ namespace UnitTestProject1
         public void IExpectToBeAskedWhatPieceIWouldLikeToBe()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.SetUp();
+            CaptureOutput(sw);
             string expected = "What piece would you like to be?";
             Assert.AreEqual(expected, gameOutput[1]);
         }
@@ -84,7 +87,9 @@ namespace UnitTestProject1
         public void TheSecondPlayerShouldBeAskedForTheirName()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.SetUp();
+            CaptureOutput(sw);
             string expected = "What is your name?";
             Assert.AreEqual(expected, gameOutput[2]);
         }
@@ -99,7 +104,9 @@ namespace UnitTestProject1
         public void IExpectToBeAskedAboutTheTurnOrder()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.SetUp();
+            CaptureOutput(sw);
             string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
             Assert.AreEqual(expected, gameOutput[3]);
         }
@@ -114,7 +121,9 @@ namespace UnitTestProject1
         public void IExpectPlayerOneToBeAskedWhereTheyWouldLikeToMove()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            CaptureOutput(sw);
             string expected = "Where would you like to move Robert?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
@@ -129,7 +138,9 @@ namespace UnitTestProject1
         public void IExpectPlayerTwoToBeAskedWhereTheyWouldLikeToMove()
         {
             TestHelper.SetInput(gameInput);
-            StartGameAndCaptureOutput(SetOutputToStringWriter());
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            CaptureOutput(sw);
             string expected = "Where would you like to move John?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
