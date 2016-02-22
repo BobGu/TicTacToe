@@ -9,7 +9,7 @@ using TicTacToeTests.TestHelper;
 namespace UnitTestProject1
 {
     [Binding]
-    public class PlayerVsPlayerSteps
+    public class PlayerVsPlayerSteps: Steps
     {
         public string[] gameOutput;
         public string gameInput;
@@ -129,10 +129,39 @@ namespace UnitTestProject1
         public void IExpectPlayerTwoToBeAskedWhereTheyWouldLikeToMove()
         {
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
             StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = "Where would you like to move John?";
             Assert.AreEqual(expected, gameOutput[4]);
+        }
+
+        [Given(@"game setup is already done")]
+        public void GameSetupIsAlreadyDone()
+        {
+            Given("the game has started");
+            Given("players have entered all their info");
+            Given("player one chooses to go first");
+        }
+
+        [Then(@"I expect to see an empty board")]
+        public void IExpectToSeeAnEmptyBoard()
+        {
+            TestHelper.SetInput(gameInput);
+            string expected =
+                @"     |     |     |
+                   0   |  1  |  2  |
+                  _____|_____|_____|
+                       |     |     |
+                   3   |  4  |  5  |
+                  _____|_____|_____|
+                       |     |     |
+                   6   |  7  |  8  |
+                  _____|_____|_____|";
+
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            string output = sw.ToString();
+            StringAssert.Contains(expected, output);
+        
         }
 
     }

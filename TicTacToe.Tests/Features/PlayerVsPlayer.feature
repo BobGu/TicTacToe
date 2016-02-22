@@ -36,4 +36,9 @@ Scenario: Player one chooses to go second
 	And player one chooses to go second
 	Then I expect player two to be asked where they would like to move
 
+Scenario: Expect to see an empty board
+    Given game setup is already done
+	Then I expect to see an empty board
+
+
 

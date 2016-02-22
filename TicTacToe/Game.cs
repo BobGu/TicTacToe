@@ -80,6 +80,7 @@ namespace TicTacToe
         public void Moves()
         {
             Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
+            Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
         }
 
         public void SetUp()
