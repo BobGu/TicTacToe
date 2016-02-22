@@ -13,6 +13,7 @@ namespace UnitTestProject1
     {
         public string[] gameOutput;
         public string gameInput;
+        public Game game;
 
         public void FlushStandardOut()
         {
@@ -26,30 +27,34 @@ namespace UnitTestProject1
             gameInput = "";
         }
 
+        public StringWriter SetOutputToStringWriter()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+            return sw;
+        }
+
+        public string[] StartGameAndCaptureOutput(StringWriter sw)
+        {
+            game.Start();
+            string output = sw.ToString();
+            return gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+        }
+
 
         [Given(@"the game has started")]
         public void GivenTheGameHasStarted()
         {
             FlushStandardOut();
             FlushStandardIn();
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            game = new Game();
         }
 
         [Then(@"I should be asked for my name")]
         public void ThenIShouldBeAskedForMyName()
         {
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
             TestHelper.SetInput(gameInput);
-            Game game = new Game();
-            game.Start();
-            string output = sw.ToString();
-            gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            StartGameAndCaptureOutput(SetOutputToStringWriter());
             string expected = string.Format("What is your name?", Environment.NewLine);
             Assert.AreEqual(expected, gameOutput[0]);
         }
