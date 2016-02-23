@@ -79,13 +79,14 @@ namespace TicTacToe
 
         public void Moves()
         {
-            string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
-            Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
-            MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
-            string secondPlayerMove = Prompt.GetPlayerMove(PlayerName(SecondPlayer()));
-            Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
-            MarkBoard(board, Int32.Parse(secondPlayerMove), PlayerMarker(SecondPlayer()));
-            Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
+            while (Over(board.spaces) == false)
+            {
+                string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
+                Console.WriteLine(move);
+                Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
+                MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
+                players = players.Reverse().ToArray();
+            }
         }
 
         public void SetUp()

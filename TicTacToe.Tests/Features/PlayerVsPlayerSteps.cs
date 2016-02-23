@@ -175,10 +175,16 @@ namespace UnitTestProject1
         
         }
 
-        [Given(@"players have made the necessary moves")]
+        [Given(@"players have filled the rest of the board")]
         public void PlayersHaveMadeTheirMoves()
         {
-            gameInput = gameInput + "1\n2\n";
+            gameInput = gameInput + "1\n2\n3\n5\n6\n7\n8\n";
+        }
+
+        [Given(@"players have made the necessary moves")]
+        public void PlayersHaveMadeTheNecessaryMoves()
+        {
+            gameInput = gameInput + "0\n1\n2\n3\n4\n5\n6\n7\n8\n";
         }
 
         [Given(@"I choose the center space")]

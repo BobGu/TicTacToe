@@ -224,6 +224,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 55
  testRunner.And("second player chooses the top left space", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 56
+ testRunner.And("players have filled the rest of the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 57
  testRunner.Then("I expect to see the top left space filled with the correct marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

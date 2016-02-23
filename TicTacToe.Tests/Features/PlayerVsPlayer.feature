@@ -53,4 +53,5 @@ Scenario: Second Player can mark a space
     Given game setup is already done
 	And I choose the center space
 	And second player chooses the top left space
+	And players have filled the rest of the board 
 	Then I expect to see the top left space filled with the correct marker
