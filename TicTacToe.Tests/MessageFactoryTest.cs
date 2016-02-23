@@ -72,5 +72,19 @@ namespace TicTacToeTests
             Assert.AreEqual(expected, MessageFactory.FormatBoard(spaces));
 
         }
+
+        [Test]
+        public void A_Message_For_The_Winner()
+        {
+            string winnersMessage = "Robert has won the game";
+            Assert.AreEqual(winnersMessage, MessageFactory.Winner("Robert"));
+        }
+
+        [Test]
+        public void A_Message_For_A_Tie_Game()
+        {
+            string tiedMessage = "The game is a tie";
+            Assert.AreEqual(tiedMessage, MessageFactory.Tied());
+        }
     }
 }

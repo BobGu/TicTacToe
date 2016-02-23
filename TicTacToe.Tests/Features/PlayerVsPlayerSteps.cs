@@ -48,6 +48,13 @@ namespace UnitTestProject1
             game.SetUp();
             CaptureOutput(sw);
         }
+        public void EnterInputRunGameStartCaptureOutput()
+        {
+            TestHelper.SetInput(gameInput);
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            CaptureOutput(sw);
+        }
 
         public string EnterInputStartGameBoardOutput()
         {
@@ -66,6 +73,11 @@ namespace UnitTestProject1
         public void PlayerOneMakeWinningMove()
         {
             gameInput = gameInput + "2\n";
+        }
+
+        public void PlayersMoveTillGameIsTied()
+        {
+            gameInput = gameInput + "0\n2\n1\n3\n5\n4\n6\n7\n8\n";
         }
 
 
@@ -136,10 +148,7 @@ namespace UnitTestProject1
         [Then(@"I expect player one to be asked where they would like to move")]
         public void IExpectPlayerOneToBeAskedWhereTheyWouldLikeToMove()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            CaptureOutput(sw);
+            EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move Robert?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
@@ -153,10 +162,7 @@ namespace UnitTestProject1
         [Then(@"I expect player two to be asked where they would like to move")]
         public void IExpectPlayerTwoToBeAskedWhereTheyWouldLikeToMove()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            CaptureOutput(sw);
+            EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move John?";
             Assert.AreEqual(expected, gameOutput[4]);
         }
@@ -260,12 +266,25 @@ namespace UnitTestProject1
 	    [Then(@"I expect to see a message congratualting player one")]
         public void IExpectToSeeAMessageCongratulatingPlayerOne()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            CaptureOutput(sw);
+            EnterInputRunGameStartCaptureOutput();
             string expect = "Robert has won the game";
             int lastOutputLength= gameOutput.Count();
+            string lastOutput = gameOutput[lastOutputLength - 2];
+            Assert.AreEqual(expect, lastOutput);
+        }
+
+        [Given(@"players move so that they are tied")]
+        public void PlayersMoveSoThatTheyAreTied()
+        {
+            PlayersMoveTillGameIsTied();
+        }
+
+        [Then(@"I expect to see a message saying the game is tied")]
+        public void IExpectToSeeAMessageSayingTheGameIsTied()
+        {
+            EnterInputRunGameStartCaptureOutput();
+            string expect = "The game is a tie";
+            int lastOutputLength = gameOutput.Count();
             string lastOutput = gameOutput[lastOutputLength - 2];
             Assert.AreEqual(expect, lastOutput);
         }

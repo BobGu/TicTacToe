@@ -40,5 +40,15 @@ namespace TicTacToe
                 spaces[3], spaces[4], spaces[5],
                 spaces[6], spaces[7], spaces[8]);
         }
+
+        public static string Winner(string name)
+        {
+            return name + " has won the game";
+        }
+
+        public static string Tied()
+        {
+            return "The game is a tie";
+        }
     }
 }

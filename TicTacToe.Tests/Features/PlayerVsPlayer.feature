@@ -61,3 +61,8 @@ Scenario: First player wins
 	And board is setup so player one can win
 	And player one makes a winning move
 	Then I expect to see a message congratualting player one
+
+Scenario: Tie game
+    Given game setup is already done
+	And players move so that they are tied
+	Then I expect to see a message saying the game is tied

@@ -98,13 +98,24 @@ namespace TicTacToe
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
+        public string WonOrTiedMessage()
+        {
+            if (Won(board.spaces))
+            {
+                return MessageFactory.Winner(PlayerName(SecondPlayer()));
+            }
+            else
+            {
+                return MessageFactory.Tied();
+            }
+        }
+
         public void Start()
         {
             board = new Board();
             SetUp();
             Moves();
-            Console.WriteLine("Robert has won the game");
-            //Console.WriteLine(PlayerName(SecondPlayer()) + " has won the game");
+            Console.WriteLine(WonOrTiedMessage());
         }
 
     }
