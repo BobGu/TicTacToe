@@ -28,19 +28,23 @@ Scenario: Player one chooses to go first
     Given the game has started
 	And players have entered all their info
 	And player one chooses to go first
+	And players have made the necessary moves
 	Then I expect player one to be asked where they would like to move
 
 Scenario: Player one chooses to go second
     Given the game has started
 	And players have entered all their info
 	And player one chooses to go second
+	And players have made the necessary moves
 	Then I expect player two to be asked where they would like to move
 
 Scenario: Expect to see an empty board
     Given game setup is already done
-	Then I expect to see an empty board
+	And players have made the necessary moves
+	Then I expect the first board to be an empty board
 
 Scenario: Player can mark a space
     Given game setup is already done
-	When I choose the center space 
+	And I choose the center space 
+	And players have made the necessary moves
 	Then I expect to see that space marked

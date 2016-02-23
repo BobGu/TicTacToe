@@ -153,7 +153,7 @@ namespace UnitTestProject1
             Given("player one chooses to go first");
         }
 
-        [Then(@"I expect to see an empty board")]
+        [Then(@"I expect the first board to be an empty board")]
         public void IExpectToSeeAnEmptyBoard()
         {
             TestHelper.SetInput(gameInput);
@@ -175,7 +175,13 @@ namespace UnitTestProject1
         
         }
 
-        [When(@"I choose the center space")]
+        [Given(@"players have made the necessary moves")]
+        public void PlayersHaveMadeTheirMoves()
+        {
+            gameInput = gameInput + "1\n";
+        }
+
+        [Given(@"I choose the center space")]
         public void IChooseTheCenterSpace()
         {
             gameInput = gameInput + "4\n";
