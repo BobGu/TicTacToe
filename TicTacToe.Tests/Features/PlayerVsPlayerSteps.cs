@@ -178,7 +178,7 @@ namespace UnitTestProject1
         [Given(@"players have made the necessary moves")]
         public void PlayersHaveMadeTheirMoves()
         {
-            gameInput = gameInput + "1\n";
+            gameInput = gameInput + "1\n2\n";
         }
 
         [Given(@"I choose the center space")]
@@ -194,6 +194,32 @@ namespace UnitTestProject1
             string expected = 
                 @"     |     |     |
                    0   |  1  |  2  |
+                  _____|_____|_____|
+                       |     |     |
+                   3   |  X  |  5  |
+                  _____|_____|_____|
+                       |     |     |
+                   6   |  7  |  8  |
+                  _____|_____|_____|";
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            string output = sw.ToString();
+            StringAssert.Contains(expected, output);
+        }
+
+        [Given(@"second player chooses the top left space")]
+        public void SecondPlayerChoosesTheTopLeftSpace()
+        {
+            gameInput = gameInput + "0\n";
+        }
+
+        [Then(@"I expect to see the top left space filled with the correct marker")]
+        public void IExpectToSeeTheTopLeftSpaceFilledWithTheCorrectMarker()
+        {
+            TestHelper.SetInput(gameInput);
+            string expected = 
+                @"     |     |     |
+                   O   |  1  |  2  |
                   _____|_____|_____|
                        |     |     |
                    3   |  X  |  5  |

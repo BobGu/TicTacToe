@@ -48,3 +48,9 @@ Scenario: Player can mark a space
 	And I choose the center space 
 	And players have made the necessary moves
 	Then I expect to see that space marked
+
+Scenario: Second Player can mark a space
+    Given game setup is already done
+	And I choose the center space
+	And second player chooses the top left space
+	Then I expect to see the top left space filled with the correct marker

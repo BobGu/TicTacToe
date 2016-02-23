@@ -82,6 +82,9 @@ namespace TicTacToe
             string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
             Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
             MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
+            string secondPlayerMove = Prompt.GetPlayerMove(PlayerName(SecondPlayer()));
+            Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
+            MarkBoard(board, Int32.Parse(secondPlayerMove), PlayerMarker(SecondPlayer()));
             Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
         }
 
