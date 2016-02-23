@@ -1,7 +1,7 @@
 ﻿using System;
 using TicTacToe;
 using NUnit.Framework;
-using System.IO;
+using TicTacToeTests.TestHelper;
 
 namespace GameTest
 {
@@ -13,7 +13,6 @@ namespace GameTest
         public void StartANewGame()
         {
             game = new Game();
-            game.Start();
         }
 
         [Test]
@@ -146,23 +145,21 @@ namespace GameTest
         {
             string piece = "X";
             Player player = new Player();
-            game.SetPlayerPiece(player, piece);
-            Assert.AreEqual(piece, game.PlayerPiece(player));
+            game.SetPlayerMarker(player, piece);
+            Assert.AreEqual(piece, game.PlayerMarker(player));
         }
 
         [Test]
-        public void GameStartsWithTwoPlayers()
+        public void GameCanAssignTurnOrder()
         {
-            Assert.IsInstanceOf<Player>(game.FirstPlayer());
-            Assert.IsInstanceOf<Player>(game.SecondPlayer());
+            game.SetPlayerName(game.FirstPlayer(), "Bob");
+            game.SetPlayerName(game.SecondPlayer(), "John");
+            game.AssignTurnOrder("1");
+            Assert.AreEqual("Bob", game.PlayerName(game.FirstPlayer()));
+            game.AssignTurnOrder("2");
+            Assert.AreEqual("John", game.PlayerName(game.FirstPlayer()));
         }
 
-        [Test]
-        public void GameIsSetupWithPlayersInfo()
-        {
-            StringReader reader = new StringReader("Kirby\n");
-            Console.SetIn(reader);
-        }
 
     }
     

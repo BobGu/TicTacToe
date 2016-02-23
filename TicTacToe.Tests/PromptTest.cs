@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
+using TicTacToeTests.TestHelper;
 using TicTacToe;
 
 namespace TicTacToeTest
@@ -8,11 +9,16 @@ namespace TicTacToeTest
     [TestFixture]
     public class PromptTest
     {
+        [SetUp]
+        public void Capture_The_Output()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+        }
         [Test]
         public void Get_Name()
         {
-            StringReader reader = new StringReader("Kirby\n");
-            Console.SetIn(reader);
+            TestHelper.SetInput("Kirby\n");
             string name = Prompt.GetPlayerName();
             Assert.AreEqual("Kirby", name);
         }
@@ -20,9 +26,8 @@ namespace TicTacToeTest
         [Test]
         public void Get_Piece()
         {
-            StringReader reader = new StringReader("X\n");
-            Console.SetIn(reader);
-            string name = Prompt.GetPlayerPiece();
+            TestHelper.SetInput("X\n");
+            string name = Prompt.GetPlayerMarker();
             Assert.AreEqual("X", name);
         }
 
@@ -30,10 +35,17 @@ namespace TicTacToeTest
         [Test]
         public void Get_Move()
         {
-            StringReader reader = new StringReader("4\n");
-            Console.SetIn(reader);
+            TestHelper.SetInput("4\n");
             string move = Prompt.GetPlayerMove("Bob");
             Assert.AreEqual("4", move);
+        }
+
+        [Test]
+        public void Get_Turn_Order()
+        {
+            TestHelper.SetInput("1\n");
+            string turnOrder = Prompt.GetTurnOrder("Bob");
+            Assert.AreEqual("1", turnOrder);
         }
 
     }

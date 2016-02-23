@@ -10,19 +10,25 @@ namespace TicTacToe
     {
         public static string GetPlayerName()
         {
-            MessageFactory.AskPlayerForName();
+            Console.WriteLine(MessageFactory.AskPlayerForName());
             return Console.ReadLine();
         }
 
-        public static string GetPlayerPiece()
+        public static string GetPlayerMarker()
         {
-            MessageFactory.AskPlayerForPiece();
+            Console.WriteLine(MessageFactory.AskPlayerForPiece());
             return Console.ReadLine();
         }
 
         public static string GetPlayerMove(string name)
         {
-            MessageFactory.AskPlayerForMove(name);
+            Console.WriteLine(MessageFactory.AskPlayerForMove(name));
+            return Console.ReadLine();
+        }
+
+        public static string GetTurnOrder(string name)
+        {
+            Console.WriteLine(MessageFactory.AskForTurnOrder(name));
             return Console.ReadLine();
         }
 

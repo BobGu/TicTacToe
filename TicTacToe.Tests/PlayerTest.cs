@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using TicTacToe;
 
-namespace UnitTestProject1
+namespace TicTacToeTests
 {
     [TestFixture]
     public class PlayerTest
@@ -16,11 +16,11 @@ namespace UnitTestProject1
         }
 
         [Test]
-        public void CanAssignAndRetrieveAPlayerPiece()
+        public void CanAssignAndRetrieveAPlayerMarker()
         {
             Player player = new Player();
-            player.AssignPiece("X");
-            Assert.AreEqual("X", player.Piece());
+            player.AssignMarker("X");
+            Assert.AreEqual("X", player.Marker());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TicTacToe
     public class Player
     {
         public string name { get; private set; }
-        public string piece { get; private set; }
+        public string marker{ get; private set; }
 
         public void AssignName(string name)
         {
@@ -20,14 +20,14 @@ namespace TicTacToe
             return name;
         }
 
-        public void AssignPiece(string piece)
+        public void AssignMarker(string marker)
         {
-            this.piece = piece;
+            this.marker= marker;
         }
 
-        public string Piece()
+        public string Marker()
         {
-            return piece;
+            return marker;
         }
     }
 }
