@@ -49,6 +49,15 @@ namespace UnitTestProject1
             CaptureOutput(sw);
         }
 
+        public string EnterInputStartGameBoardOutput()
+        {
+
+            TestHelper.SetInput(gameInput);
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            return sw.ToString();
+        }
+
         public void BoardSetupForAPlayerOneWin()
         {
             gameInput = gameInput + "0\n3\n1\n4\n";
@@ -163,7 +172,7 @@ namespace UnitTestProject1
         [Then(@"I expect the first board to be an empty board")]
         public void IExpectToSeeAnEmptyBoard()
         {
-            TestHelper.SetInput(gameInput);
+            string output = EnterInputStartGameBoardOutput();
             string expected =
                 @"     |     |     |
                    0   |  1  |  2  |
@@ -174,10 +183,6 @@ namespace UnitTestProject1
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            string output = sw.ToString();
             StringAssert.Contains(expected, output);
 
         }
@@ -203,7 +208,7 @@ namespace UnitTestProject1
         [Then(@"I expect to see that space marked")]
         public void IExpectToSeeThatSpaceMarked()
         {
-            TestHelper.SetInput(gameInput);
+            string output = EnterInputStartGameBoardOutput();
             string expected =
                 @"     |     |     |
                    0   |  1  |  2  |
@@ -214,9 +219,6 @@ namespace UnitTestProject1
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            string output = sw.ToString();
             StringAssert.Contains(expected, output);
         }
 
@@ -229,7 +231,7 @@ namespace UnitTestProject1
         [Then(@"I expect to see the top left space filled with the correct marker")]
         public void IExpectToSeeTheTopLeftSpaceFilledWithTheCorrectMarker()
         {
-            TestHelper.SetInput(gameInput);
+            string output = EnterInputStartGameBoardOutput();
             string expected =
                 @"     |     |     |
                    O   |  1  |  2  |
@@ -240,9 +242,6 @@ namespace UnitTestProject1
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringWriter sw = SetOutputToStringWriter();
-            game.Start();
-            string output = sw.ToString();
             StringAssert.Contains(expected, output);
         }
 
