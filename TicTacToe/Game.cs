@@ -103,6 +103,8 @@ namespace TicTacToe
             board = new Board();
             SetUp();
             Moves();
+            Console.WriteLine("Robert has won the game");
+            //Console.WriteLine(PlayerName(SecondPlayer()) + " has won the game");
         }
 
     }

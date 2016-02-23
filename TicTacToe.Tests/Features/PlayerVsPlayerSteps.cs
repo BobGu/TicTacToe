@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using TechTalk.SpecFlow;
 using TicTacToe;
 using System.IO;
@@ -9,7 +10,7 @@ using TicTacToeTests.TestHelper;
 namespace UnitTestProject1
 {
     [Binding]
-    public class PlayerVsPlayerSteps: Steps
+    public class PlayerVsPlayerSteps : Steps
     {
         public string[] gameOutput;
         public string gameInput;
@@ -34,10 +35,28 @@ namespace UnitTestProject1
             return sw;
         }
 
-        public string[] CaptureOutput(StringWriter sw)
+        public void CaptureOutput(StringWriter sw)
         {
             string output = sw.ToString();
-            return gameOutput = output.Split(new[] { "\r\n"}, StringSplitOptions.None);
+            gameOutput = output.Split(new[] { "\r\n" }, StringSplitOptions.None);
+        }
+
+        public void EnterInputRunGameSetupCaptureOutput()
+        {
+            TestHelper.SetInput(gameInput);
+            StringWriter sw = SetOutputToStringWriter();
+            game.SetUp();
+            CaptureOutput(sw);
+        }
+
+        public void BoardSetupForAPlayerOneWin()
+        {
+            gameInput = gameInput + "0\n3\n1\n4\n";
+        }
+
+        public void PlayerOneMakeWinningMove()
+        {
+            gameInput = gameInput + "2\n";
         }
 
 
@@ -52,10 +71,7 @@ namespace UnitTestProject1
         [Then(@"I should be asked for my name")]
         public void ThenIShouldBeAskedForMyName()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.SetUp();
-            CaptureOutput(sw);
+            EnterInputRunGameSetupCaptureOutput();
             string expected = string.Format("What is your name?", Environment.NewLine);
             Assert.AreEqual(expected, gameOutput[0]);
         }
@@ -69,10 +85,7 @@ namespace UnitTestProject1
         [Then(@"I expect to be asked what piece I would like to be")]
         public void IExpectToBeAskedWhatPieceIWouldLikeToBe()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.SetUp();
-            CaptureOutput(sw);
+            EnterInputRunGameSetupCaptureOutput();
             string expected = "What piece would you like to be?";
             Assert.AreEqual(expected, gameOutput[1]);
         }
@@ -86,10 +99,7 @@ namespace UnitTestProject1
         [Then(@"the second player should be asked for their name")]
         public void TheSecondPlayerShouldBeAskedForTheirName()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.SetUp();
-            CaptureOutput(sw);
+            EnterInputRunGameSetupCaptureOutput();
             string expected = "What is your name?";
             Assert.AreEqual(expected, gameOutput[2]);
         }
@@ -103,10 +113,7 @@ namespace UnitTestProject1
         [Then(@"I expect to be asked about the turn order")]
         public void IExpectToBeAskedAboutTheTurnOrder()
         {
-            TestHelper.SetInput(gameInput);
-            StringWriter sw = SetOutputToStringWriter();
-            game.SetUp();
-            CaptureOutput(sw);
+            EnterInputRunGameSetupCaptureOutput();
             string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
             Assert.AreEqual(expected, gameOutput[3]);
         }
@@ -172,7 +179,7 @@ namespace UnitTestProject1
             game.Start();
             string output = sw.ToString();
             StringAssert.Contains(expected, output);
-        
+
         }
 
         [Given(@"players have filled the rest of the board")]
@@ -197,7 +204,7 @@ namespace UnitTestProject1
         public void IExpectToSeeThatSpaceMarked()
         {
             TestHelper.SetInput(gameInput);
-            string expected = 
+            string expected =
                 @"     |     |     |
                    0   |  1  |  2  |
                   _____|_____|_____|
@@ -223,7 +230,7 @@ namespace UnitTestProject1
         public void IExpectToSeeTheTopLeftSpaceFilledWithTheCorrectMarker()
         {
             TestHelper.SetInput(gameInput);
-            string expected = 
+            string expected =
                 @"     |     |     |
                    O   |  1  |  2  |
                   _____|_____|_____|
@@ -239,5 +246,31 @@ namespace UnitTestProject1
             StringAssert.Contains(expected, output);
         }
 
+        [Given(@"board is setup so player one can win")]
+        public void BoardIsSetupSoPlayerOneCanWin()
+        {
+            BoardSetupForAPlayerOneWin();
+        }
+
+        [Given(@"player one makes a winning move")]
+        public void PlayeOneMakesAWinningMove()
+        {
+            PlayerOneMakeWinningMove();
+        }
+
+	    [Then(@"I expect to see a message congratualting player one")]
+        public void IExpectToSeeAMessageCongratulatingPlayerOne()
+        {
+            TestHelper.SetInput(gameInput);
+            StringWriter sw = SetOutputToStringWriter();
+            game.Start();
+            CaptureOutput(sw);
+            string expect = "Robert has won the game";
+            int lastOutputLength= gameOutput.Count();
+            string lastOutput = gameOutput[lastOutputLength - 2];
+            Assert.AreEqual(expect, lastOutput);
+        }
+
     }
+        
 }

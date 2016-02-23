@@ -55,3 +55,9 @@ Scenario: Second Player can mark a space
 	And second player chooses the top left space
 	And players have filled the rest of the board 
 	Then I expect to see the top left space filled with the correct marker
+
+Scenario: First player wins
+    Given game setup is already done
+	And board is setup so player one can win
+	And player one makes a winning move
+	Then I expect to see a message congratualting player one
