@@ -94,6 +94,7 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="PromptTest.cs" />
     <Compile Include="TestHelper\TestHelper.cs" />
+    <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj">

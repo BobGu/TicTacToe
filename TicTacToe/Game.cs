@@ -92,7 +92,8 @@ namespace TicTacToe
         public void SetUp()
         {
             SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            SetPlayerMarker(FirstPlayer(), Prompt.GetPlayerMarker());
+            string marker = Prompt.GetPlayerMarker();
+            SetPlayerMarker(FirstPlayer(), marker);
             SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
             SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));

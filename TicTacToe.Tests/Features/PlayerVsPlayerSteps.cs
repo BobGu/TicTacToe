@@ -89,7 +89,13 @@ namespace UnitTestProject1
             game = new Game();
         }
 
-        [Then(@"I should be asked for my name")]
+        [Given(@"I have already entered my marker")]
+        public void AndIEnterAllPlayerInfo()
+        {
+            gameInput = gameInput + "X\n";
+        }
+
+        [Then(@"I should have been asked for my name")]
         public void ThenIShouldBeAskedForMyName()
         {
             EnterInputRunGameSetupCaptureOutput();
@@ -103,13 +109,34 @@ namespace UnitTestProject1
             gameInput = "Robert\n";
         }
 
-        [Then(@"I expect to be asked what piece I would like to be")]
+	    [Then(@"I should have been asked what marker I would like to be")]
         public void IExpectToBeAskedWhatPieceIWouldLikeToBe()
         {
             EnterInputRunGameSetupCaptureOutput();
-            string expected = "What piece would you like to be?";
+            string expected = "What piece would you like to be, X or O?";
             Assert.AreEqual(expected, gameOutput[1]);
         }
+
+        [When(@"I enter a marker that is not X or O")]
+        public void IEnterAMarkerThatIsNotXorO()
+        {
+            gameInput = gameInput + "ABC123\n";
+        }
+
+        [Then(@"I am asked again which marker I would like to be")]
+        public void IAmAskedAgainWhichMarkerIWouldLikeToBe()
+        {
+            EnterInputRunGameSetupCaptureOutput();
+            string expected = "What piece would you like to be, X or O?";
+            Assert.AreEqual(expected, gameOutput[2]);
+        }
+
+        [When(@"I enter a valid marker")]
+        public void IEnterAValidMarker()
+        {
+            gameInput = gameInput + "X\n";
+        }
+
 
         [Given(@"the first player has entered their info")]
         public void TheFirstPayerHasEnteredTheirInfo()

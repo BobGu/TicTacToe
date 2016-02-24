@@ -7,12 +7,22 @@
 @mytag
 Scenario: Player is asked for their name
 	Given the game has started
-	Then I should be asked for my name 
+	And I have already entered my name
+	And I have already entered my marker
+	Then I should have been asked for my name 
 
-Scenario: Player is asked which piece they would like to be
+Scenario: Player is asked which marker they would like to be
     Given the game has started
 	And I have already entered my name
-	Then I expect to be asked what piece I would like to be
+	And I have already entered my marker
+	Then I should have been asked what marker I would like to be
+
+Scenario: Player entering an invalid marker
+    Given the game has started
+	And I have already entered my name
+	When I enter a marker that is not X or O
+	And I enter a valid marker
+	Then I am asked again which marker I would like to be
 
 Scenario: Second player is asked for their name
     Given the game has started

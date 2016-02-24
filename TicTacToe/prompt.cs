@@ -17,7 +17,15 @@ namespace TicTacToe
         public static string GetPlayerMarker()
         {
             Console.WriteLine(MessageFactory.AskPlayerForPiece());
-            return Console.ReadLine();
+            string marker = Console.ReadLine();
+            if (!Validator.Marker(marker))
+            {
+                return GetPlayerMarker();
+            }
+            else
+            {
+                return marker;
+            }
         }
 
         public static string GetPlayerMove(string name)

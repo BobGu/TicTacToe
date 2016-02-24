@@ -27,7 +27,7 @@ namespace TicTacToeTests
         public void Ask_For_A_Piece()
         {
             string pieceMessage = MessageFactory.AskPlayerForPiece();
-            Assert.AreEqual("What piece would you like to be?", pieceMessage);
+            Assert.AreEqual("What piece would you like to be, X or O?", pieceMessage);
         }
 
         [Test]

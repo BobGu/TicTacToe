@@ -24,11 +24,20 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Get_Piece()
+        public void Get_Marker()
         {
             TestHelper.SetInput("X\n");
-            string name = Prompt.GetPlayerMarker();
-            Assert.AreEqual("X", name);
+            string marker = Prompt.GetPlayerMarker();
+            Assert.AreEqual("X", marker);
+        }
+
+        [Test]
+        public void Asks_For_Marker_Again_If_Invalid()
+        {
+            TestHelper.SetInput("P\nO\n");
+            string marker = Prompt.GetPlayerMarker();
+            Assert.AreNotEqual("P", marker);
+            Assert.AreEqual("O", marker);
         }
 
 

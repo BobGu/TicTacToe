@@ -16,7 +16,7 @@ namespace TicTacToe
 
         public static string AskPlayerForPiece()
         {
-            return "What piece would you like to be?";
+            return "What piece would you like to be, X or O?";
         }
 
         public static string AskForTurnOrder(string name)
