@@ -36,11 +36,13 @@ namespace TicTacToe
             int index;
             if (!Int32.TryParse(move, out index))
             {
+                Console.WriteLine(move + " is not a valid input");
                 return GetPlayerMove(name, spaces);
             }
 
             if (!Validator.Move(index, spaces))
             {
+                Console.WriteLine(move + " is not a valid input");
                 return GetPlayerMove(name, spaces);
             }
             else
