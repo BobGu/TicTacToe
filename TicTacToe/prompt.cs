@@ -34,21 +34,18 @@ namespace TicTacToe
             Console.WriteLine(MessageFactory.AskPlayerForMove(name));
             string move = Console.ReadLine();
             int index;
-            if (Int32.TryParse(move, out index))
-            {
-                if (!Validator.Move(index, spaces))
-                {
-                    return GetPlayerMove(name, spaces);
-                }
-                else
-                {
-                    return move;
-                }
-            }
-
-            else
+            if (!Int32.TryParse(move, out index))
             {
                 return GetPlayerMove(name, spaces);
+            }
+
+            if (!Validator.Move(index, spaces))
+            {
+                return GetPlayerMove(name, spaces);
+            }
+            else
+            {
+                return move;
             }
 
         }

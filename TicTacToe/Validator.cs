@@ -25,10 +25,5 @@ namespace TicTacToe
             return inBoundsMove && spaces[move] != "X" && spaces[move] != "O";
         }
 
-        public static bool CanConvertStringToInteger(string move)
-        {
-            int index;
-            return Int32.TryParse(move, out index);
-        }
     }
 }

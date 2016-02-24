@@ -54,17 +54,5 @@ namespace TicTacToe.Tests
             Assert.IsFalse(Validator.Move(9, spaces));
         }
 
-        [Test]
-        public void ReturnsTrueIfCanConverStringToInteger()
-        {
-            Assert.IsTrue(Validator.CanConvertStringToInteger("2"));
-        }
-
-        [Test]
-        public void ReturnsFalseIfCanNotConvertStringToInteger()
-        {
-            Assert.IsFalse(Validator.CanConvertStringToInteger("The number four"));
-        }
-
     }
 }
