@@ -123,12 +123,21 @@ namespace UnitTestProject1
             gameInput = gameInput + "ABC123\n";
         }
 
+        [Then(@"I am told my marker was invalid")]
+        public void IAmToldMyMarkerWasInvalid()
+        {
+            
+            EnterInputRunGameSetupCaptureOutput();
+            string expected = "ABC123 is not a valid input";
+            Assert.AreEqual(expected, gameOutput[2]);
+        }
+
+
         [Then(@"I am asked again which marker I would like to be")]
         public void IAmAskedAgainWhichMarkerIWouldLikeToBe()
         {
-            EnterInputRunGameSetupCaptureOutput();
             string expected = "What piece would you like to be, X or O?";
-            Assert.AreEqual(expected, gameOutput[2]);
+            Assert.AreEqual(expected, gameOutput[3]);
         }
 
         [When(@"I enter a valid marker")]

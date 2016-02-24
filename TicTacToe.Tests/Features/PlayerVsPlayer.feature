@@ -22,7 +22,8 @@ Scenario: Player entering an invalid marker
 	And I have already entered my name
 	When I enter a marker that is not X or O
 	And I enter a valid marker
-	Then I am asked again which marker I would like to be
+	Then I am told my marker was invalid
+	And I am asked again which marker I would like to be
 
 Scenario: Second player is asked for their name
     Given the game has started

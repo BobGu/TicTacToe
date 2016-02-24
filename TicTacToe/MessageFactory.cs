@@ -50,5 +50,10 @@ namespace TicTacToe
         {
             return "The game is a tie";
         }
+
+        public static string Invalid(string input)
+        {
+            return input + " is not a valid input";
+        }
     }
 }

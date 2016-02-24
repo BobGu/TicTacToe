@@ -86,5 +86,12 @@ namespace TicTacToeTests
             string tiedMessage = "The game is a tie";
             Assert.AreEqual(tiedMessage, MessageFactory.Tied());
         }
+
+        [Test]
+        public void A_Message_For_Invalid_Input()
+        {
+            string invalidMessage = "P is not a valid input";
+            Assert.AreEqual(invalidMessage, MessageFactory.Invalid("P"));
+        }
     }
 }

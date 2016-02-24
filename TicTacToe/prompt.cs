@@ -20,6 +20,7 @@ namespace TicTacToe
             string marker = Console.ReadLine();
             if (!Validator.Marker(marker))
             {
+                Console.WriteLine(marker + " is not a valid input");
                 return GetPlayerMarker();
             }
             else
