@@ -32,5 +32,13 @@ namespace TicTacToe.Tests
             Assert.IsFalse(Validator.TurnOrder("3"));
             Assert.IsFalse(Validator.TurnOrder("Q"));
         }
+
+        [Test]
+        public void ReturnsTrueIfSpaceIsAvailable()
+        {
+            string[] spaces = { "0", "X", "2", "3", "O", "5", "6", "7", "8" };
+            Assert.IsTrue(Validator.Move(0, spaces));
+            Assert.IsFalse(Validator.Move(1, spaces));
+        }
     }
 }

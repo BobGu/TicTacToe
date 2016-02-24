@@ -18,5 +18,10 @@ namespace TicTacToe
         {
             return turnOrder == "1" || turnOrder == "2";
         }
+
+        public static bool Move(int move, string[] spaces)
+        {
+            return spaces[move] != "X" && spaces[move] != "O";
+        }
     }
 }
