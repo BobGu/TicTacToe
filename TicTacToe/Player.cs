@@ -15,19 +15,11 @@ namespace TicTacToe
         {
             this.name = name;
         }
-        public string Name()
-        {
-            return name;
-        }
 
         public void AssignMarker(string marker)
         {
             this.marker= marker;
         }
 
-        public string Marker()
-        {
-            return marker;
-        }
     }
 }

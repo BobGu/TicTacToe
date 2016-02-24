@@ -12,7 +12,7 @@ namespace TicTacToeTests
         {
             Player player = new Player();
             player.AssignName("Bob");
-            Assert.AreEqual("Bob", player.Name());
+            Assert.AreEqual("Bob", player.name);
         }
 
         [Test]
@@ -20,7 +20,7 @@ namespace TicTacToeTests
         {
             Player player = new Player();
             player.AssignMarker("X");
-            Assert.AreEqual("X", player.Marker());
+            Assert.AreEqual("X", player.marker);
         }
     }
 }

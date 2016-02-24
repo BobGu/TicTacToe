@@ -81,7 +81,7 @@ namespace TicTacToe
 
         public string PlayerName(Player player)
         {
-            return player.Name();
+            return player.name;
         }
 
         public void SetPlayerMarker(Player player, string marker)
@@ -91,7 +91,7 @@ namespace TicTacToe
 
         public string PlayerMarker(Player player)
         {
-            return player.Marker();
+            return player.marker;
         }
 
         public bool Won(string[] spaces)
