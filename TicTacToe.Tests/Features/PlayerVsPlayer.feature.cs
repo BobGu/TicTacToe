@@ -76,10 +76,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 10
- testRunner.And("I have already entered my name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("I have already entered my marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 12
  testRunner.Then("I should have been asked for my name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -90,39 +88,14 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayerIsAskedWhichMarkerTheyWouldLikeToBe()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player is asked which marker they would like to be", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
 #line 14
-this.ScenarioSetup(scenarioInfo);
+    testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
-    testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.And("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 16
- testRunner.And("I have already entered my name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 17
- testRunner.And("I have already entered my marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 18
  testRunner.Then("I should have been asked what marker I would like to be", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Player entering an invalid marker")]
-        public virtual void PlayerEnteringAnInvalidMarker()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player entering an invalid marker", ((string[])(null)));
-#line 20
-this.ScenarioSetup(scenarioInfo);
-#line 21
-    testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
- testRunner.And("I have already entered my name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 23
- testRunner.When("I enter a marker that is not X or O", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 24
- testRunner.And("I enter a valid marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 25
- testRunner.Then("I am told my marker was invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
- testRunner.And("I am asked again which marker I would like to be", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -132,14 +105,14 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SecondPlayerIsAskedForTheirName()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Second player is asked for their name", ((string[])(null)));
-#line 28
+#line 18
 this.ScenarioSetup(scenarioInfo);
-#line 29
+#line 19
     testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 30
- testRunner.And("the first player has entered their info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 31
- testRunner.Then("the second player should be asked for their name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 20
+ testRunner.And("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.Then("the second player should have been asked for their name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -149,14 +122,41 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void PlayersAreAskedWhoWouldLikeToMoveFirst()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Players are asked who would like to move first", ((string[])(null)));
-#line 33
+#line 23
 this.ScenarioSetup(scenarioInfo);
-#line 34
+#line 24
     testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 35
- testRunner.And("players have entered all their info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 36
+#line 25
+ testRunner.And("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 26
  testRunner.Then("I expect to be asked about the turn order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Player entering an invalid marker")]
+        public virtual void PlayerEnteringAnInvalidMarker()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player entering an invalid marker", ((string[])(null)));
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 29
+    testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
+ testRunner.And("I have already entered my name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 31
+ testRunner.And("I enter a marker that is not X or O", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
+ testRunner.And("I enter a valid marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 33
+ testRunner.And("I enter a second players name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 34
+ testRunner.And("I enter a turn order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+ testRunner.Then("I am told my marker was invalid", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 36
+ testRunner.And("I am asked again which marker I would like to be", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

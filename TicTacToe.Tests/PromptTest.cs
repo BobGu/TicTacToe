@@ -57,5 +57,14 @@ namespace TicTacToeTest
             Assert.AreEqual("1", turnOrder);
         }
 
+        [Test]
+        public void Does_Not_Accept_An_Invalid_Turn_Order()
+        {
+            TestHelper.SetInput("3\n2\n");
+            string turnOrder = Prompt.GetTurnOrder("Robert");
+            Assert.AreNotEqual("3", turnOrder);
+            Assert.AreEqual("2", turnOrder);
+        }
+
     }
 }

@@ -38,7 +38,16 @@ namespace TicTacToe
         public static string GetTurnOrder(string name)
         {
             Console.WriteLine(MessageFactory.AskForTurnOrder(name));
-            return Console.ReadLine();
+            string turnOrder = Console.ReadLine();
+            if (!Validator.TurnOrder(turnOrder))
+            {
+                Console.WriteLine(MessageFactory.Invalid(turnOrder));
+                return GetTurnOrder(name);
+            }
+            else
+            {
+                return turnOrder;
+            }
         }
 
     }

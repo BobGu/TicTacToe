@@ -95,6 +95,12 @@ namespace UnitTestProject1
             gameInput = gameInput + "X\n";
         }
 
+        [Given(@"I enter a turn order")]
+        public void IEnterATurnOrder()
+        {
+            gameInput = gameInput + "1\n";
+        }
+
         [Then(@"I should have been asked for my name")]
         public void ThenIShouldBeAskedForMyName()
         {
@@ -109,6 +115,12 @@ namespace UnitTestProject1
             gameInput = "Robert\n";
         }
 
+        [Given(@"I enter a second players name")]
+        public void IEnterASecondPlayersName()
+        {
+            gameInput = gameInput + "John\n";
+        }
+
 	    [Then(@"I should have been asked what marker I would like to be")]
         public void IExpectToBeAskedWhatPieceIWouldLikeToBe()
         {
@@ -117,7 +129,7 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, gameOutput[1]);
         }
 
-        [When(@"I enter a marker that is not X or O")]
+        [Given(@"I enter a marker that is not X or O")]
         public void IEnterAMarkerThatIsNotXorO()
         {
             gameInput = gameInput + "ABC123\n";
@@ -132,7 +144,6 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, gameOutput[2]);
         }
 
-
         [Then(@"I am asked again which marker I would like to be")]
         public void IAmAskedAgainWhichMarkerIWouldLikeToBe()
         {
@@ -140,12 +151,11 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, gameOutput[3]);
         }
 
-        [When(@"I enter a valid marker")]
+        [Given(@"I enter a valid marker")]
         public void IEnterAValidMarker()
         {
             gameInput = gameInput + "X\n";
         }
-
 
         [Given(@"the first player has entered their info")]
         public void TheFirstPayerHasEnteredTheirInfo()
@@ -153,7 +163,7 @@ namespace UnitTestProject1
             gameInput = "Robert\nX\n";
         }
 
-        [Then(@"the second player should be asked for their name")]
+        [Then(@"the second player should have been asked for their name")]
         public void TheSecondPlayerShouldBeAskedForTheirName()
         {
             EnterInputRunGameSetupCaptureOutput();
