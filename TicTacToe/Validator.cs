@@ -13,5 +13,10 @@ namespace TicTacToe
             marker = marker.ToUpper();
             return marker == "X" || marker == "O";
         }
+
+        public static bool TurnOrder(string turnOrder)
+        {
+            return turnOrder == "1" || turnOrder == "2";
+        }
     }
 }

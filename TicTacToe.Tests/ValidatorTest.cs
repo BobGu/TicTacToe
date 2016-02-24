@@ -18,5 +18,19 @@ namespace TicTacToe.Tests
         {
             Assert.IsFalse(Validator.Marker("P"));
         }
+
+        [Test]
+        public void ReturnsTrueIfTurnOrderIsValid()
+        {
+            Assert.IsTrue(Validator.TurnOrder("1"));
+            Assert.IsTrue(Validator.TurnOrder("2"));
+        }
+
+        [Test]
+        public void ReturnFalseIfTurnOrderIsNotValid()
+        {
+            Assert.IsFalse(Validator.TurnOrder("3"));
+            Assert.IsFalse(Validator.TurnOrder("Q"));
+        }
     }
 }
