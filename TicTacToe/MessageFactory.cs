@@ -27,7 +27,8 @@ namespace TicTacToe
         public static string FormatBoard(string[] spaces)
         {
             return string.Format(
-                @"     |     |     |
+                @"               
+
                    {0}   |  {1}  |  {2}  |
                   _____|_____|_____|
                        |     |     |

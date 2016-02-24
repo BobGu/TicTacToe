@@ -1,23 +1,68 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace TicTacToe
 {
     public class Game
     {
+
         public Board board;
         public Player[] players { get; private set; }
 
-        public void Main()
+        public static void Main()
         {
-            Start();
+            Game game = new Game();
+            game.Start();
         }
 
         public Game()
         {
             players = new Player[] { new Player(), new Player() };
+            board = new Board();
         }
+       
+
+        public void Moves()
+        {
+            while (Over(board.spaces) == false)
+            {
+                Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
+                string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()), board.spaces);
+                Console.WriteLine(move);
+                MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
+                players = players.Reverse().ToArray();
+            }
+        }
+
+        public void SetUp()
+        {
+            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
+            string marker = Prompt.GetPlayerMarker();
+            SetPlayerMarker(FirstPlayer(), marker);
+            SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
+            SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
+            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
+        }
+
+        public void Start()
+        {
+            SetUp();
+            Moves();
+            Console.WriteLine(WonOrTiedMessage());
+        }
+
+        public string WonOrTiedMessage()
+        {
+            if (Won(board.spaces))
+            {
+                return MessageFactory.Winner(PlayerName(SecondPlayer()));
+            }
+            else
+            {
+                return MessageFactory.Tied();
+            }
+        }
+
 
         public Player FirstPlayer()
         {
@@ -77,47 +122,6 @@ namespace TicTacToe
             }
         }
 
-        public void Moves()
-        {
-            while (Over(board.spaces) == false)
-            {
-                string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()), board.spaces);
-                Console.WriteLine(move);
-                Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
-                MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
-                players = players.Reverse().ToArray();
-            }
-        }
-
-        public void SetUp()
-        {
-            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            string marker = Prompt.GetPlayerMarker();
-            SetPlayerMarker(FirstPlayer(), marker);
-            SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
-            SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
-            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
-        }
-
-        public string WonOrTiedMessage()
-        {
-            if (Won(board.spaces))
-            {
-                return MessageFactory.Winner(PlayerName(SecondPlayer()));
-            }
-            else
-            {
-                return MessageFactory.Tied();
-            }
-        }
-
-        public void Start()
-        {
-            board = new Board();
-            SetUp();
-            Moves();
-            Console.WriteLine(WonOrTiedMessage());
-        }
 
     }
 }

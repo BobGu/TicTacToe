@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using My.Extensions;
 
 namespace TicTacToe
 {
     public class Board
     {
-
-        static void Main(string[] args)
-        {
-        }
 
         public string[] spaces { get; private set; }
 

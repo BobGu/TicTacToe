@@ -25,7 +25,7 @@ namespace TicTacToe
             }
             else
             {
-                return marker;
+                return marker.ToUpper();
             }
         }
 

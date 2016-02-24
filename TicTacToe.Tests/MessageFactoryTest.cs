@@ -43,7 +43,8 @@ namespace TicTacToeTests
         {
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
             string expected =
-                @"     |     |     |
+                @"              
+
                    0   |  1  |  2  |
                   _____|_____|_____|
                        |     |     |
@@ -52,7 +53,7 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            Assert.AreEqual(expected, MessageFactory.FormatBoard(spaces));
+            StringAssert.Contains(expected, MessageFactory.FormatBoard(spaces));
         }
 
         [Test]
@@ -60,7 +61,8 @@ namespace TicTacToeTests
         {
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
             string expected =
-                @"     |     |     |
+                @"              
+
                    X   |  O  |  2  |
                   _____|_____|_____|
                        |     |     |
@@ -69,7 +71,7 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            Assert.AreEqual(expected, MessageFactory.FormatBoard(spaces));
+            StringAssert.Contains(expected, MessageFactory.FormatBoard(spaces));
 
         }
 

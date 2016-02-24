@@ -196,7 +196,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move Robert?";
-            Assert.AreEqual(expected, gameOutput[4]);
+            StringAssert.Contains(expected, gameOutput[14]);
         }
 
         [Given(@"player one chooses to go second")]
@@ -210,7 +210,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move John?";
-            Assert.AreEqual(expected, gameOutput[4]);
+            StringAssert.Contains(expected, gameOutput[14]);
         }
 
         [Given(@"game setup is already done")]
@@ -226,7 +226,8 @@ namespace UnitTestProject1
         {
             string output = EnterInputStartGameBoardOutput();
             string expected =
-                @"     |     |     |
+                @"               
+
                    0   |  1  |  2  |
                   _____|_____|_____|
                        |     |     |
@@ -262,7 +263,8 @@ namespace UnitTestProject1
         {
             string output = EnterInputStartGameBoardOutput();
             string expected =
-                @"     |     |     |
+                @"               
+
                    0   |  1  |  2  |
                   _____|_____|_____|
                        |     |     |
@@ -285,7 +287,8 @@ namespace UnitTestProject1
         {
             string output = EnterInputStartGameBoardOutput();
             string expected =
-                @"     |     |     |
+                @"               
+
                    O   |  1  |  2  |
                   _____|_____|_____|
                        |     |     |
