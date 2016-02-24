@@ -38,7 +38,20 @@ namespace TicTacToe.Tests
         {
             string[] spaces = { "0", "X", "2", "3", "O", "5", "6", "7", "8" };
             Assert.IsTrue(Validator.Move(0, spaces));
+        }
+
+        [Test]
+        public void ReturnsFalseIfSpaceIsNotAvailable()
+        {
+            string[] spaces = { "0", "X", "2", "3", "O", "5", "6", "7", "8" };
             Assert.IsFalse(Validator.Move(1, spaces));
+        }
+
+        [Test]
+        public void ReturnFalseIfNotAnActualSpace()
+        {
+            string[] spaces = { "0", "X", "2", "3", "O", "5", "6", "7", "8" };
+            Assert.IsFalse(Validator.Move(9, spaces));
         }
     }
 }

@@ -21,7 +21,8 @@ namespace TicTacToe
 
         public static bool Move(int move, string[] spaces)
         {
-            return spaces[move] != "X" && spaces[move] != "O";
+            bool inBoundsMove = move < spaces.Length && move >=  0;
+            return inBoundsMove && spaces[move] != "X" && spaces[move] != "O";
         }
     }
 }
