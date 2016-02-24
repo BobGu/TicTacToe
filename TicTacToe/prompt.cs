@@ -40,7 +40,6 @@ namespace TicTacToe
                 {
                     return GetPlayerMove(name, spaces);
                 }
-
                 else
                 {
                     return move;
