@@ -45,7 +45,8 @@ namespace TicTacToeTest
         public void Get_Move()
         {
             TestHelper.SetInput("4\n");
-            string move = Prompt.GetPlayerMove("Bob");
+            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            string move = Prompt.GetPlayerMove("Bob", spaces);
             Assert.AreEqual("4", move);
         }
 
@@ -64,6 +65,14 @@ namespace TicTacToeTest
             string turnOrder = Prompt.GetTurnOrder("Robert");
             Assert.AreNotEqual("3", turnOrder);
             Assert.AreEqual("2", turnOrder);
+        }
+
+        [Test]
+        public void Does_Not_Accept_Invalid_Move()
+        {
+            TestHelper.SetInput("fake move!\n2\n");
+            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            string move = Prompt.GetPlayerMove("Robert", spaces);
         }
 
 

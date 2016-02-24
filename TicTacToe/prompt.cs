@@ -29,10 +29,29 @@ namespace TicTacToe
             }
         }
 
-        public static string GetPlayerMove(string name)
+        public static string GetPlayerMove(string name, string[] spaces)
         {
             Console.WriteLine(MessageFactory.AskPlayerForMove(name));
-            return Console.ReadLine();
+            string move = Console.ReadLine();
+            int index;
+            if (Int32.TryParse(move, out index))
+            {
+                if (!Validator.Move(index, spaces))
+                {
+                    return GetPlayerMove(name, spaces);
+                }
+
+                else
+                {
+                    return move;
+                }
+            }
+
+            else
+            {
+                return GetPlayerMove(name, spaces);
+            }
+
         }
 
         public static string GetTurnOrder(string name)

@@ -81,7 +81,7 @@ namespace TicTacToe
         {
             while (Over(board.spaces) == false)
             {
-                string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()));
+                string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()), board.spaces);
                 Console.WriteLine(move);
                 Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
                 MarkBoard(board, Int32.Parse(move), PlayerMarker(FirstPlayer()));
