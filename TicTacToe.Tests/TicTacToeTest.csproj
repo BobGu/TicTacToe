@@ -94,6 +94,8 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="PromptTest.cs" />
     <Compile Include="TestHelper\TestHelper.cs" />
+    <Compile Include="HardStrategyTest.cs" />
+    <Compile Include="RulesTest.cs" />
     <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>

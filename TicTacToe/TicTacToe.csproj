@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HardStrategy.cs" />
+    <Compile Include="IComputerDifficulty.cs" />
     <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEvaluator.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules.cs" />
     <Compile Include="Validator.cs" />
   </ItemGroup>
   <ItemGroup>

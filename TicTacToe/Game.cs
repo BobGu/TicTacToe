@@ -24,7 +24,7 @@ namespace TicTacToe
 
         public void Moves()
         {
-            while (Over(board.spaces) == false)
+            while (Rules.Over(board.spaces) == false)
             {
                 Console.WriteLine(MessageFactory.FormatBoard(board.spaces));
                 string move = Prompt.GetPlayerMove(PlayerName(FirstPlayer()), board.spaces);
@@ -53,7 +53,7 @@ namespace TicTacToe
 
         public string WonOrTiedMessage()
         {
-            if (Won(board.spaces))
+            if (Rules.Won(board.spaces))
             {
                 return MessageFactory.Winner(PlayerName(SecondPlayer()));
             }
@@ -94,15 +94,6 @@ namespace TicTacToe
             return player.marker;
         }
 
-        public bool Won(string[] spaces)
-        {
-            return BoardEvaluator.AnySetsTheSame(spaces);
-        }
-
-        public bool Over(string[] spaces)
-        {
-            return Won(spaces) || BoardEvaluator.AllSpacesNotEmpty(spaces);
-        }
 
         public void MarkBoard(Board board, int space, string marker)
         {
