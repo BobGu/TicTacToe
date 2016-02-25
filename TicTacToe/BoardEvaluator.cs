@@ -20,6 +20,10 @@ namespace TicTacToe
             return spaces.All(space => IsNotAnEmptySpace(space));
         }
 
+        public static string[] AvailableSpaces(string[] spaces)
+        {
+            return spaces.Where(space => !IsNotAnEmptySpace(space)).ToArray();
+        }
 
         public static string[][] Rows(string[] spaces)
         {

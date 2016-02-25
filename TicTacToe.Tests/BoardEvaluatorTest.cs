@@ -116,5 +116,13 @@ namespace TicTacToeTests
             string[] spaces = { "X", "X", "2", "3", "4", "5", "6", "7", "8" };
             Assert.IsFalse(BoardEvaluator.AnySetsTheSame(spaces));
         }
+
+        [Test]
+        public void ReturnAvailableSpaces()
+        {
+            string[] spaces = { "X", "X", "2", "3", "4", "5", "6", "7", "8" };
+            string[] expected = { "2", "3", "4", "5", "6", "7", "8" };
+            Assert.AreEqual(expected, BoardEvaluator.AvailableSpaces(spaces));
+        }
     }
 }
