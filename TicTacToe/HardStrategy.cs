@@ -1,4 +1,5 @@
 ﻿using System;
+using My.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,66 +14,98 @@ namespace TicTacToe
             return Rules.Won(spaces) ? 10 : 0;
         }
 
+        public static int MaxScore(int bestValue, int value)
+        {
+            return bestValue > value ? bestValue : value;
+        }
         public static string OppositeMarker(string marker)
         {
             return marker == "X" ? "O" : "X";
         }
 
-        public static int Minimax(string[] spaces, string marker, bool maximizingPlayer)
+        public static string[] UpdateSpaces(int index, string[] spaces, string marker)
+        {
+            spaces[index] = marker;
+            return spaces;
+        }
+
+        public static List<string[]> FindChildren(string[] spaces, string marker)
+        {
+            List<string[]> children = new List<string[]>();
+            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
+            foreach(string space in availableSpaces)
+            {
+                string[] spacesToUpdate = new string[spaces.Length];
+                for (int i = 0; i < spaces.Length; i++)
+                {
+                    spacesToUpdate[i] = spaces[i];
+                }
+                Console.WriteLine(string.Join(",", spacesToUpdate));
+                int index = Int32.Parse(space);
+                string[] child = UpdateSpaces(index, spacesToUpdate, marker);
+                children.Add(child);
+            }
+            return children;
+        }
+
+        public static int Minimax(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)
         {
             if (Rules.Over(spaces))
             {
                 if (maximizingPlayer)
                 {
-                    return Score(spaces);
+                    return Score(spaces) * depth;
                 }
-                else
+                else 
                 {
-                    return Score(spaces) * -1;
+                    return Score(spaces) * -1 * depth;
                 }
             }
 
             maximizingPlayer = !maximizingPlayer;
             string oppositeMarker = OppositeMarker(marker);
-            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
 
             if (maximizingPlayer)
             {
-                int bestValue = -1000;
-                foreach (string space in availableSpaces)
+                spaces = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+                List<string[]> children = FindChildren(spaces, oppositeMarker);
+                foreach (string[] child in children)
                 {
-                    int index = Int32.Parse(space);
-                    spaces[index] = oppositeMarker;
-                    int value = Minimax(spaces, oppositeMarker, maximizingPlayer);
-                    List<int> values = new List<int>();
-                    values.Add(bestValue);
-                    values.Add(value);
-                    return values.Max();
+                    maxValue = Math.Max(maxValue, Minimax(child, oppositeMarker, depth - 1, true, minValue, maxValue));
                 }
+
+                return maxValue;
             }
 
             else
             {
-                int bestValue = 1000;
-                foreach (string space in availableSpaces)
+                List<string[]> children = FindChildren(spaces, oppositeMarker);
+                foreach (string[] child in children)
                 {
-                    int index = Int32.Parse(space);
-                    spaces[index] = oppositeMarker;
-                    int value = Minimax(spaces, oppositeMarker, maximizingPlayer);
-                    List<int> values = new List<int>();
-                    values.Add(bestValue);
-                    values.Add(value);
-                    return values.Min();
+                    minValue = Math.Min(minValue, Minimax(child, oppositeMarker, depth - 1, false, minValue, maxValue));
                 }
+
+                return minValue;
             }
 
-            return Minimax(spaces, oppositeMarker, maximizingPlayer);
-            
+
+
         }
 
         public static int BestMove(string[] spaces, string marker)
         {
-            return 2;
+            Dictionary<int, int> moveScores = new Dictionary<int, int>();
+            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
+            foreach (string space in availableSpaces)
+            {
+                int index = Int32.Parse(space);
+                spaces[index] = marker;
+                int score = Minimax(spaces, marker, availableSpaces.Length, true);
+                moveScores.Add(index, score);
+            }
+            Console.WriteLine(moveScores.Values.Min());
+            KeyValuePair<int, int> bestMoveScore = moveScores.Aggregate((left, right) => left.Value >= right.Value ? left : right);
+            return bestMoveScore.Key;
         }
     }
 }
