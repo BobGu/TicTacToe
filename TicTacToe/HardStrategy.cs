@@ -33,19 +33,17 @@ namespace TicTacToe
         {
             List<string[]> children = new List<string[]>();
             string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
-            foreach(string space in availableSpaces)
+
+            foreach (string space in availableSpaces)
             {
-                string[] spacesToUpdate = new string[spaces.Length];
-                for (int i = 0; i < spaces.Length; i++)
-                {
-                    spacesToUpdate[i] = spaces[i];
-                }
-                Console.WriteLine(string.Join(",", spacesToUpdate));
+                string[] child = (string[])spaces.Clone();
                 int index = Int32.Parse(space);
-                string[] child = UpdateSpaces(index, spacesToUpdate, marker);
+                child[index] = marker;
                 children.Add(child);
             }
+
             return children;
+
         }
 
         public static int Minimax(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)

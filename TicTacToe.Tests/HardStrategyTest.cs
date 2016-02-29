@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using TicTacToe;
+using System.Collections.Generic;
 
 namespace TicTacToe.Tests 
 {
@@ -68,7 +69,6 @@ namespace TicTacToe.Tests
             Assert.AreEqual(40, bestValue);
         }
 
-        [Test]
         public void MinimaxReturnZeroScoreIfBestItCanDoIsTie()
         {
             string[] spaces = {"O", "X", "O",
@@ -77,6 +77,30 @@ namespace TicTacToe.Tests
             int bestValue = HardStrategy.Minimax(spaces, "X", 3, false);
             Assert.AreEqual(0, bestValue);
         }
+
+        [Test]
+        public void ReturnsImmediateChildrenOfABoard()
+        {
+            List<string[]> children = new List<string[]>();
+
+            string[] spaces = {"X", "O", "X",
+                               "O", "X", "O",
+                               "6", "X", "8"};
+            string[] childOne = {"X", "O", "X",
+                                 "O", "X", "O",
+                                 "O", "X", "8"};
+            string[] childTwo= {"X", "O", "X",
+                                "O", "X", "O",
+                                "P", "X", "O"};
+
+            children.Add(childOne);
+            children.Add(childTwo);
+
+            Assert.AreEqual(children, HardStrategy.FindChildren(spaces, "O"));
+
+                                     
+        }
+
 
 
     }
