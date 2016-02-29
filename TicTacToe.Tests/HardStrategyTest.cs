@@ -42,6 +42,20 @@ namespace TicTacToe.Tests
             Assert.AreEqual(7, HardStrategy.BestMove(spaces, "O"));
         }
 
+        [Test]
+        public void PairsMovesWithTheirScores()
+        {
+            string[] spaces = {"O", "X", "O",
+                               "X", "X", "5",
+                               "X", "O", "8"};
+            Dictionary<int, int> expected = new Dictionary<int, int>();
+            expected.Add(5, 0);
+            expected.Add(8, -10);
+
+            CollectionAssert.AreEquivalent(expected, HardStrategy.ScoresByMove(spaces, "O"));
+        }
+
+        [Test]
         public void MinimaxReturnsNegativeScoreIfOpponentCanWin()
         {
             string[] spaces = {"O", "O", "X",
@@ -51,6 +65,7 @@ namespace TicTacToe.Tests
             Assert.AreEqual(-20, bestValue);
         }
 
+        [Test]
         public void MinimaxReturnsPositiveScoreIfWinningBoard()
         {
             string[] spaces = {"O", "O", "O",
@@ -60,15 +75,17 @@ namespace TicTacToe.Tests
             Assert.AreEqual(70, bestValue);
         }
 
+        [Test]
         public void MinimaxReturnsPostiveScoreIfInFavorablePosition()
         {
             string[] spaces = {"O", "1", "O",
                                "X", "X", "O",
                                "6", "7", "8" };
             int bestValue = HardStrategy.Minimax(spaces, "O", 5, true);
-            Assert.AreEqual(40, bestValue);
+            Assert.AreEqual(30, bestValue);
         }
 
+        [Test]
         public void MinimaxReturnZeroScoreIfBestItCanDoIsTie()
         {
             string[] spaces = {"O", "X", "O",
@@ -117,8 +134,6 @@ namespace TicTacToe.Tests
             }
         }
         
-
-
 
     }
 }

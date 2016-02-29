@@ -65,7 +65,6 @@ namespace TicTacToe
 
             if (maximizingPlayer)
             {
-                spaces = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
                 List<string[]> children = FindChildren(spaces, oppositeMarker);
                 foreach (string[] child in children)
                 {
@@ -90,20 +89,27 @@ namespace TicTacToe
 
         }
 
+        public static Dictionary<int, int> ScoresByMove(string[] spaces, string marker)
+        {
+            Dictionary<int, int> ScoresByMove = new Dictionary<int, int>();
+            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
+            List<string[]> children = FindChildren(spaces, marker);
+            int counter = 0;
+
+            foreach(string space in availableSpaces)
+            {
+                int move = Int32.Parse(space);
+                int score = Minimax(children[counter], marker, availableSpaces.Count(), true);
+                ScoresByMove.Add(move, score);
+                counter += 1;
+            }
+
+            return ScoresByMove;
+        }
+
         public static int BestMove(string[] spaces, string marker)
         {
-            Dictionary<int, int> moveScores = new Dictionary<int, int>();
-            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
-            foreach (string space in availableSpaces)
-            {
-                int index = Int32.Parse(space);
-                spaces[index] = marker;
-                int score = Minimax(spaces, marker, availableSpaces.Length, true);
-                moveScores.Add(index, score);
-            }
-            Console.WriteLine(moveScores.Values.Min());
-            KeyValuePair<int, int> bestMoveScore = moveScores.Aggregate((left, right) => left.Value >= right.Value ? left : right);
-            return bestMoveScore.Key;
+            return 4;
         }
     }
 }
