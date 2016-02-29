@@ -86,20 +86,37 @@ namespace TicTacToe.Tests
             string[] spaces = {"X", "O", "X",
                                "O", "X", "O",
                                "6", "X", "8"};
+
             string[] childOne = {"X", "O", "X",
                                  "O", "X", "O",
                                  "O", "X", "8"};
-            string[] childTwo= {"X", "O", "X",
+            string[] childTwo = {"X", "O", "X",
                                 "O", "X", "O",
-                                "P", "X", "O"};
+                                "6", "X", "O"};
 
             children.Add(childOne);
             children.Add(childTwo);
 
             Assert.AreEqual(children, HardStrategy.FindChildren(spaces, "O"));
-
-                                     
         }
+
+        [Test]
+        public void CanFindTheImmediateChildren()
+        {
+            string[] spaces = {"0", "1", "2",
+                               "3", "4", "5",
+                               "6", "7", "8"};
+            List<string[]> children = HardStrategy.FindChildren(spaces, "X");
+
+            foreach(string space in spaces)
+            {
+                int index = Int32.Parse(space);
+                string[] child = children[index];
+
+                Assert.AreEqual("X", child[index]);
+            }
+        }
+        
 
 
 
