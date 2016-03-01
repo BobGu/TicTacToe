@@ -8,6 +8,7 @@ namespace TicTacToe
 
         public Board board;
         public Player[] players { get; private set; }
+        public IComputerDifficulty computerDifficulty { get; private set; }
 
         public static void Main()
         {
@@ -20,8 +21,12 @@ namespace TicTacToe
             players = new Player[] { new Player(), new Player() };
             board = new Board();
         }
-       
 
+        public void setComputerStrategy(IComputerDifficulty computerDifficulty)
+        {
+            this.computerDifficulty = computerDifficulty;
+        }
+       
         public void Moves()
         {
             while (Rules.Over(board.spaces) == false)

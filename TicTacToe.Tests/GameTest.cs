@@ -1,9 +1,10 @@
 ﻿using System;
 using TicTacToe;
 using NUnit.Framework;
-using TicTacToeTests.TestHelper;
+using Moq;
 
-namespace GameTest
+
+namespace TicTacToe.Tests
 {
     [TestFixture]
     public class GameTest
@@ -53,6 +54,14 @@ namespace GameTest
             Assert.AreEqual("John", game.PlayerName(game.FirstPlayer()));
         }
 
+        [Test]
+        public void GameCanAssignAComputerStrategy()
+        {
+            var mockComputerDifficulty = new Mock<IComputerDifficulty>();
+            mockComputerDifficulty.Setup(MCD=> MCD.BestMove());
+            game.setComputerStrategy(mockComputerDifficulty.Object);
+            Assert.IsInstanceOf(typeof(IComputerDifficulty), game.computerDifficulty);
+        }
 
     }
     

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    public abstract class IComputerDifficulty
+    public interface IComputerDifficulty
     {
+        int BestMove();
     }
 }
