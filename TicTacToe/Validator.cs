@@ -25,5 +25,11 @@ namespace TicTacToe
             return inBoundsMove && spaces[move] != "X" && spaces[move] != "O";
         }
 
+        public static bool GameMode(string gameMode)
+        {
+            gameMode = gameMode.ToUpper();
+            return gameMode == "HC" || gameMode == "HH";
+        }
+
     }
 }

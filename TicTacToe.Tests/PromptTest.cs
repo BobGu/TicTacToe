@@ -10,13 +10,13 @@ namespace TicTacToeTest
     public class PromptTest
     {
         [SetUp]
-        public void Capture_The_Output()
+        public void CaptureTheOutput()
         {
             StringWriter sw = new StringWriter();
             Console.SetOut(sw);
         }
         [Test]
-        public void Get_Name()
+        public void ReturnsAName()
         {
             TestHelper.SetInput("Kirby\n");
             string name = Prompt.GetPlayerName();
@@ -24,7 +24,7 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Get_Marker()
+        public void ReturnsAMarker()
         {
             TestHelper.SetInput("X\n");
             string marker = Prompt.GetPlayerMarker();
@@ -32,7 +32,7 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Asks_For_Marker_Again_If_Invalid()
+        public void AsksForMarkerAgainIfInvalid()
         {
             TestHelper.SetInput("P\nO\n");
             string marker = Prompt.GetPlayerMarker();
@@ -42,7 +42,7 @@ namespace TicTacToeTest
 
 
         [Test]
-        public void Get_Move()
+        public void ReturnsAMove()
         {
             TestHelper.SetInput("4\n");
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
@@ -68,15 +68,22 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Does_Not_Accept_Invalid_Move()
+        public void DoesNotAcceptInvalidMove()
         {
             TestHelper.SetInput("fake move!\n2\n");
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
             string move = Prompt.GetPlayerMove("Robert", spaces);
+            Assert.AreEqual("2", move);
+            Assert.AreNotEqual("fake move", move);
         }
 
-
-
+        [Test]
+        public void ReturnsAGameModeIfValid()
+        {
+            TestHelper.SetInput("hc\n");
+            Assert.AreEqual("HC", Prompt.GetGameMode());
+        }
 
     }
+
 }

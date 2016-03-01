@@ -174,7 +174,7 @@ namespace UnitTestProject1
         [Given(@"players have entered all their info")]
         public void PlayersHaveEnteredAllTheirInfo()
         {
-            gameInput = "Robert\nX\nJohn\n";
+            gameInput = "hh\nRobert\nX\nJohn\n";
         }
 
         [Then(@"I expect to be asked about the turn order")]
@@ -196,7 +196,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move Robert?";
-            StringAssert.Contains(expected, gameOutput[14]);
+            StringAssert.Contains(expected, gameOutput[15]);
         }
 
         [Given(@"player one chooses to go second")]
@@ -210,7 +210,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move John?";
-            StringAssert.Contains(expected, gameOutput[14]);
+            StringAssert.Contains(expected, gameOutput[15]);
         }
 
         [Given(@"game setup is already done")]
@@ -219,6 +219,12 @@ namespace UnitTestProject1
             Given("the game has started");
             Given("players have entered all their info");
             Given("player one chooses to go first");
+        }
+
+        [Given(@"game mode is skipped")]
+        public void GameModeIsSkipped()
+        {
+            gameInput = "Robert\nX\nJohn\n1\n";
         }
 
         [Then(@"I expect the first board to be an empty board")]

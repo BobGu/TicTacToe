@@ -9,7 +9,7 @@ namespace TicTacToeTests
     public class MessageFactoryTest
     {
         [Test]
-        public void Ask_For_Move()
+        public void MessageFactoryAskForMove()
         {
             string name = "Robert";
             string moveMessage = MessageFactory.AskPlayerForMove(name);
@@ -17,21 +17,21 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void Ask_For_A_Name()
+        public void MessageFactoryAskForAName()
         {
             string nameMessage = MessageFactory.AskPlayerForName();
             Assert.AreEqual("What is your name?", nameMessage);
         }
 
         [Test]
-        public void Ask_For_A_Piece()
+        public void MessageFactoryAskForAPiece()
         {
             string pieceMessage = MessageFactory.AskPlayerForPiece();
             Assert.AreEqual("What piece would you like to be, X or O?", pieceMessage);
         }
 
         [Test]
-        public void Ask_For_Turn_Order()
+        public void MessageFactoryAskForTurnOrder()
         {
             string turnOrderMessage = MessageFactory.AskForTurnOrder("Tony");
             string expected = "Type 1 if you would like Tony to go first, and 2 to go second";
@@ -39,7 +39,7 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void A_Formatted_Empty_Board()
+        public void MessageFactoryAFormattedEmptyBoard()
         {
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
             string expected =
@@ -57,7 +57,7 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void A_Partially_Filled_And_Formatted_Board()
+        public void APartiallyFilledAndFormatted_Board()
         {
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
             string expected =
@@ -76,24 +76,31 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void A_Message_For_The_Winner()
+        public void AMessageForTheWinner()
         {
             string winnersMessage = "Robert has won the game";
             Assert.AreEqual(winnersMessage, MessageFactory.Winner("Robert"));
         }
 
         [Test]
-        public void A_Message_For_A_Tie_Game()
+        public void AMessageForATieGame()
         {
             string tiedMessage = "The game is a tie";
             Assert.AreEqual(tiedMessage, MessageFactory.Tied());
         }
 
         [Test]
-        public void A_Message_For_Invalid_Input()
+        public void AMessageForInvalidInput()
         {
             string invalidMessage = "P is not a valid input";
             Assert.AreEqual(invalidMessage, MessageFactory.Invalid("P"));
+        }
+
+        [Test]
+        public void MessageForGameMode()
+        {
+            string gameModeMessage = "Type in hh to play human vs human, and hc for human vs computer";
+            Assert.AreEqual(gameModeMessage, MessageFactory.GameModes());
         }
     }
 }

@@ -97,10 +97,16 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BoardTest.cs" />
+    <Compile Include="Features\PlayerVsComputerSteps.cs" />
     <Compile Include="Features\PlayerVsPlayer.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PlayerVsPlayer.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\PlayerVsComputer.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlayerVsComputer.feature</DependentUpon>
     </Compile>
     <Compile Include="MessageFactoryTest.cs" />
     <Compile Include="Features\PlayerVsPlayerSteps.cs" />
@@ -125,6 +131,10 @@
     <None Include="Features\PlayerVsPlayer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>PlayerVsPlayer.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PlayerVsComputer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PlayerVsComputer.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

@@ -67,5 +67,21 @@ namespace TicTacToe
             }
         }
 
+        public static string GetGameMode()
+        {
+            Console.WriteLine(MessageFactory.GameModes());
+            string gameMode = Console.ReadLine();
+
+            if (!Validator.GameMode(gameMode))
+            {
+                Console.WriteLine(MessageFactory.Invalid(gameMode));
+                return GetGameMode();
+            }
+            else
+            {
+                return gameMode.ToUpper();
+            }
+        }
+
     }
 }

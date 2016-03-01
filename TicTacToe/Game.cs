@@ -7,7 +7,7 @@ namespace TicTacToe
     {
 
         public Board board;
-        public Player[] players { get; private set; }
+        public IPlayer[] players { get; private set; }
         public IComputerDifficulty computerDifficulty { get; private set; }
 
         public static void Main()
@@ -18,7 +18,6 @@ namespace TicTacToe
 
         public Game()
         {
-            players = new Player[] { new Player(), new Player() };
             board = new Board();
         }
 
@@ -49,8 +48,18 @@ namespace TicTacToe
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
+        public void SetPlayers(string gameMode)
+        {
+            if (gameMode == "hh")
+            {
+                players = new IPlayer[] { new Human(), new Human() };
+            }
+        }
+
         public void Start()
         {
+            string gameMode = Prompt.GetGameMode();
+            SetPlayers(gameMode);
             SetUp();
             Moves();
             Console.WriteLine(WonOrTiedMessage());
@@ -98,7 +107,6 @@ namespace TicTacToe
         {
             return player.marker;
         }
-
 
         public void MarkBoard(Board board, int space, string marker)
         {

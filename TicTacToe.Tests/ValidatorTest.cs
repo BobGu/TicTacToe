@@ -54,5 +54,29 @@ namespace TicTacToe.Tests
             Assert.IsFalse(Validator.Move(9, spaces));
         }
 
+        [Test]
+        public void ReturnsTrueIfAcceptableGameMode()
+        {
+            Assert.IsTrue(Validator.GameMode("hc"));
+        }
+
+        [Test]
+        public void ReturnsFalseIfNotValidGameMode()
+        {
+            Assert.IsFalse(Validator.GameMode("pp"));
+        }
+
+        [Test]
+        public void ReturnsTrueForHumanVsHumanGameMode()
+        {
+            Assert.IsTrue(Validator.GameMode("hh"));
+        }
+
+        [Test]
+        public void ReturnsTrueIfValidRegardlessOfCapitalzation()
+        {
+            Assert.IsTrue(Validator.GameMode("HC"));
+        }
+
     }
 }

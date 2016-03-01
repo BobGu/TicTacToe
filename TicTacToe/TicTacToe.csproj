@@ -67,7 +67,7 @@
     <Compile Include="BoardEvaluator.cs" />
     <Compile Include="MessageFactory.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="IPlayer.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules.cs" />

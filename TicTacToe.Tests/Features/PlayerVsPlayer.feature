@@ -18,11 +18,13 @@ Scenario: Player is asked which marker they would like to be
 Scenario: Second player is asked for their name
     Given the game has started
 	And game setup is already done
+	And game mode is skipped
 	Then the second player should have been asked for their name
 	
 Scenario: Players are asked who would like to move first
     Given the game has started
 	And game setup is already done
+	And game mode is skipped
 	Then I expect to be asked about the turn order
 
 Scenario: Player entering an invalid marker

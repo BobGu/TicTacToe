@@ -56,5 +56,10 @@ namespace TicTacToe
         {
             return input + " is not a valid input";
         }
+
+        public static string GameModes()
+        {
+            return "Type in hh to play human vs human, and hc for human vs computer";
+        }
     }
 }
