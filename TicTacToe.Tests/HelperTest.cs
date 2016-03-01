@@ -7,7 +7,7 @@ namespace TicTacToe.Tests
     public class HelperTest
     {
         [Test]
-        public void ReturnsOppositeMarkerj()
+        public void ReturnsOppositeMarker()
         {
             Assert.AreEqual("O", Helper.OppositeMarker("X"));
         }
