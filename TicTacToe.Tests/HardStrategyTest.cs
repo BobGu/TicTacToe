@@ -8,13 +8,21 @@ namespace TicTacToe.Tests
     [TestFixture]
     public class HardStrategyTest
     {
+        HardStrategy hardStrategy;
+        
+        [SetUp]
+        public void NewHardStrategyObjectIsCreated()
+        {
+            hardStrategy = new HardStrategy();
+        }
+
         [Test]
         public void CanScoreAWinningBoard()
         {
             string[] spaces = { "X", "X", "X",
                                 "3", "4", "5",
                                 "6", "7", "8"};
-            Assert.AreEqual(10, HardStrategy.Score(spaces));
+            Assert.AreEqual(10, hardStrategy.Score(spaces));
         }
 
         [Test]
@@ -23,7 +31,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "O", "X",
                                "X", "X", "O",
                                "O", "X", "X"};
-            Assert.AreEqual(0, HardStrategy.Score(spaces));
+            Assert.AreEqual(0, hardStrategy.Score(spaces));
         }
         [Test]
         public void BestMoveReturnsTheWinningMove()
@@ -31,7 +39,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "O", "2",
                                "3", "4", "5",
                                "6", "7", "8"};
-            Assert.AreEqual(2, HardStrategy.BestMove(spaces, "O"));
+            Assert.AreEqual(2, hardStrategy.BestMove(spaces, "O"));
         }
 
         [Test]
@@ -40,7 +48,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"0", "X", "2",
                                "O", "X", "5",
                                "6", "7", "8"};
-            Assert.AreEqual(7, HardStrategy.BestMove(spaces, "O"));
+            Assert.AreEqual(7, hardStrategy.BestMove(spaces, "O"));
         }
         [Test]
         public void BestMoveEnsuresATie()
@@ -48,7 +56,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "X", "O",
                                "X", "X", "5",
                                "X", "O", "8"};
-            Assert.AreEqual(5, HardStrategy.BestMove(spaces, "O"));
+            Assert.AreEqual(5, hardStrategy.BestMove(spaces, "O"));
         }
 
         [Test]
@@ -61,7 +69,7 @@ namespace TicTacToe.Tests
             expected.Add(5, 0);
             expected.Add(8, -10);
 
-            CollectionAssert.AreEquivalent(expected, HardStrategy.ScoresByMove(spaces, "O"));
+            CollectionAssert.AreEquivalent(expected, hardStrategy.ScoresByMove(spaces, "O"));
         }
 
         [Test]
@@ -70,7 +78,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "O", "X",
                               "X", "X", "5",
                              "O", "O", "8" };
-            int bestValue = HardStrategy.Minimax(spaces, "O", 3, true);
+            int bestValue = hardStrategy.Minimax(spaces, "O", 3, true);
             Assert.AreEqual(-20, bestValue);
         }
 
@@ -80,7 +88,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "O", "O",
                                "3", "4", "5",
                                "6", "7", "8"};
-            int bestValue = HardStrategy.Minimax(spaces, "O", 7, true);
+            int bestValue = hardStrategy.Minimax(spaces, "O", 7, true);
             Assert.AreEqual(70, bestValue);
         }
 
@@ -90,7 +98,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "1", "O",
                                "X", "X", "O",
                                "6", "7", "8" };
-            int bestValue = HardStrategy.Minimax(spaces, "O", 5, true);
+            int bestValue = hardStrategy.Minimax(spaces, "O", 5, true);
             Assert.AreEqual(30, bestValue);
         }
 
@@ -100,7 +108,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"O", "X", "O",
                                "X", "X", "5",
                                "X", "O", "8"};
-            int bestValue = HardStrategy.Minimax(spaces, "X", 3, false);
+            int bestValue = hardStrategy.Minimax(spaces, "X", 3, false);
             Assert.AreEqual(0, bestValue);
         }
 
@@ -123,7 +131,7 @@ namespace TicTacToe.Tests
             children.Add(childOne);
             children.Add(childTwo);
 
-            Assert.AreEqual(children, HardStrategy.FindChildren(spaces, "O"));
+            Assert.AreEqual(children, hardStrategy.FindChildren(spaces, "O"));
         }
 
         [Test]
@@ -132,7 +140,7 @@ namespace TicTacToe.Tests
             string[] spaces = {"0", "1", "2",
                                "3", "4", "5",
                                "6", "7", "8"};
-            List<string[]> children = HardStrategy.FindChildren(spaces, "X");
+            List<string[]> children = hardStrategy.FindChildren(spaces, "X");
 
             foreach(string space in spaces)
             {

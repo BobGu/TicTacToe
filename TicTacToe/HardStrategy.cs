@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    public class HardStrategy
+    public class HardStrategy : IComputerDifficulty
     {
-        public static int Score(string[] spaces)
+        public int Score(string[] spaces)
         {
             return Rules.Won(spaces) ? 10 : 0;
         }
 
-        public static int MaxScore(int bestValue, int value)
+        public int MaxScore(int bestValue, int value)
         {
             return bestValue > value ? bestValue : value;
         }
 
-        public static string[] UpdateSpaces(int index, string[] spaces, string marker)
+        public string[] UpdateSpaces(int index, string[] spaces, string marker)
         {
             spaces[index] = marker;
             return spaces;
         }
 
-        public static List<string[]> FindChildren(string[] spaces, string marker)
+        public List<string[]> FindChildren(string[] spaces, string marker)
         {
             List<string[]> children = new List<string[]>();
             string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
@@ -42,7 +42,7 @@ namespace TicTacToe
 
         }
 
-        public static int Minimax(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)
+        public int Minimax(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)
         {
             if (Rules.Over(spaces))
             {
@@ -74,7 +74,7 @@ namespace TicTacToe
             }
         }
 
-        public static Dictionary<int, int> ScoresByMove(string[] spaces, string marker)
+        public Dictionary<int, int> ScoresByMove(string[] spaces, string marker)
         {
             Dictionary<int, int> ScoresByMove = new Dictionary<int, int>();
             string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
@@ -93,7 +93,7 @@ namespace TicTacToe
             return ScoresByMove;
         }
 
-        public static int BestMove(string[] spaces, string marker)
+        public int BestMove(string[] spaces, string marker)
         {
             Dictionary<int, int> scoresByMove = ScoresByMove(spaces, marker);
             KeyValuePair<int, int> highestScoreByMove = scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right);

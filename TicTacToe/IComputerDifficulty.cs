@@ -8,6 +8,6 @@ namespace TicTacToe
 {
     public interface IComputerDifficulty
     {
-        int BestMove();
+        int BestMove(string[]spaces, string marker);
     }
 }

@@ -55,12 +55,11 @@ namespace TicTacToe.Tests
         }
 
         [Test]
-        public void GameCanAssignAComputerStrategy()
+        public void GameCanAssignADifficultStrategy()
         {
-            var mockComputerDifficulty = new Mock<IComputerDifficulty>();
-            mockComputerDifficulty.Setup(MCD=> MCD.BestMove());
-            game.setComputerStrategy(mockComputerDifficulty.Object);
-            Assert.IsInstanceOf(typeof(IComputerDifficulty), game.computerDifficulty);
+            var computerDifficulty = new HardStrategy();
+            game.setComputerStrategy(computerDifficulty);
+            Assert.AreSame(computerDifficulty, game.computerDifficulty);
         }
 
     }
