@@ -83,14 +83,14 @@ namespace TicTacToe
             Dictionary<int, int> ScoresByMove = new Dictionary<int, int>();
             string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
             List<string[]> children = FindChildren(spaces, marker);
-            int counter = 0;
+            int index = 0;
 
             foreach(string space in availableSpaces)
             {
                 int move = Int32.Parse(space);
-                int score = Minimax(children[counter], marker, availableSpaces.Count(), true);
+                int score = Minimax(children[index], marker, availableSpaces.Count(), true);
                 ScoresByMove.Add(move, score);
-                counter += 1;
+                index += 1;
             }
 
             return ScoresByMove;
