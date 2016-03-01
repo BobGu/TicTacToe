@@ -56,10 +56,10 @@ namespace TicTacToe
 
             maximizingPlayer = !maximizingPlayer;
             string oppositeMarker = OppositeMarker(marker);
+            List<string[]> children = FindChildren(spaces, oppositeMarker);
 
             if (maximizingPlayer)
             {
-                List<string[]> children = FindChildren(spaces, oppositeMarker);
                 foreach (string[] child in children)
                 {
                     maxValue = Math.Max(maxValue, Minimax(child, oppositeMarker, depth - 1, true, minValue, maxValue));
@@ -67,10 +67,8 @@ namespace TicTacToe
 
                 return maxValue;
             }
-
             else
             {
-                List<string[]> children = FindChildren(spaces, oppositeMarker);
                 foreach (string[] child in children)
                 {
                     minValue = Math.Min(minValue, Minimax(child, oppositeMarker, depth - 1, false, minValue, maxValue));
@@ -78,9 +76,6 @@ namespace TicTacToe
 
                 return minValue;
             }
-
-
-
         }
 
         public static Dictionary<int, int> ScoresByMove(string[] spaces, string marker)
@@ -104,7 +99,9 @@ namespace TicTacToe
         public static int BestMove(string[] spaces, string marker)
         {
             Dictionary<int, int> scoresByMove = ScoresByMove(spaces, marker);
-            return scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right).Key;
+            KeyValuePair<int, int> highestScoreByMove = scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right);
+            return highestScoreByMove.Key;
+
         }
     }
 }
