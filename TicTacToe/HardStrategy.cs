@@ -50,14 +50,8 @@ namespace TicTacToe
         {
             if (Rules.Over(spaces))
             {
-                if (maximizingPlayer)
-                {
-                    return Score(spaces) * depth;
-                }
-                else 
-                {
-                    return Score(spaces) * -1 * depth;
-                }
+                int score = Score(spaces) * depth;
+                return maximizingPlayer ? score : score * -1;
             }
 
             maximizingPlayer = !maximizingPlayer;
