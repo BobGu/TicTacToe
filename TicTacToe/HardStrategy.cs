@@ -109,7 +109,8 @@ namespace TicTacToe
 
         public static int BestMove(string[] spaces, string marker)
         {
-            return 4;
+            Dictionary<int, int> scoresByMove = ScoresByMove(spaces, marker);
+            return scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right).Key;
         }
     }
 }
