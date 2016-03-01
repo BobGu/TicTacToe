@@ -87,8 +87,9 @@ namespace TicTacToe
 
             foreach(string space in availableSpaces)
             {
+                int depth = availableSpaces.Count();
                 int move = Int32.Parse(space);
-                int score = Minimax(children[index], marker, availableSpaces.Count(), true);
+                int score = Minimax(children[index], marker, depth, true);
                 ScoresByMove.Add(move, score);
                 index += 1;
             }
