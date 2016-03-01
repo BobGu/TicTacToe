@@ -40,7 +40,7 @@ namespace TicTacToe
             string marker = Prompt.GetPlayerMarker();
             SetPlayerMarker(FirstPlayer(), marker);
             SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
-            SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
+            SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
@@ -98,11 +98,6 @@ namespace TicTacToe
         public void MarkBoard(Board board, int space, string marker)
         {
             board.Mark(space, marker);
-        }
-
-        public string OppositeMarker(string marker)
-        {
-            return marker == "X" ? "O" : "X";
         }
 
         public void AssignTurnOrder(string turnOrder)

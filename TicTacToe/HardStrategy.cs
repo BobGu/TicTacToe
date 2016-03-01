@@ -18,10 +18,6 @@ namespace TicTacToe
         {
             return bestValue > value ? bestValue : value;
         }
-        public static string OppositeMarker(string marker)
-        {
-            return marker == "X" ? "O" : "X";
-        }
 
         public static string[] UpdateSpaces(int index, string[] spaces, string marker)
         {
@@ -55,7 +51,7 @@ namespace TicTacToe
             }
 
             maximizingPlayer = !maximizingPlayer;
-            string oppositeMarker = OppositeMarker(marker);
+            string oppositeMarker = Helper.OppositeMarker(marker);
             List<string[]> children = FindChildren(spaces, oppositeMarker);
 
             if (maximizingPlayer)

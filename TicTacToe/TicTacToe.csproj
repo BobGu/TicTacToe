@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HardStrategy.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IComputerDifficulty.cs" />
     <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />

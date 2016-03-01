@@ -96,6 +96,7 @@
     <Compile Include="TestHelper\TestHelper.cs" />
     <Compile Include="HardStrategyTest.cs" />
     <Compile Include="RulesTest.cs" />
+    <Compile Include="HelperTest.cs" />
     <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
