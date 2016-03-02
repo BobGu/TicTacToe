@@ -2,11 +2,11 @@
 
 namespace TicTacToe
 {
-    public class MessageFactory
+    public class MessagePrinter
     {
-        public static string AskPlayerForName()
+        public static void AskPlayerForName()
         {
-            return "What is your name?";
+            Console.WriteLine("What is your name?");
         }
 
         public static void AskPlayerForMove(string name)

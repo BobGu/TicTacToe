@@ -20,28 +20,29 @@ namespace TicTacToeTests
         public void MessageFactoryAskForMove()
         {
             StringWriter sw = CaptureTheOutput();
-            MessageFactory.AskPlayerForMove("Robert");
+            MessagePrinter.AskPlayerForMove("Robert");
             StringAssert.Contains("Where would you like to move Robert?", sw.ToString());
         }
 
         [Test]
         public void MessageFactoryAskForAName()
         {
-            string nameMessage = MessageFactory.AskPlayerForName();
-            Assert.AreEqual("What is your name?", nameMessage);
+            StringWriter sw = CaptureTheOutput();
+            MessagePrinter.AskPlayerForName();
+            StringAssert.Contains("What is your name?", sw.ToString());
         }
 
         [Test]
         public void MessageFactoryAskForAPiece()
         {
-            string pieceMessage = MessageFactory.AskPlayerForPiece();
+            string pieceMessage = MessagePrinter.AskPlayerForPiece();
             Assert.AreEqual("What piece would you like to be, X or O?", pieceMessage);
         }
 
         [Test]
         public void MessageFactoryAskForTurnOrder()
         {
-            string turnOrderMessage = MessageFactory.AskForTurnOrder("Tony");
+            string turnOrderMessage = MessagePrinter.AskForTurnOrder("Tony");
             string expected = "Type 1 if you would like Tony to go first, and 2 to go second";
             Assert.AreEqual(expected, turnOrderMessage);
         }
@@ -61,7 +62,7 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringAssert.Contains(expected, MessageFactory.FormatBoard(spaces));
+            StringAssert.Contains(expected, MessagePrinter.FormatBoard(spaces));
         }
 
         [Test]
@@ -79,7 +80,7 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringAssert.Contains(expected, MessageFactory.FormatBoard(spaces));
+            StringAssert.Contains(expected, MessagePrinter.FormatBoard(spaces));
 
         }
 
@@ -87,28 +88,28 @@ namespace TicTacToeTests
         public void AMessageForTheWinner()
         {
             string winnersMessage = "Robert has won the game";
-            Assert.AreEqual(winnersMessage, MessageFactory.Winner("Robert"));
+            Assert.AreEqual(winnersMessage, MessagePrinter.Winner("Robert"));
         }
 
         [Test]
         public void AMessageForATieGame()
         {
             string tiedMessage = "The game is a tie";
-            Assert.AreEqual(tiedMessage, MessageFactory.Tied());
+            Assert.AreEqual(tiedMessage, MessagePrinter.Tied());
         }
 
         [Test]
         public void AMessageForInvalidInput()
         {
             string invalidMessage = "P is not a valid input";
-            Assert.AreEqual(invalidMessage, MessageFactory.Invalid("P"));
+            Assert.AreEqual(invalidMessage, MessagePrinter.Invalid("P"));
         }
 
         [Test]
         public void MessageForGameMode()
         {
             string gameModeMessage = "Type in hh to play human vs human, and hc for human vs computer";
-            Assert.AreEqual(gameModeMessage, MessageFactory.GameModes());
+            Assert.AreEqual(gameModeMessage, MessagePrinter.GameModes());
         }
     }
 }

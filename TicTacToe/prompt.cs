@@ -10,13 +10,13 @@ namespace TicTacToe
     {
         public static string GetPlayerName()
         {
-            Console.WriteLine(MessageFactory.AskPlayerForName());
+            MessagePrinter.AskPlayerForName();
             return Console.ReadLine();
         }
 
         public static string GetPlayerMarker()
         {
-            Console.WriteLine(MessageFactory.AskPlayerForPiece());
+            Console.WriteLine(MessagePrinter.AskPlayerForPiece());
             string marker = Console.ReadLine();
             if (!Validator.Marker(marker))
             {
@@ -31,7 +31,7 @@ namespace TicTacToe
 
         public static int GetPlayerMove(string name, string[] spaces)
         {
-            MessageFactory.AskPlayerForMove(name);
+            MessagePrinter.AskPlayerForMove(name);
             string move = Console.ReadLine();
             int index;
             if (!Int32.TryParse(move, out index))
@@ -54,11 +54,11 @@ namespace TicTacToe
 
         public static string GetTurnOrder(string name)
         {
-            Console.WriteLine(MessageFactory.AskForTurnOrder(name));
+            Console.WriteLine(MessagePrinter.AskForTurnOrder(name));
             string turnOrder = Console.ReadLine();
             if (!Validator.TurnOrder(turnOrder))
             {
-                Console.WriteLine(MessageFactory.Invalid(turnOrder));
+                Console.WriteLine(MessagePrinter.Invalid(turnOrder));
                 return GetTurnOrder(name);
             }
             else
@@ -69,12 +69,12 @@ namespace TicTacToe
 
         public static string GetGameMode()
         {
-            Console.WriteLine(MessageFactory.GameModes());
+            Console.WriteLine(MessagePrinter.GameModes());
             string gameMode = Console.ReadLine();
 
             if (!Validator.GameMode(gameMode))
             {
-                Console.WriteLine(MessageFactory.Invalid(gameMode));
+                Console.WriteLine(MessagePrinter.Invalid(gameMode));
                 return GetGameMode();
             }
             else
