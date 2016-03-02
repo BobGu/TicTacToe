@@ -30,13 +30,13 @@ namespace TicTacToe
         {
             while (Rules.Over(board.spaces) == false)
             {
-                Console.WriteLine(MessagePrinter.FormatBoard(board.spaces));
+                MessagePrinter.FormatBoard(board.spaces);
                 Player currentPlayer = FirstPlayer();
                 int move = currentPlayer.Move(board.spaces, currentPlayer.name, currentPlayer.marker);
                 MarkBoard(board, move, currentPlayer.marker);
                 players = players.Reverse().ToArray();
             }
-                Console.WriteLine(MessagePrinter.FormatBoard(board.spaces));
+                MessagePrinter.FormatBoard(board.spaces);
         }
 
         public void SetUp(string gameMode)
@@ -74,18 +74,18 @@ namespace TicTacToe
             SetPlayers(gameMode);
             SetUp(gameMode);
             Moves();
-            Console.WriteLine(WonOrTiedMessage());
+            WonOrTiedMessage();
         }
 
-        public string WonOrTiedMessage()
+        public void WonOrTiedMessage()
         {
             if (Rules.Won(board.spaces))
             {
-                return MessagePrinter.Winner(PlayerName(SecondPlayer()));
+                MessagePrinter.Winner(PlayerName(SecondPlayer()));
             }
             else
             {
-                return MessagePrinter.Tied();
+                MessagePrinter.Tied();
             }
         }
 

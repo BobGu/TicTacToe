@@ -35,22 +35,26 @@ namespace TicTacToeTests
         [Test]
         public void MessageFactoryAskForAPiece()
         {
-            string pieceMessage = MessagePrinter.AskPlayerForPiece();
-            Assert.AreEqual("What piece would you like to be, X or O?", pieceMessage);
+            StringWriter sw = CaptureTheOutput();
+            MessagePrinter.AskPlayerForPiece();
+            StringAssert.Contains("What piece would you like to be, X or O?", sw.ToString());
         }
 
         [Test]
         public void MessageFactoryAskForTurnOrder()
         {
-            string turnOrderMessage = MessagePrinter.AskForTurnOrder("Tony");
+            StringWriter sw = CaptureTheOutput();
+            MessagePrinter.AskForTurnOrder("Tony");
             string expected = "Type 1 if you would like Tony to go first, and 2 to go second";
-            Assert.AreEqual(expected, turnOrderMessage);
+            StringAssert.Contains(expected, sw.ToString());
         }
 
         [Test]
         public void MessageFactoryAFormattedEmptyBoard()
         {
+            StringWriter sw = CaptureTheOutput();
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            MessagePrinter.FormatBoard(spaces);
             string expected =
                 @"              
 
@@ -62,13 +66,15 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringAssert.Contains(expected, MessagePrinter.FormatBoard(spaces));
+            StringAssert.Contains(expected, sw.ToString());
         }
 
         [Test]
         public void APartiallyFilledAndFormatted_Board()
         {
+            StringWriter sw = CaptureTheOutput();
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
+            MessagePrinter.FormatBoard(spaces);
             string expected =
                 @"              
 
@@ -80,36 +86,44 @@ namespace TicTacToeTests
                        |     |     |
                    6   |  7  |  8  |
                   _____|_____|_____|";
-            StringAssert.Contains(expected, MessagePrinter.FormatBoard(spaces));
+            StringAssert.Contains(expected, sw.ToString());
 
         }
 
         [Test]
         public void AMessageForTheWinner()
         {
+            StringWriter sw = CaptureTheOutput();
             string winnersMessage = "Robert has won the game";
-            Assert.AreEqual(winnersMessage, MessagePrinter.Winner("Robert"));
+            MessagePrinter.Winner("Robert");
+            StringAssert.Contains(winnersMessage, sw.ToString());
         }
 
         [Test]
         public void AMessageForATieGame()
         {
+            StringWriter sw = CaptureTheOutput();
             string tiedMessage = "The game is a tie";
-            Assert.AreEqual(tiedMessage, MessagePrinter.Tied());
+            MessagePrinter.Tied();
+            StringAssert.Contains(tiedMessage, sw.ToString()); 
         }
 
         [Test]
         public void AMessageForInvalidInput()
         {
+            StringWriter sw = CaptureTheOutput();
             string invalidMessage = "P is not a valid input";
-            Assert.AreEqual(invalidMessage, MessagePrinter.Invalid("P"));
+            MessagePrinter.Invalid("P");
+            StringAssert.Contains(invalidMessage, sw.ToString());
         }
 
         [Test]
         public void MessageForGameMode()
         {
+            StringWriter sw = CaptureTheOutput();
             string gameModeMessage = "Type in hh to play human vs human, and hc for human vs computer";
-            Assert.AreEqual(gameModeMessage, MessagePrinter.GameModes());
+            MessagePrinter.GameModes();
+            StringAssert.Contains(gameModeMessage, sw.ToString());
         }
     }
 }

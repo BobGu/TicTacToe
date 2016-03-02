@@ -14,19 +14,19 @@ namespace TicTacToe
             Console.WriteLine("Where would you like to move " + name + "?");
         }
 
-        public static string AskPlayerForPiece()
+        public static void AskPlayerForPiece()
         {
-            return "What piece would you like to be, X or O?";
+            Console.WriteLine("What piece would you like to be, X or O?");
         }
 
-        public static string AskForTurnOrder(string name)
+        public static void AskForTurnOrder(string name)
         {
-            return "Type 1 if you would like " + name + " to go first, and 2 to go second";
+            Console.WriteLine("Type 1 if you would like " + name + " to go first, and 2 to go second");
         }
 
-        public static string FormatBoard(string[] spaces)
+        public static void FormatBoard(string[] spaces)
         {
-            return string.Format(
+            Console.WriteLine(string.Format(
                 @"               
 
                    {0}   |  {1}  |  {2}  |
@@ -39,27 +39,27 @@ namespace TicTacToe
                   _____|_____|_____|"
                 , spaces[0], spaces[1], spaces[2],
                 spaces[3], spaces[4], spaces[5],
-                spaces[6], spaces[7], spaces[8]);
+                spaces[6], spaces[7], spaces[8]));
         }
 
-        public static string Winner(string name)
+        public static void Winner(string name)
         {
-            return name + " has won the game";
+            Console.WriteLine(name + " has won the game");
         }
 
-        public static string Tied()
+        public static void Tied()
         {
-            return "The game is a tie";
+            Console.WriteLine("The game is a tie");
         }
 
-        public static string Invalid(string input)
+        public static void Invalid(string input)
         {
-            return input + " is not a valid input";
+            Console.WriteLine(input + " is not a valid input");
         }
 
-        public static string GameModes()
+        public static void GameModes()
         {
-            return "Type in hh to play human vs human, and hc for human vs computer";
+            Console.WriteLine("Type in hh to play human vs human, and hc for human vs computer");
         }
     }
 }

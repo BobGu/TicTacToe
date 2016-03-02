@@ -16,7 +16,7 @@ namespace TicTacToe
 
         public static string GetPlayerMarker()
         {
-            Console.WriteLine(MessagePrinter.AskPlayerForPiece());
+            MessagePrinter.AskPlayerForPiece();
             string marker = Console.ReadLine();
             if (!Validator.Marker(marker))
             {
@@ -54,11 +54,11 @@ namespace TicTacToe
 
         public static string GetTurnOrder(string name)
         {
-            Console.WriteLine(MessagePrinter.AskForTurnOrder(name));
+            MessagePrinter.AskForTurnOrder(name);
             string turnOrder = Console.ReadLine();
             if (!Validator.TurnOrder(turnOrder))
             {
-                Console.WriteLine(MessagePrinter.Invalid(turnOrder));
+                MessagePrinter.Invalid(turnOrder);
                 return GetTurnOrder(name);
             }
             else
@@ -69,12 +69,12 @@ namespace TicTacToe
 
         public static string GetGameMode()
         {
-            Console.WriteLine(MessagePrinter.GameModes());
+            MessagePrinter.GameModes();
             string gameMode = Console.ReadLine();
 
             if (!Validator.GameMode(gameMode))
             {
-                Console.WriteLine(MessagePrinter.Invalid(gameMode));
+                MessagePrinter.Invalid(gameMode);
                 return GetGameMode();
             }
             else
