@@ -79,6 +79,13 @@ namespace TicTacToeTest
             Assert.AreEqual("HC", Prompt.GetGameMode());
         }
 
+        [Test]
+        public void ReturnsADifficultyLevel()
+        {
+            TestHelper.SetInput("E\n");
+            Assert.AreEqual("E", Prompt.GetDifficultyLevel());
+        }
+
     }
 
 }
