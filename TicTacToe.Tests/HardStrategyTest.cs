@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using TicTacToe;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TicTacToe.Tests 
 {
@@ -150,7 +151,19 @@ namespace TicTacToe.Tests
                 Assert.AreEqual("X", child[index]);
             }
         }
-        
+
+        [Test]
+        public void CanFindBestMoveUnderASecondWhenMovingFirst()
+        {
+            var watch = new Stopwatch();
+            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+
+            watch.Start();
+            hardStrategy.BestMove(spaces, "X");
+            watch.Stop();
+
+            Assert.IsTrue(watch.Elapsed.TotalMilliseconds < 1000);
+        }
 
     }
 }

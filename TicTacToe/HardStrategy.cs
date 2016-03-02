@@ -44,7 +44,7 @@ namespace TicTacToe
 
         public int Minimax(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)
         {
-            if (Rules.Over(spaces))
+            if (Rules.Over(spaces) || depth > 8)
             {
                 int score = Score(spaces) * depth;
                 return maximizingPlayer ? score : score * -1;
