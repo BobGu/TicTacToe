@@ -116,6 +116,13 @@ namespace TicTacToe.Tests
 
             Assert.AreEqual(winningSet, easyStrategy.FindWinningSet(rowsColumnsDiagonals, "X"));
         }
+
+        [Test]
+        public void CanFindTheWinningMove()
+        {
+            string[] set = { "X", "X", "2" };
+            Assert.AreEqual("2", easyStrategy.FindWinningMove(set));
+        }
     }
 
 }

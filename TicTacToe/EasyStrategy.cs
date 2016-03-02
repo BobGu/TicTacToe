@@ -37,5 +37,10 @@ namespace TicTacToe
         {
             return sets.Where(set => PossibleWinningSet(set, marker)).First();
         }
+
+        public string FindWinningMove(string[] winningSet)
+        {
+            return FilterSetForEmptySpaces(winningSet).First();
+        }
     }
 }
