@@ -31,5 +31,11 @@ namespace TicTacToe
             return gameMode == "HC" || gameMode == "HH";
         }
 
+        public static bool DifficultyLevel(string difficulty)
+        {
+            difficulty = difficulty.ToUpper();
+            return difficulty == "E" || difficulty == "H";
+        }
+
     }
 }

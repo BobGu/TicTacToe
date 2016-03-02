@@ -78,5 +78,11 @@ namespace TicTacToe.Tests
             Assert.IsTrue(Validator.GameMode("HC"));
         }
 
+        [Test]
+        public void ReturnsTrueIfValidDifficultyLevel()
+        {
+            Assert.IsTrue(Validator.DifficultyLevel("E"));
+        }
+
     }
 }
