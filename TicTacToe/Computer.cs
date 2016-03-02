@@ -14,5 +14,10 @@ namespace TicTacToe
         {
             this.strategy = strategy;
         }
+
+        public int Move(string[] spaces, string marker)
+        {
+            return strategy.BestMove(spaces, marker);
+        }
     }
 }
