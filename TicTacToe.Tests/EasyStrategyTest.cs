@@ -49,5 +49,28 @@ namespace TicTacToe.Tests
             string[] set = { "X", "1", "2" };
             Assert.IsFalse(easyStrategy.PossibleWinningSet(set, "X"));
         }
+
+        [Test]
+        public void ReturnsTrueIfTwoMarkersInSet()
+        {
+            string[] set = { "X", "X", "2" };
+            Assert.IsTrue(easyStrategy.TwoMarkersInSet(set, "X"));
+        }
+
+        [Test]
+        public void ReturnsFalseIfNotTwoMarkersInSet()
+        {
+            string[] set = { "X", "1", "O" };
+            Assert.IsFalse(easyStrategy.TwoMarkersInSet(set, "O"));
+        }
+
+        [Test]
+        public void FiltersTheSetForASpecifiedMarker()
+        {
+            string[] set = { "X", "7", "8" };
+            Assert.AreEqual(new string[] { "X" }, easyStrategy.FilterSetForMarker(set, "X"));
+        }
+            
     }
+
 }

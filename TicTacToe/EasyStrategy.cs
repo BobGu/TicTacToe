@@ -8,11 +8,18 @@ namespace TicTacToe
 {
     public class EasyStrategy
     {
-        public bool PossibleWinningSet(string[] spaces, string marker)
+        public string[] FilterSetForMarker(string[] set, string marker)
         {
-            int numberOfMarkersInSet = spaces.Where(space => space == marker).Count();
-            int numberOfEmptySpaces = spaces.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).Count();
-            return numberOfMarkersInSet == 2 && numberOfEmptySpaces == 1;
+            return set.Where(space => space == marker).ToArray();
+        }
+        public bool TwoMarkersInSet(string[] set, string marker)
+        {
+            return FilterSetForMarker(set, marker).Count() == 2;
+        }
+        public bool PossibleWinningSet(string[] set, string marker)
+        {
+            int numberOfEmptySpaces = set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).Count();
+            return TwoMarkersInSet(set, marker) && numberOfEmptySpaces == 1;
         }
 
         public bool CanWin(string[] spaces, string marker)
