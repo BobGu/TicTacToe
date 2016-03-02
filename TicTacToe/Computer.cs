@@ -8,11 +8,11 @@ namespace TicTacToe
 {
     public class Computer : Player
     {
-        public IComputerDifficulty computerDifficulty { get; private set; }
+        public IComputerDifficulty strategy{ get; private set; }
 
-        public Computer(IComputerDifficulty computerDifficulty)
+        public Computer(IComputerDifficulty strategy)
         {
-            this.computerDifficulty = computerDifficulty;
+            this.strategy = strategy;
         }
     }
 }
