@@ -16,10 +16,14 @@ namespace TicTacToe
         {
             return FilterSetForMarker(set, marker).Count() == 2;
         }
+
+        public string[] FilterSetForEmptySpaces(string[] set)
+        {
+            return set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).ToArray();
+        }
         public bool PossibleWinningSet(string[] set, string marker)
         {
-            int numberOfEmptySpaces = set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).Count();
-            return TwoMarkersInSet(set, marker) && numberOfEmptySpaces == 1;
+            return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
         }
 
         public bool CanWin(string[] spaces, string marker)

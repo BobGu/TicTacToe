@@ -70,7 +70,13 @@ namespace TicTacToe.Tests
             string[] set = { "X", "7", "8" };
             Assert.AreEqual(new string[] { "X" }, easyStrategy.FilterSetForMarker(set, "X"));
         }
-            
+
+        [Test]
+        public void FiltersTheSetForEmptySpaces()
+        {
+            string[] set = { "0", "1", "2" };
+            Assert.AreEqual(set, easyStrategy.FilterSetForEmptySpaces(set));
+        }
     }
 
 }
