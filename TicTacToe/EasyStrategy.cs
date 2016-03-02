@@ -12,6 +12,7 @@ namespace TicTacToe
         {
             return set.Where(space => space == marker).ToArray();
         }
+
         public bool TwoMarkersInSet(string[] set, string marker)
         {
             return FilterSetForMarker(set, marker).Count() == 2;
@@ -26,9 +27,14 @@ namespace TicTacToe
             return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
         }
 
-        public bool CanWin(string[] spaces, string marker)
+        public bool CanWin(string[][] rowsColumnsDiagonals, string marker)
         {
-            return BoardEvaluator.RowsColumnsDiagonals(spaces).Any(set => PossibleWinningSet(set, marker));
+            return rowsColumnsDiagonals.Any(set => PossibleWinningSet(set, marker));
+        }
+
+        public string[] FindWinningSet(string[] spaces, string marker)
+        {
+            return BoardEvaluator.RowsColumnsDiagonals(spaces).Where(set => PossibleWinningSet(set, marker)).First();
         }
     }
 }
