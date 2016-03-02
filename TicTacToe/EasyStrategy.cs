@@ -22,19 +22,20 @@ namespace TicTacToe
         {
             return set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).ToArray();
         }
+
         public bool PossibleWinningSet(string[] set, string marker)
         {
             return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
         }
 
-        public bool CanWin(string[][] rowsColumnsDiagonals, string marker)
+        public bool CanWin(string[][] sets, string marker)
         {
-            return rowsColumnsDiagonals.Any(set => PossibleWinningSet(set, marker));
+            return sets.Any(set => PossibleWinningSet(set, marker));
         }
 
-        public string[] FindWinningSet(string[] spaces, string marker)
+        public string[] FindWinningSet(string[][] sets, string marker)
         {
-            return BoardEvaluator.RowsColumnsDiagonals(spaces).Where(set => PossibleWinningSet(set, marker)).First();
+            return sets.Where(set => PossibleWinningSet(set, marker)).First();
         }
     }
 }
