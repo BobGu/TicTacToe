@@ -29,7 +29,7 @@ namespace TicTacToe.Tests
         public void GameSetAndReturnPlayersName()
         {
             string name = "Robert";
-            Player player = new Player();
+            Player player = new Human();
             game.SetPlayerName(player, name);
             Assert.AreEqual(name, game.PlayerName(player));
         }
@@ -38,7 +38,7 @@ namespace TicTacToe.Tests
         public void GameSetAndReturnPlayerPiece()
         {
             string piece = "X";
-            Player player = new Player();
+            Player player = new Human();
             game.SetPlayerMarker(player, piece);
             Assert.AreEqual(piece, game.PlayerMarker(player));
         }
@@ -46,12 +46,10 @@ namespace TicTacToe.Tests
         [Test]
         public void GameCanAssignTurnOrder()
         {
-            game.SetPlayerName(game.FirstPlayer(), "Bob");
-            game.SetPlayerName(game.SecondPlayer(), "John");
-            game.AssignTurnOrder("1");
-            Assert.AreEqual("Bob", game.PlayerName(game.FirstPlayer()));
+            game.SetPlayers("HH");
+            Player firstPlayerToEnterInfo = game.FirstPlayer();
             game.AssignTurnOrder("2");
-            Assert.AreEqual("John", game.PlayerName(game.FirstPlayer()));
+            Assert.AreNotEqual(firstPlayerToEnterInfo, game.FirstPlayer());
         }
 
         [Test]

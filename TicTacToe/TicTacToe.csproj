@@ -59,15 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Computer.cs" />
     <Compile Include="HardStrategy.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Human.cs" />
     <Compile Include="IComputerDifficulty.cs" />
     <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEvaluator.cs" />
     <Compile Include="MessageFactory.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IPlayer.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules.cs" />

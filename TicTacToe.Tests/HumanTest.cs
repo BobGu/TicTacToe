@@ -12,15 +12,15 @@ namespace TicTacToeTests
         {
             Human human = new Human();
             human.AssignName("Bob");
-            Assert.AreEqual("Bob", human.Name());
+            Assert.AreEqual("Bob", human.name);
         }
 
         [Test]
         public void CanAssignAndRetrieveAPlayerPiece()
         {
             Human human = new Human();
-            human.AssignPiece("X");
-            Assert.AreEqual("X", human.Piece());
+            human.AssignMarker("X");
+            Assert.AreEqual("X", human.marker);
         }
     }
 }
