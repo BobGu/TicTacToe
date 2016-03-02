@@ -19,6 +19,8 @@ namespace TicTacToe
         {
             this.marker = marker;
         }
+
+        public abstract int Move(string[] spaces, string name, string marker);
     }
 
 }
