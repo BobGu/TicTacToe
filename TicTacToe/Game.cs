@@ -57,13 +57,13 @@ namespace TicTacToe
 
         public void SetPlayers(string gameMode)
         {
-            if (gameMode == "hh")
+            if (gameMode == "HH")
             {
                 players = new Player[] { new Human(), new Human() };
             }
             else
             {
-                players = new Player[] { new Human(), new Computer() };
+                players = new Player[] { new Human(), new Computer(new HardStrategy()) };
             }
         }
 
