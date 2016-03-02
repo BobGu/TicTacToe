@@ -61,5 +61,10 @@ namespace TicTacToe
         {
             Console.WriteLine("Type in hh to play human vs human, and hc for human vs computer");
         }
+
+        public static void DifficultyLevel()
+        {
+            Console.WriteLine("Type in E for easy or H for hard difficulty");
+        }
     }
 }

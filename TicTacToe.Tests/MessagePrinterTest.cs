@@ -125,5 +125,15 @@ namespace TicTacToeTests
             MessagePrinter.GameModes();
             StringAssert.Contains(gameModeMessage, sw.ToString());
         }
+
+        [Test]
+        public void MessageForDifficultLevel()
+        {
+            StringWriter sw = CaptureTheOutput();
+            string message = "Type in E for easy or H for hard difficulty";
+            MessagePrinter.DifficultyLevel();
+            StringAssert.Contains(message, sw.ToString());
+        }
     }
+
 }
