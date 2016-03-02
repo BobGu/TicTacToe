@@ -45,7 +45,8 @@ namespace UnitTestProject1
         {
             TestHelper.SetInput(gameInput);
             StringWriter sw = SetOutputToStringWriter();
-            game.SetUp();
+            game.SetPlayers("HH");
+            game.SetUp("HH");
             CaptureOutput(sw);
         }
         public void EnterInputRunGameStartCaptureOutput()
