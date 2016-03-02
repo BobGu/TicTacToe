@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using NUnit.Framework;
-using TicTacToeTests.TestHelper;
+using TicTacToe.Tests.TestHelper;
 using TicTacToe;
 
 namespace TicTacToeTest
@@ -46,8 +46,8 @@ namespace TicTacToeTest
         {
             TestHelper.SetInput("4\n");
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            string move = Prompt.GetPlayerMove("Bob", spaces);
-            Assert.AreEqual("4", move);
+            int move = Prompt.GetPlayerMove("Bob", spaces);
+            Assert.AreEqual(4, move);
         }
 
         [Test]
@@ -72,8 +72,8 @@ namespace TicTacToeTest
         {
             TestHelper.SetInput("fake move!\n2\n");
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            string move = Prompt.GetPlayerMove("Robert", spaces);
-            Assert.AreEqual("2", move);
+            int move = Prompt.GetPlayerMove("Robert", spaces);
+            Assert.AreEqual(2, move);
             Assert.AreNotEqual("fake move", move);
         }
 

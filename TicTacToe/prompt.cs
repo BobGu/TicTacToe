@@ -29,7 +29,7 @@ namespace TicTacToe
             }
         }
 
-        public static string GetPlayerMove(string name, string[] spaces)
+        public static int GetPlayerMove(string name, string[] spaces)
         {
             Console.WriteLine(MessageFactory.AskPlayerForMove(name));
             string move = Console.ReadLine();
@@ -47,7 +47,7 @@ namespace TicTacToe
             }
             else
             {
-                return move;
+                return index;
             }
 
         }

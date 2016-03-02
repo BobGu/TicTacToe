@@ -5,7 +5,7 @@ using TicTacToe;
 using System.IO;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
-using TicTacToeTests.TestHelper;
+using TicTacToe.Tests.TestHelper;
 
 namespace UnitTestProject1
 {

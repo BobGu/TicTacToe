@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using TechTalk.SpecFlow;
-using TicTacToeTests.TestHelper;
+using TicTacToe.Tests.TestHelper;
 using TicTacToe;
 using NUnit.Framework;
 
