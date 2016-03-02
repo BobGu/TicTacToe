@@ -64,7 +64,15 @@ namespace TicTacToe
             }
             else
             {
-                players = new Player[] { new Human(), new Computer(new HardStrategy()) };
+                string difficultyLevel = Prompt.GetDifficultyLevel();
+                if (difficultyLevel == "E")
+                {
+                    players = new Player[] { new Human(), new Computer(new EasyStrategy()) };
+                }
+                else
+                {
+                    players = new Player[] { new Human(), new Computer(new HardStrategy()) };
+                }
             }
         }
 

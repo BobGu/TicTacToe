@@ -59,7 +59,7 @@ namespace UnitTestProject1.Features
         [Given(@"I choose a human vs computer game")]
         public void GivenIChooseAHumanVsComputerGame()
         {
-            gameInput = "hc\n";
+            gameInput = "hc\nH\n";
         }
         
         [Given(@"the first player entered all their info")]
@@ -85,7 +85,7 @@ namespace UnitTestProject1.Features
         {
             EnterInputRunGameStartCaptureOutput();
             string expect = "Where would you like to move Johnny 5?";
-            StringAssert.Contains(expect, gameOutput[14]);
+            StringAssert.Contains(expect, gameOutput[15]);
         }
     }
 }
