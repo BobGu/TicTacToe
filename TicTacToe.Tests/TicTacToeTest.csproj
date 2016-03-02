@@ -120,6 +120,7 @@
     <Compile Include="RulesTest.cs" />
     <Compile Include="HelperTest.cs" />
     <Compile Include="ComputerTest.cs" />
+    <Compile Include="EasyStrategyTest.cs" />
     <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
