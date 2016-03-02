@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    public class EasyStrategy
+    public class EasyStrategy : IComputerDifficulty
     {
         public string[] FilterSetForMarker(string[] set, string marker)
         {
@@ -42,5 +42,31 @@ namespace TicTacToe
         {
             return FilterSetForEmptySpaces(winningSet).First();
         }
+
+        public string RandomMove(string[] spaces)
+        {
+            Random rnd = new Random();
+            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
+            int randomSpace = rnd.Next(availableSpaces.Count());
+            return availableSpaces[randomSpace];
+        }
+
+        public int BestMove(string[] spaces, string marker)
+        {
+            string[][] sets = BoardEvaluator.RowsColumnsDiagonals(spaces);
+            string bestMove;
+
+            if(CanWin(sets, marker))
+            {
+                bestMove = FindWinningMove(FindWinningSet(sets, marker));
+            }
+            else
+            {
+                bestMove = RandomMove(spaces);
+            }
+
+            return Int32.Parse(bestMove);
+        }
+
     }
 }
