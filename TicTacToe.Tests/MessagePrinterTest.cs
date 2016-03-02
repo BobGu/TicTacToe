@@ -8,12 +8,20 @@ namespace TicTacToeTests
     [TestFixture]
     public class MessageFactoryTest
     {
+
+        public StringWriter CaptureTheOutput()
+        {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
+            return sw;
+        }
+
         [Test]
         public void MessageFactoryAskForMove()
         {
-            string name = "Robert";
-            string moveMessage = MessageFactory.AskPlayerForMove(name);
-            Assert.AreEqual("Where would you like to move Robert?", moveMessage);
+            StringWriter sw = CaptureTheOutput();
+            MessageFactory.AskPlayerForMove("Robert");
+            StringAssert.Contains("Where would you like to move Robert?", sw.ToString());
         }
 
         [Test]

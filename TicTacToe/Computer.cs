@@ -17,7 +17,7 @@ namespace TicTacToe
 
         public override int Move(string[] spaces, string name, string marker)
         {
-            Console.WriteLine(MessageFactory.AskPlayerForMove(name));
+            MessageFactory.AskPlayerForMove(name);
             return strategy.BestMove(spaces, marker);
         }
     }

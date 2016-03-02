@@ -31,7 +31,7 @@ namespace TicTacToe
 
         public static int GetPlayerMove(string name, string[] spaces)
         {
-            Console.WriteLine(MessageFactory.AskPlayerForMove(name));
+            MessageFactory.AskPlayerForMove(name);
             string move = Console.ReadLine();
             int index;
             if (!Int32.TryParse(move, out index))

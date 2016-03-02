@@ -9,9 +9,9 @@ namespace TicTacToe
             return "What is your name?";
         }
 
-        public static string AskPlayerForMove(string name)
+        public static void AskPlayerForMove(string name)
         {
-            return "Where would you like to move " + name + "?";
+            Console.WriteLine("Where would you like to move " + name + "?");
         }
 
         public static string AskPlayerForPiece()
