@@ -85,7 +85,23 @@ namespace TicTacToeTest
             TestHelper.SetInput("E\n");
             Assert.AreEqual("E", Prompt.GetDifficultyLevel());
         }
+        [Test]
+        public void ReturnsValidInputIfValidGameModes()
+        {
+            TestHelper.SetInput("fun game mode\nHH\n");
+            string input = Prompt.GetInput(MessagePrinter.GameModes, Validator.GameMode); 
+            Assert.AreNotEqual("fun game mode", input);
+            Assert.AreEqual("HH", input);
+        }
 
+        [Test]
+        public void ReturnsValidInputIfValidTurnOrder()
+        {
+            TestHelper.SetInput("80th\n1\n");
+            string input = Prompt.GetInput(MessagePrinter.GameModes, Validator.TurnOrder);
+            Assert.AreNotEqual("80th", input);
+            Assert.AreEqual("1", input);
+        }
     }
 
 }

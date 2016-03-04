@@ -99,5 +99,21 @@ namespace TicTacToe
             }
         }
 
+        public static string GetInput(Action message, Func<string, bool> validator)
+        {
+            message();
+            string input = Console.ReadLine();
+            if(!validator(input))
+            {
+                MessagePrinter.Invalid(input);
+                return GetInput(message, validator);
+            }
+
+            else
+            {
+                return input;
+            }
+        }
+
     }
 }
