@@ -56,30 +56,41 @@ namespace TicTacToe
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
-        public void SetPlayers(string gameMode)
+        public void SetHumanPlayers()
         {
-            if (gameMode == "HH")
+            players = new Player[] { new Human(), new Human() };
+        }
+
+        public void SetHumanVsComputerPlayers()
+        {
+            string difficultyLevel = Prompt.GetDifficultyLevel();
+
+            if (difficultyLevel == "E")
             {
-                players = new Player[] { new Human(), new Human() };
+                players = new Player[] { new Human(), new Computer(new EasyStrategy()) };
             }
             else
             {
-                string difficultyLevel = Prompt.GetDifficultyLevel();
-                if (difficultyLevel == "E")
-                {
-                    players = new Player[] { new Human(), new Computer(new EasyStrategy()) };
-                }
-                else
-                {
-                    players = new Player[] { new Human(), new Computer(new HardStrategy()) };
-                }
+                players = new Player[] { new Human(), new Computer(new HardStrategy()) };
+            }
+        }
+
+        public void ReadGameModeAndSetPlayers(string gameMode)
+        {
+            if (gameMode == "HH")
+            {
+                SetHumanPlayers();
+            }
+            else
+            {
+                SetHumanVsComputerPlayers();
             }
         }
 
         public void Start()
         {
             string gameMode = Prompt.GetGameMode();
-            SetPlayers(gameMode);
+            ReadGameModeAndSetPlayers(gameMode);
             SetUp(gameMode);
             Moves();
             WonOrTiedMessage();

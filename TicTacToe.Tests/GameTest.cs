@@ -1,7 +1,7 @@
 ﻿using System;
 using TicTacToe;
 using NUnit.Framework;
-using Moq;
+using TicTacToe.Tests.TestHelper;
 
 
 namespace TicTacToe.Tests
@@ -46,7 +46,7 @@ namespace TicTacToe.Tests
         [Test]
         public void GameCanAssignTurnOrder()
         {
-            game.SetPlayers("HH");
+            game.SetHumanPlayers();
             Player firstPlayerToEnterInfo = game.FirstPlayer();
             game.AssignTurnOrder("2");
             Assert.AreNotEqual(firstPlayerToEnterInfo, game.FirstPlayer());
@@ -59,6 +59,24 @@ namespace TicTacToe.Tests
             game.setComputerStrategy(computerDifficulty);
             Assert.AreSame(computerDifficulty, game.computerDifficulty);
         }
+
+        [Test]
+        public void GamesPlayersAreHumanIfHumanvsHumanGame()
+        {
+            game.ReadGameModeAndSetPlayers("HH");
+            Assert.IsInstanceOf(typeof(Human), game.FirstPlayer());
+            Assert.IsInstanceOf(typeof(Human), game.SecondPlayer());
+        }
+
+        [Test]
+        public void GamesSecondPlayerIsComputerIfComputerVsComputerGameMode()
+        {
+            TestHelper.TestHelper.SetInput("E");
+            game.ReadGameModeAndSetPlayers("HC");
+            Assert.IsInstanceOf(typeof(Computer), game.SecondPlayer());
+        }
+
+        
 
     }
     
