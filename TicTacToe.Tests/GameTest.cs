@@ -53,14 +53,6 @@ namespace TicTacToe.Tests
         }
 
         [Test]
-        public void GameCanAssignADifficultStrategy()
-        {
-            var computerDifficulty = new HardStrategy();
-            game.setComputerStrategy(computerDifficulty);
-            Assert.AreSame(computerDifficulty, game.computerDifficulty);
-        }
-
-        [Test]
         public void GamesPlayersAreHumanIfHumanvsHumanGame()
         {
             game.ReadGameModeAndSetPlayers("HH");

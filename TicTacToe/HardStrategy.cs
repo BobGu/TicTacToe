@@ -9,20 +9,18 @@ namespace TicTacToe
 {
     public class HardStrategy : IComputerDifficulty
     {
+
+        public int BestMove(string[] spaces, string marker)
+        {
+            Dictionary<int, int> scoresByMove = ScoresByMove(spaces, marker);
+            KeyValuePair<int, int> highestScoreByMove = scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right);
+            return highestScoreByMove.Key;
+
+        }
+
         public int Score(string[] spaces)
         {
             return Rules.Won(spaces) ? 10 : 0;
-        }
-
-        public int MaxScore(int bestValue, int value)
-        {
-            return bestValue > value ? bestValue : value;
-        }
-
-        public string[] UpdateSpaces(int index, string[] spaces, string marker)
-        {
-            spaces[index] = marker;
-            return spaces;
         }
 
         public List<string[]> FindChildren(string[] spaces, string marker)
@@ -93,12 +91,5 @@ namespace TicTacToe
             return ScoresByMove;
         }
 
-        public int BestMove(string[] spaces, string marker)
-        {
-            Dictionary<int, int> scoresByMove = ScoresByMove(spaces, marker);
-            KeyValuePair<int, int> highestScoreByMove = scoresByMove.Aggregate((left, right) => left.Value > right.Value ? left : right);
-            return highestScoreByMove.Key;
-
-        }
     }
 }
