@@ -9,7 +9,7 @@ namespace TicTacToe
     public class Board
     {
 
-        public string[] spaces { get; private set; }
+        public string[] spaces { get; }
 
         public Board()
         {
