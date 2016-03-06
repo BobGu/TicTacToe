@@ -8,7 +8,7 @@ namespace TicTacToe
 {
     public class Computer : Player
     {
-        public IComputerDifficulty strategy{ get; private set; }
+        private IComputerDifficulty strategy;
 
         public Computer(IComputerDifficulty strategy)
         {

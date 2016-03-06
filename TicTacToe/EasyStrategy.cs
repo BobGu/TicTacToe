@@ -8,48 +8,6 @@ namespace TicTacToe
 {
     public class EasyStrategy : IComputerDifficulty
     {
-        public string[] FilterSetForMarker(string[] set, string marker)
-        {
-            return set.Where(space => space == marker).ToArray();
-        }
-
-        public bool TwoMarkersInSet(string[] set, string marker)
-        {
-            return FilterSetForMarker(set, marker).Count() == 2;
-        }
-
-        public string[] FilterSetForEmptySpaces(string[] set)
-        {
-            return set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).ToArray();
-        }
-
-        public bool PossibleWinningSet(string[] set, string marker)
-        {
-            return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
-        }
-
-        public bool CanWin(string[][] sets, string marker)
-        {
-            return sets.Any(set => PossibleWinningSet(set, marker));
-        }
-
-        public string[] FindWinningSet(string[][] sets, string marker)
-        {
-            return sets.Where(set => PossibleWinningSet(set, marker)).First();
-        }
-
-        public string FindWinningMove(string[] winningSet)
-        {
-            return FilterSetForEmptySpaces(winningSet).First();
-        }
-
-        public string RandomMove(string[] spaces)
-        {
-            Random rnd = new Random();
-            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
-            int randomSpace = rnd.Next(availableSpaces.Count());
-            return availableSpaces[randomSpace];
-        }
 
         public int BestMove(string[] spaces, string marker)
         {
@@ -66,6 +24,48 @@ namespace TicTacToe
             }
 
             return Int32.Parse(bestMove);
+        }
+
+        public string RandomMove(string[] spaces)
+        {
+            Random rnd = new Random();
+            string[] availableSpaces = BoardEvaluator.AvailableSpaces(spaces);
+            int randomSpace = rnd.Next(availableSpaces.Count());
+            return availableSpaces[randomSpace];
+        }
+
+        private bool CanWin(string[][] sets, string marker)
+        {
+            return sets.Any(set => PossibleWinningSet(set, marker));
+        }
+
+        private string[] FindWinningSet(string[][] sets, string marker)
+        {
+            return sets.Where(set => PossibleWinningSet(set, marker)).First();
+        }
+        private bool PossibleWinningSet(string[] set, string marker)
+        {
+            return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
+        }
+
+        private string FindWinningMove(string[] winningSet)
+        {
+            return FilterSetForEmptySpaces(winningSet).First();
+        }
+
+        private string[] FilterSetForMarker(string[] set, string marker)
+        {
+            return set.Where(space => space == marker).ToArray();
+        }
+
+        private bool TwoMarkersInSet(string[] set, string marker)
+        {
+            return FilterSetForMarker(set, marker).Count() == 2;
+        }
+
+        private string[] FilterSetForEmptySpaces(string[] set)
+        {
+            return set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).ToArray();
         }
 
     }
