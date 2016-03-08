@@ -14,10 +14,11 @@ namespace TicTacToe.Tests
             StringWriter sw = new StringWriter();
             Console.SetOut(sw);
 
-            IComputerDifficulty hardStrategy = new HardStrategy();
+            IComputerStrategy hardStrategy = new HardStrategy();
             Computer computer = new Computer(hardStrategy);
+            computer.AssignMarker("X");
             string[] spaces = { "X", "X", "2", "3", "4", "5", "6", "7", "8" };
-            Assert.AreEqual(2, computer.Move(spaces, "Robert", "X"));
+            Assert.AreEqual(2, computer.Move(spaces));
         }
     }
 }

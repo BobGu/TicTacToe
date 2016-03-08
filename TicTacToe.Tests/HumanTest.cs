@@ -30,7 +30,7 @@ namespace TicTacToeTests
             Human human = new Human();
             string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8"};
             TestHelper.SetInput("4");
-            Assert.AreEqual(4, human.Move(spaces, "Robert", "O"));
+            Assert.AreEqual(4, human.Move(spaces));
         }
     }
 }

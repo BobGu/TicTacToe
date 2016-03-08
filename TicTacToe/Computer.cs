@@ -8,14 +8,14 @@ namespace TicTacToe
 {
     public class Computer : Player
     {
-        private IComputerDifficulty strategy;
+        private IComputerStrategy strategy;
 
-        public Computer(IComputerDifficulty strategy)
+        public Computer(IComputerStrategy strategy)
         {
             this.strategy = strategy;
         }
 
-        public override int Move(string[] spaces, string name, string marker)
+        public override int Move(string[] spaces)
         {
             MessagePrinter.AskPlayerForMove(name);
             return strategy.BestMove(spaces, marker);

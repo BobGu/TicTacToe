@@ -80,10 +80,10 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void ReturnsADifficultyLevel()
+        public void ReturnsAStrategyLevel()
         {
             TestHelper.SetInput("E\n");
-            Assert.AreEqual("E", Prompt.GetDifficultyLevel());
+            Assert.AreEqual("E", Prompt.GetStrategyLevel());
         }
         [Test]
         public void ReturnsValidInputIfValidGameModes()

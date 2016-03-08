@@ -50,11 +50,11 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void MessageFactoryAFormattedEmptyBoard()
+        public void MessageFactoryAPrintedVersionOfTheBoard()
         {
             StringWriter sw = CaptureTheOutput();
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            MessagePrinter.FormatBoard(spaces);
+            MessagePrinter.PrintBoard(spaces);
             string expected =
                 @"              
 
@@ -70,11 +70,11 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void APartiallyFilledAndFormatted_Board()
+        public void APartiallyFilledAndPrintedBoard()
         {
             StringWriter sw = CaptureTheOutput();
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
-            MessagePrinter.FormatBoard(spaces);
+            MessagePrinter.PrintBoard(spaces);
             string expected =
                 @"              
 
@@ -127,11 +127,11 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void MessageForDifficultLevel()
+        public void MessageForStrategy()
         {
             StringWriter sw = CaptureTheOutput();
             string message = "Type in E for easy or H for hard difficulty";
-            MessagePrinter.DifficultyLevel();
+            MessagePrinter.StrategyLevel();
             StringAssert.Contains(message, sw.ToString());
         }
     }

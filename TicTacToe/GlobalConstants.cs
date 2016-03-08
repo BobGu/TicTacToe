@@ -10,8 +10,8 @@ namespace TicTacToe
     {
         public const string HumanVsHuman = "HH";
         public const string HumanVsComputer = "HC";
-        public const string EasyDifficulty = "E";
-        public const string HardDifficulty = "H";
+        public const string EasyStrategy = "E";
+        public const string HardStrategy = "H";
         public const string XMarker = "X";
         public const string OMarker = "O";
     }

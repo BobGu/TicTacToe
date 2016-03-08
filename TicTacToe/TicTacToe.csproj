@@ -65,7 +65,7 @@
     <Compile Include="HardStrategy.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Human.cs" />
-    <Compile Include="IComputerDifficulty.cs" />
+    <Compile Include="IComputerStrategy.cs" />
     <Compile Include="Minimax.cs" />
     <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />

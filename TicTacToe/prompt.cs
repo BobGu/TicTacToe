@@ -83,19 +83,19 @@ namespace TicTacToe
             }
         }
 
-        public static string GetDifficultyLevel()
+        public static string GetStrategyLevel()
         {
-            MessagePrinter.DifficultyLevel();
-            string difficultyLevel = Console.ReadLine();
+            MessagePrinter.StrategyLevel();
+            string strategyLevel = Console.ReadLine();
 
-            if (!Validator.DifficultyLevel(difficultyLevel))
+            if (!Validator.StrategyLevel(strategyLevel))
             {
-                MessagePrinter.Invalid(difficultyLevel);
-                return GetDifficultyLevel();
+                MessagePrinter.Invalid(strategyLevel);
+                return GetStrategyLevel();
             }
             else
             {
-                return difficultyLevel.ToUpper();
+                return strategyLevel.ToUpper();
             }
         }
 

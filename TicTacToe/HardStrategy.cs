@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    public class HardStrategy : IComputerDifficulty
+    public class HardStrategy : IComputerStrategy
     {
 
         public int BestMove(string[] spaces, string marker)

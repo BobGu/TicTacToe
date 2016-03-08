@@ -32,7 +32,7 @@ namespace TicTacToe
             {
                 MessagePrinter.PrintBoard(board.spaces);
                 Player currentPlayer = FirstPlayer();
-                int move = currentPlayer.Move(board.spaces, currentPlayer.name, currentPlayer.marker);
+                int move = currentPlayer.Move(board.spaces);
                 MarkBoard(board, move, currentPlayer.marker);
                 players = players.Reverse().ToArray();
             }

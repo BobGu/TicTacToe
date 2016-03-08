@@ -79,9 +79,9 @@ namespace TicTacToe.Tests
         }
 
         [Test]
-        public void ReturnsTrueIfValidDifficultyLevel()
+        public void ReturnsTrueIfValidStrategyLevel()
         {
-            Assert.IsTrue(Validator.DifficultyLevel("E"));
+            Assert.IsTrue(Validator.StrategyLevel("E"));
         }
 
     }

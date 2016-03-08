@@ -24,7 +24,7 @@ namespace TicTacToe
             Console.WriteLine("Type 1 if you would like " + name + " to go first, and 2 to go second");
         }
 
-        public static void FormatBoard(string[] spaces)
+        public static void PrintBoard(string[] spaces)
         {
             Console.WriteLine(string.Format(
                 @"               
@@ -62,7 +62,7 @@ namespace TicTacToe
             Console.WriteLine("Type in hh to play human vs human, and hc for human vs computer");
         }
 
-        public static void DifficultyLevel()
+        public static void StrategyLevel()
         {
             Console.WriteLine("Type in E for easy or H for hard difficulty");
         }

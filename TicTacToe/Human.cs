@@ -4,7 +4,7 @@ namespace TicTacToe
 {
     public class Human : Player 
     {
-        public override int Move(string[] spaces, string name, string marker)
+        public override int Move(string[] spaces)
         {
             return Prompt.GetPlayerMove(name, spaces);
         }
