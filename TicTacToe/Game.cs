@@ -8,10 +8,7 @@ namespace TicTacToe
 
         public Board board;
         public Player[] players { get; private set; }
-        public IComputerDifficulty computerDifficulty { get; private set; }
-
-        public const string HumanVsHuman = "HH";
-        public const string EasyDifficulty = "E";
+        public IComputerStrategy computerStrategy{ get; private set; }
 
         public static void Main()
         {
@@ -24,22 +21,22 @@ namespace TicTacToe
             board = new Board();
         }
 
-        public void setComputerStrategy(IComputerDifficulty computerDifficulty)
+        public void setComputerStrategy(IComputerStrategy computerStrategy)
         {
-            this.computerDifficulty = computerDifficulty;
+            this.computerStrategy= computerStrategy;
         }
        
         public void Moves()
         {
-            while (Rules.Over(board.spaces) == false)
+            while (!Rules.Over(board.spaces))
             {
-                MessagePrinter.FormatBoard(board.spaces);
+                MessagePrinter.PrintBoard(board.spaces);
                 Player currentPlayer = FirstPlayer();
                 int move = currentPlayer.Move(board.spaces, currentPlayer.name, currentPlayer.marker);
                 MarkBoard(board, move, currentPlayer.marker);
                 players = players.Reverse().ToArray();
             }
-                MessagePrinter.FormatBoard(board.spaces);
+                MessagePrinter.PrintBoard(board.spaces);
         }
 
         public void SetUp(string gameMode)
@@ -66,9 +63,9 @@ namespace TicTacToe
 
         public void SetHumanVsComputerPlayers()
         {
-            string difficultyLevel = Prompt.GetDifficultyLevel();
+            string strategyLevel= Prompt.GetStrategyLevel();
 
-            if (difficultyLevel == GlobalConstants.EasyDifficulty) 
+            if (strategyLevel == GlobalConstants.EasyStrategy) 
             {
                 players = new Player[] { new Human(), new Computer(new EasyStrategy()) };
             }

@@ -31,10 +31,10 @@ namespace TicTacToe
             return gameMode == GlobalConstants.HumanVsComputer || gameMode == GlobalConstants.HumanVsHuman;
         }
 
-        public static bool DifficultyLevel(string difficulty)
+        public static bool StrategyLevel(string strategy)
         {
-            difficulty = difficulty.ToUpper();
-            return difficulty == GlobalConstants.EasyDifficulty || difficulty == GlobalConstants.HardDifficulty;
+            strategy = strategy.ToUpper();
+            return strategy == GlobalConstants.EasyStrategy || strategy == GlobalConstants.HardStrategy;
         }
 
     }
