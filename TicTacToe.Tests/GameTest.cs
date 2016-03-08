@@ -46,7 +46,7 @@ namespace TicTacToe.Tests
         [Test]
         public void GameCanAssignTurnOrder()
         {
-            game.SetHumanPlayers();
+            game.InitializeHumanPlayers();
             Player firstPlayerToEnterInfo = game.FirstPlayer();
             game.AssignTurnOrder("2");
             Assert.AreNotEqual(firstPlayerToEnterInfo, game.FirstPlayer());
@@ -55,7 +55,7 @@ namespace TicTacToe.Tests
         [Test]
         public void GamesPlayersAreHumanIfHumanvsHumanGame()
         {
-            game.ReadGameModeAndSetPlayers("HH");
+            game.ReadGameModeAndInitializePlayers("HH");
             Assert.IsInstanceOf(typeof(Human), game.FirstPlayer());
             Assert.IsInstanceOf(typeof(Human), game.SecondPlayer());
         }
@@ -64,7 +64,7 @@ namespace TicTacToe.Tests
         public void GamesSecondPlayerIsComputerIfComputerVsComputerGameMode()
         {
             TestHelper.TestHelper.SetInput("E");
-            game.ReadGameModeAndSetPlayers("HC");
+            game.ReadGameModeAndInitializePlayers("HC");
             Assert.IsInstanceOf(typeof(Computer), game.SecondPlayer());
         }
 

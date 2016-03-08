@@ -46,12 +46,11 @@ namespace TicTacToe
             return currentPlayer;
         }
 
-        public void SetUp(string gameMode)
+        public void SetSecondPlayerName()
         {
-            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            string marker = Prompt.GetPlayerMarker();
-            SetPlayerMarker(FirstPlayer(), marker);
-            if(GlobalConstants.HumanVsHuman == gameMode)
+            bool twoPlayerGame =  SecondPlayer() is Human;
+
+            if(twoPlayerGame)
             {
                 SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
             }
@@ -59,16 +58,23 @@ namespace TicTacToe
             {
                 SecondPlayer().AssignName();
             }
+        }
+        public void SetUp(string gameMode)
+        {
+            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
+            string marker = Prompt.GetPlayerMarker();
+            SetPlayerMarker(FirstPlayer(), marker);
+            SetSecondPlayerName();
             SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
-        public void SetHumanPlayers()
+        public void InitializeHumanPlayers()
         {
             players = new Player[] { new Human(), new Human() };
         }
 
-        public void SetHumanVsComputerPlayers()
+        public void InitializeHumanVsCompuerPlayers()
         {
             string strategyLevel= Prompt.GetStrategyLevel();
 
@@ -82,22 +88,22 @@ namespace TicTacToe
             }
         }
 
-        public void ReadGameModeAndSetPlayers(string gameMode)
+        public void ReadGameModeAndInitializePlayers(string gameMode)
         {
             if (GlobalConstants.HumanVsHuman  == gameMode)
             {
-                SetHumanPlayers();
+                InitializeHumanPlayers();
             }
             else
             {
-                SetHumanVsComputerPlayers();
+                InitializeHumanVsCompuerPlayers();
             }
         }
 
         public void Start()
         {
             string gameMode = Prompt.GetGameMode();
-            ReadGameModeAndSetPlayers(gameMode);
+            ReadGameModeAndInitializePlayers(gameMode);
             SetUp(gameMode);
             Player lastPlayerToMove = Moves();
             WonOrTiedMessage(lastPlayerToMove);
