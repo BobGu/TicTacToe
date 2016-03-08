@@ -11,7 +11,7 @@ namespace TicTacToe
         public static bool Marker(string marker)
         {
             marker = marker.ToUpper();
-            return marker == "X" || marker == "O";
+            return marker == GlobalConstants.XMarker || marker == GlobalConstants.OMarker;
         }
 
         public static bool TurnOrder(string turnOrder)
@@ -22,19 +22,19 @@ namespace TicTacToe
         public static bool Move(int move, string[] spaces)
         {
             bool inBoundsMove = move < spaces.Length && move >=  0;
-            return inBoundsMove && spaces[move] != "X" && spaces[move] != "O";
+            return inBoundsMove && !BoardEvaluator.IsNotAnEmptySpace(spaces[move]);
         }
 
         public static bool GameMode(string gameMode)
         {
             gameMode = gameMode.ToUpper();
-            return gameMode == "HC" || gameMode == "HH";
+            return gameMode == GlobalConstants.HumanVsComputer || gameMode == GlobalConstants.HumanVsHuman;
         }
 
         public static bool DifficultyLevel(string difficulty)
         {
             difficulty = difficulty.ToUpper();
-            return difficulty == "E" || difficulty == "H";
+            return difficulty == GlobalConstants.EasyDifficulty || difficulty == GlobalConstants.HardDifficulty;
         }
 
     }

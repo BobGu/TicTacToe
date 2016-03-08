@@ -9,7 +9,7 @@ namespace TicTacToe
     {
         public static bool IsNotAnEmptySpace(string space)
         {
-            return space == "X" || space == "O";
+            return space == GlobalConstants.XMarker || space == GlobalConstants.OMarker;
         }
 
         public static bool AllSpacesNotEmpty(string[] spaces)

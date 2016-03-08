@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Computer.cs" />
     <Compile Include="EasyStrategy.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="HardStrategy.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Human.cs" />

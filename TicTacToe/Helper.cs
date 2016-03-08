@@ -10,7 +10,7 @@ namespace TicTacToe
     {
         public static string OppositeMarker(string marker)
         {
-            return marker == "X" ? "O" : "X";
+            return marker == GlobalConstants.XMarker ? GlobalConstants.OMarker : GlobalConstants.XMarker; 
         }
     }
 }
