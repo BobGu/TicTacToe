@@ -44,15 +44,6 @@ namespace TicTacToe.Tests
         }
 
         [Test]
-        public void GameCanAssignTurnOrder()
-        {
-            game.InitializeHumanPlayers();
-            Player firstPlayerToEnterInfo = game.FirstPlayer();
-            game.AssignTurnOrder("2");
-            Assert.AreNotEqual(firstPlayerToEnterInfo, game.FirstPlayer());
-        }
-
-        [Test]
         public void GamesPlayersAreHumanIfHumanvsHumanGame()
         {
             game.ReadGameModeAndInitializePlayers("HH");

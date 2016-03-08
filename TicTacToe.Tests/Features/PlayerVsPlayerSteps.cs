@@ -45,8 +45,7 @@ namespace UnitTestProject1
         {
             TestHelper.SetInput(gameInput);
             StringWriter sw = SetOutputToStringWriter();
-            game.InitializeHumanPlayers();
-            game.SetUp("HH");
+            game.Start();
             CaptureOutput(sw);
         }
         public void EnterInputRunGameStartCaptureOutput()
@@ -107,13 +106,13 @@ namespace UnitTestProject1
         {
             EnterInputRunGameSetupCaptureOutput();
             string expected = string.Format("What is your name?", Environment.NewLine);
-            Assert.AreEqual(expected, gameOutput[0]);
+            Assert.AreEqual(expected, gameOutput[1]);
         }
 
         [Given(@"I have already entered my name")]
         public void IHaveAlreadyEnteredMyName()
         {
-            gameInput = "Robert\n";
+            gameInput =  gameInput + "Robert\n";
         }
 
         [Given(@"I enter a second players name")]
@@ -127,7 +126,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameSetupCaptureOutput();
             string expected = "What piece would you like to be, X or O?";
-            Assert.AreEqual(expected, gameOutput[1]);
+            Assert.AreEqual(expected, gameOutput[2]);
         }
 
         [Given(@"I enter a marker that is not X or O")]
@@ -142,14 +141,14 @@ namespace UnitTestProject1
             
             EnterInputRunGameSetupCaptureOutput();
             string expected = "ABC123 is not a valid input";
-            Assert.AreEqual(expected, gameOutput[2]);
+            Assert.AreEqual(expected, gameOutput[3]);
         }
 
         [Then(@"I am asked again which marker I would like to be")]
         public void IAmAskedAgainWhichMarkerIWouldLikeToBe()
         {
             string expected = "What piece would you like to be, X or O?";
-            Assert.AreEqual(expected, gameOutput[3]);
+            Assert.AreEqual(expected, gameOutput[4]);
         }
 
         [Given(@"I enter a valid marker")]
@@ -169,13 +168,13 @@ namespace UnitTestProject1
         {
             EnterInputRunGameSetupCaptureOutput();
             string expected = "What is your name?";
-            Assert.AreEqual(expected, gameOutput[2]);
+            StringAssert.Contains(expected, gameOutput[3]);
         }
 
         [Given(@"players have entered all their info")]
         public void PlayersHaveEnteredAllTheirInfo()
         {
-            gameInput = "hh\nRobert\nX\nJohn\n";
+            gameInput = "HH\nRobert\nX\nJohn\n";
         }
 
         [Then(@"I expect to be asked about the turn order")]
@@ -183,7 +182,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameSetupCaptureOutput();
             string expected = "Type 1 if you would like Robert to go first, and 2 to go second";
-            Assert.AreEqual(expected, gameOutput[3]);
+            Assert.AreEqual(expected, gameOutput[4]);
         }
 
         [Given(@"player one chooses to go first")]
@@ -343,6 +342,12 @@ namespace UnitTestProject1
             int lastOutputLength = gameOutput.Count();
             string lastOutput = gameOutput[lastOutputLength - 2];
             Assert.AreEqual(expect, lastOutput);
+        }
+
+        [Given(@"I choose to play human vs human")]
+        public void IChooseToPlayHumanVsHuman()
+        {
+            gameInput = "HH\n";
         }
 
     }

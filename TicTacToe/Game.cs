@@ -20,14 +20,14 @@ namespace TicTacToe
             board = new Board();
         }
 
-        public void Turn(Player currentPlayer)
+        private void Turn(Player currentPlayer)
         {
             MessagePrinter.PrintBoard(board.spaces);
             int move = currentPlayer.Move(board.spaces);
             MarkBoard(board, move, currentPlayer.marker);
         }
        
-        public Player Moves()
+        private Player Moves()
         {
             Player currentPlayer = FirstPlayer();
             Turn(currentPlayer);
@@ -40,7 +40,7 @@ namespace TicTacToe
             return currentPlayer;
         }
 
-        public void SetSecondPlayerName()
+        private void SetSecondPlayerName()
         {
             bool twoPlayerGame =  SecondPlayer() is Human;
 
@@ -53,6 +53,7 @@ namespace TicTacToe
                 SecondPlayer().AssignName("Johnny 5");
             }
         }
+
         public void SetUp(string gameMode)
         {
             SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
@@ -63,12 +64,12 @@ namespace TicTacToe
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
-        public void InitializeHumanPlayers()
+        private void InitializeHumanPlayers()
         {
             players = new Player[] { new Human(), new Human() };
         }
 
-        public void InitializeHumanVsCompuerPlayers()
+        private void InitializeHumanVsCompuerPlayers()
         {
             string strategyLevel= Prompt.GetStrategyLevel();
 
