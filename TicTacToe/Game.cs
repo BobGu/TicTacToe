@@ -25,18 +25,25 @@ namespace TicTacToe
         {
             this.computerStrategy= computerStrategy;
         }
-       
-        public void Moves()
+
+        public void Turn(Player currentPlayer)
         {
+            MessagePrinter.PrintBoard(board.spaces);
+            int move = currentPlayer.Move(board.spaces);
+            MarkBoard(board, move, currentPlayer.marker);
+        }
+       
+        public Player Moves()
+        {
+            Player currentPlayer = FirstPlayer();
+            Turn(currentPlayer);
             while (!Rules.Over(board.spaces))
             {
-                MessagePrinter.PrintBoard(board.spaces);
-                Player currentPlayer = FirstPlayer();
-                int move = currentPlayer.Move(board.spaces);
-                MarkBoard(board, move, currentPlayer.marker);
-                players = players.Reverse().ToArray();
+                currentPlayer = currentPlayer == FirstPlayer() ? SecondPlayer() : FirstPlayer();
+                Turn(currentPlayer);
             }
                 MessagePrinter.PrintBoard(board.spaces);
+            return currentPlayer;
         }
 
         public void SetUp(string gameMode)
@@ -92,15 +99,15 @@ namespace TicTacToe
             string gameMode = Prompt.GetGameMode();
             ReadGameModeAndSetPlayers(gameMode);
             SetUp(gameMode);
-            Moves();
-            WonOrTiedMessage();
+            Player lastPlayerToMove = Moves();
+            WonOrTiedMessage(lastPlayerToMove);
         }
 
-        public void WonOrTiedMessage()
+        public void WonOrTiedMessage(Player lastPlayerToMove)
         {
             if (Rules.Won(board.spaces))
             {
-                MessagePrinter.Winner(PlayerName(SecondPlayer()));
+                MessagePrinter.Winner(PlayerName(lastPlayerToMove));
             }
             else
             {
