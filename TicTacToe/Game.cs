@@ -6,9 +6,8 @@ namespace TicTacToe
     public class Game
     {
 
-        public Board board;
-        public Player[] players { get; private set; }
-        public IComputerStrategy computerStrategy{ get; private set; }
+        private Board board;
+        private Player[] players;
 
         public static void Main()
         {
@@ -19,11 +18,6 @@ namespace TicTacToe
         public Game()
         {
             board = new Board();
-        }
-
-        public void setComputerStrategy(IComputerStrategy computerStrategy)
-        {
-            this.computerStrategy= computerStrategy;
         }
 
         public void Turn(Player currentPlayer)
@@ -56,7 +50,7 @@ namespace TicTacToe
             }
             else
             {
-                SecondPlayer().AssignName("Johnny-5");
+                SecondPlayer().AssignName("Johnny 5");
             }
         }
         public void SetUp(string gameMode)
