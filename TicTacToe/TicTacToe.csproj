@@ -65,6 +65,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="IComputerDifficulty.cs" />
+    <Compile Include="Minimax.cs" />
     <Compile Include="MyExtensions\ArrayExtensions.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardEvaluator.cs" />
