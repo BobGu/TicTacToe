@@ -10,6 +10,9 @@ namespace TicTacToe
         public Player[] players { get; private set; }
         public IComputerDifficulty computerDifficulty { get; private set; }
 
+        private const string HumanVsHuman = "HH";
+        private const string EasyDifficulty = "E";
+
         public static void Main()
         {
             Game game = new Game();
@@ -44,7 +47,7 @@ namespace TicTacToe
             SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
             string marker = Prompt.GetPlayerMarker();
             SetPlayerMarker(FirstPlayer(), marker);
-            if(gameMode == "HH")
+            if(HumanVsHuman == gameMode)
             {
                 SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
             }
@@ -65,7 +68,7 @@ namespace TicTacToe
         {
             string difficultyLevel = Prompt.GetDifficultyLevel();
 
-            if (difficultyLevel == "E")
+            if (difficultyLevel == EasyDifficulty) 
             {
                 players = new Player[] { new Human(), new Computer(new EasyStrategy()) };
             }
@@ -77,7 +80,7 @@ namespace TicTacToe
 
         public void ReadGameModeAndSetPlayers(string gameMode)
         {
-            if (gameMode == "HH")
+            if (HumanVsHuman  == gameMode)
             {
                 SetHumanPlayers();
             }

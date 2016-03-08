@@ -8,7 +8,6 @@ namespace TicTacToe
 {
     public class Rules
     {
-
         public static bool Won(string[] spaces)
         {
             return BoardEvaluator.AnySetsTheSame(spaces);
