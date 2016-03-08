@@ -56,7 +56,7 @@ namespace TicTacToe
             }
             else
             {
-                SecondPlayer().AssignName();
+                SecondPlayer().AssignName("Johnny-5");
             }
         }
         public void SetUp(string gameMode)

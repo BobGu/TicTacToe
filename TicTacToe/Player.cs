@@ -11,7 +11,7 @@ namespace TicTacToe
         public string name { get; private set; }
         public string marker { get; private set; }
 
-        public void AssignName()
+        public void AssignName(string name)
         {
             this.name = name;
         }
