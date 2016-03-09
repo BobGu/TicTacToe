@@ -21,7 +21,7 @@ namespace TicTacToe
 
             if (!Validator.Move(move, spaces))
             {
-                Console.WriteLine(move + " is not a valid input");
+                MessagePrinter.Invalid(move);
                 return GetPlayerMove(name, spaces);
             }
             else
