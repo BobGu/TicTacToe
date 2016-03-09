@@ -14,21 +14,6 @@ namespace TicTacToe
             return Console.ReadLine();
         }
 
-        public static string GetPlayerMarker()
-        {
-            MessagePrinter.AskPlayerForPiece();
-            string marker = Console.ReadLine();
-            if (!Validator.Marker(marker))
-            {
-                Console.WriteLine(marker + " is not a valid input");
-                return GetPlayerMarker();
-            }
-            else
-            {
-                return marker.ToUpper();
-            }
-        }
-
         public static int GetPlayerMove(string name, string[] spaces)
         {
             MessagePrinter.AskPlayerForMove(name);
@@ -61,37 +46,6 @@ namespace TicTacToe
             }
         }
 
-        public static string GetGameMode()
-        {
-            MessagePrinter.GameModes();
-            string gameMode = Console.ReadLine();
-
-            if (!Validator.GameMode(gameMode))
-            {
-                MessagePrinter.Invalid(gameMode);
-                return GetGameMode();
-            }
-            else
-            {
-                return gameMode.ToUpper();
-            }
-        }
-
-        public static string GetStrategyLevel()
-        {
-            MessagePrinter.StrategyLevel();
-            string strategyLevel = Console.ReadLine();
-
-            if (!Validator.StrategyLevel(strategyLevel))
-            {
-                MessagePrinter.Invalid(strategyLevel);
-                return GetStrategyLevel();
-            }
-            else
-            {
-                return strategyLevel.ToUpper();
-            }
-        }
 
         public static string GetInput(Action message, Func<string, bool> validator)
         {
@@ -105,7 +59,7 @@ namespace TicTacToe
 
             else
             {
-                return input;
+                return input.ToUpper();
             }
         }
 

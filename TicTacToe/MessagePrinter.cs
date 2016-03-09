@@ -14,7 +14,7 @@ namespace TicTacToe
             Console.WriteLine("Where would you like to move " + name + "?");
         }
 
-        public static void AskPlayerForPiece()
+        public static void AskPlayerForMarker()
         {
             Console.WriteLine("What piece would you like to be, X or O?");
         }

@@ -22,7 +22,7 @@ namespace TicTacToeTest
         public void ReturnsAMarker()
         {
             TestHelper.SetInput("X\n");
-            string marker = Prompt.GetPlayerMarker();
+            string marker = Prompt.GetInput(MessagePrinter.AskPlayerForMarker, Validator.Marker);
             Assert.AreEqual("X", marker);
         }
 
@@ -30,7 +30,7 @@ namespace TicTacToeTest
         public void AsksForMarkerAgainIfInvalid()
         {
             TestHelper.SetInput("P\nO\n");
-            string marker = Prompt.GetPlayerMarker();
+            string marker = Prompt.GetInput(MessagePrinter.AskPlayerForMarker, Validator.Marker);
             Assert.AreNotEqual("P", marker);
             Assert.AreEqual("O", marker);
         }
@@ -76,14 +76,14 @@ namespace TicTacToeTest
         public void ReturnsAGameModeIfValid()
         {
             TestHelper.SetInput("hc\n");
-            Assert.AreEqual("HC", Prompt.GetGameMode());
+            Assert.AreEqual("HC", Prompt.GetInput(MessagePrinter.GameModes, Validator.GameMode));
         }
 
         [Test]
         public void ReturnsAStrategyLevel()
         {
             TestHelper.SetInput("E\n");
-            Assert.AreEqual("E", Prompt.GetStrategyLevel());
+            Assert.AreEqual("E", Prompt.GetInput(MessagePrinter.StrategyLevel, Validator.StrategyLevel));
         }
         [Test]
         public void ReturnsValidInputIfValidGameModes()

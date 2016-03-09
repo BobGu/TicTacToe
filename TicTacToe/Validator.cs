@@ -19,13 +19,6 @@ namespace TicTacToe
             return turnOrder == "1" || turnOrder == "2";
         }
 
-        public static bool Move(string move, string[] spaces)
-        {
-            int index;
-            bool isANumber = Int32.TryParse(move, out index);
-            return isANumber ? MoveIsInboundsAndSpaceIsEmpty(index, spaces) : false;
-        }
-
         public static bool GameMode(string gameMode)
         {
             gameMode = gameMode.ToUpper();
@@ -36,6 +29,13 @@ namespace TicTacToe
         {
             strategy = strategy.ToUpper();
             return strategy == GlobalConstants.EasyStrategy || strategy == GlobalConstants.HardStrategy;
+        }
+
+        public static bool Move(string move, string[] spaces)
+        {
+            int index;
+            bool isANumber = Int32.TryParse(move, out index);
+            return isANumber ? MoveIsInboundsAndSpaceIsEmpty(index, spaces) : false;
         }
 
         private static bool MoveIsInboundsAndSpaceIsEmpty(int index, string[] spaces)

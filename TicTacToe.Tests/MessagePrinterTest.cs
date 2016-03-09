@@ -33,10 +33,10 @@ namespace TicTacToeTests
         }
 
         [Test]
-        public void MessageFactoryAskForAPiece()
+        public void MessageFactoryAskForAMarker()
         {
             StringWriter sw = CaptureTheOutput();
-            MessagePrinter.AskPlayerForPiece();
+            MessagePrinter.AskPlayerForMarker();
             StringAssert.Contains("What piece would you like to be, X or O?", sw.ToString());
         }
 
