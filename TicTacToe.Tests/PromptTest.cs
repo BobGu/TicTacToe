@@ -76,20 +76,20 @@ namespace TicTacToeTest
         public void ReturnsAGameModeIfValid()
         {
             TestHelper.SetInput("hc\n");
-            Assert.AreEqual("HC", Prompt.GetInput(MessagePrinter.GameModes, Validator.GameMode));
+            Assert.AreEqual("HC", Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode));
         }
 
         [Test]
         public void ReturnsAStrategyLevel()
         {
             TestHelper.SetInput("E\n");
-            Assert.AreEqual("E", Prompt.GetInput(MessagePrinter.StrategyLevel, Validator.StrategyLevel));
+            Assert.AreEqual("E", Prompt.GetInput(MessagePrinter.AskPlayerForStrategyLevel, Validator.StrategyLevel));
         }
         [Test]
         public void ReturnsValidInputIfValidGameModes()
         {
             TestHelper.SetInput("fun game mode\nHH\n");
-            string input = Prompt.GetInput(MessagePrinter.GameModes, Validator.GameMode); 
+            string input = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode); 
             Assert.AreNotEqual("fun game mode", input);
             Assert.AreEqual("HH", input);
         }
@@ -98,7 +98,7 @@ namespace TicTacToeTest
         public void ReturnsValidInputIfValidTurnOrder()
         {
             TestHelper.SetInput("80th\n1\n");
-            string input = Prompt.GetInput(MessagePrinter.GameModes, Validator.TurnOrder);
+            string input = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.TurnOrder);
             Assert.AreNotEqual("80th", input);
             Assert.AreEqual("1", input);
         }

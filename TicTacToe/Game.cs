@@ -71,7 +71,7 @@ namespace TicTacToe
 
         private void InitializeHumanVsCompuerPlayers()
         {
-            string strategyLevel= Prompt.GetInput(MessagePrinter.StrategyLevel, Validator.StrategyLevel);
+            string strategyLevel= Prompt.GetInput(MessagePrinter.AskPlayerForStrategyLevel, Validator.StrategyLevel);
 
             if (strategyLevel == GlobalConstants.EasyStrategy) 
             {
@@ -97,7 +97,7 @@ namespace TicTacToe
 
         public void Start()
         {
-            string gameMode = Prompt.GetInput(MessagePrinter.GameModes, Validator.GameMode);
+            string gameMode = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode);
             ReadGameModeAndInitializePlayers(gameMode);
             SetUp(gameMode);
             Player lastPlayerToMove = Moves();

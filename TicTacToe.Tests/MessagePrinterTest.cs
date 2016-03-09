@@ -122,7 +122,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string gameModeMessage = "Type in hh to play human vs human, and hc for human vs computer";
-            MessagePrinter.GameModes();
+            MessagePrinter.AskPlayerForGameMode();
             StringAssert.Contains(gameModeMessage, sw.ToString());
         }
 
@@ -131,7 +131,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string message = "Type in E for easy or H for hard difficulty";
-            MessagePrinter.StrategyLevel();
+            MessagePrinter.AskPlayerForStrategyLevel();
             StringAssert.Contains(message, sw.ToString());
         }
     }

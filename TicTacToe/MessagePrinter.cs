@@ -57,12 +57,12 @@ namespace TicTacToe
             Console.WriteLine(input + " is not a valid input");
         }
 
-        public static void GameModes()
+        public static void AskPlayerForGameMode()
         {
             Console.WriteLine("Type in hh to play human vs human, and hc for human vs computer");
         }
 
-        public static void StrategyLevel()
+        public static void AskPlayerForStrategyLevel()
         {
             Console.WriteLine("Type in E for easy or H for hard difficulty");
         }
