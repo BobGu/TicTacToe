@@ -20,11 +20,35 @@ namespace TicTacToe
             board = new Board();
         }
 
-        private void Turn(Player currentPlayer)
+        public void Start()
         {
-            MessagePrinter.PrintBoard(board.spaces);
-            int move = currentPlayer.Move(board.spaces);
-            MarkBoard(board, move, currentPlayer.marker);
+            string gameMode = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode);
+            ReadGameModeAndInitializePlayers(gameMode);
+            SetUp(gameMode);
+            Player lastPlayerToMove = Moves();
+            WonOrTiedMessage(lastPlayerToMove);
+        }
+
+        public void ReadGameModeAndInitializePlayers(string gameMode)
+        {
+            if (GlobalConstants.HumanVsHuman  == gameMode)
+            {
+                InitializeHumanPlayers();
+            }
+            else
+            {
+                InitializeHumanVsCompuerPlayers();
+            }
+        }
+
+        private void SetUp(string gameMode)
+        {
+            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
+            string marker = Prompt.GetInput(MessagePrinter.AskPlayerForMarker, Validator.Marker);
+            SetPlayerMarker(FirstPlayer(), marker);
+            SetSecondPlayerName();
+            SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
+            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
        
         private Player Moves()
@@ -40,6 +64,25 @@ namespace TicTacToe
             return currentPlayer;
         }
 
+        public void WonOrTiedMessage(Player lastPlayerToMove)
+        {
+            if (Rules.Won(board.spaces))
+            {
+                MessagePrinter.Winner(PlayerName(lastPlayerToMove));
+            }
+            else
+            {
+                MessagePrinter.Tied();
+            }
+        }
+
+        private void Turn(Player currentPlayer)
+        {
+            MessagePrinter.PrintBoard(board.spaces);
+            int move = currentPlayer.Move(board.spaces);
+            MarkBoard(board, move, currentPlayer.marker);
+        }
+
         private void SetSecondPlayerName()
         {
             bool twoPlayerGame =  SecondPlayer() is Human;
@@ -52,16 +95,6 @@ namespace TicTacToe
             {
                 SecondPlayer().AssignName("Johnny 5");
             }
-        }
-
-        public void SetUp(string gameMode)
-        {
-            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            string marker = Prompt.GetInput(MessagePrinter.AskPlayerForMarker, Validator.Marker);
-            SetPlayerMarker(FirstPlayer(), marker);
-            SetSecondPlayerName();
-            SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
-            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
 
         private void InitializeHumanPlayers()
@@ -83,39 +116,13 @@ namespace TicTacToe
             }
         }
 
-        public void ReadGameModeAndInitializePlayers(string gameMode)
+        public void AssignTurnOrder(string turnOrder)
         {
-            if (GlobalConstants.HumanVsHuman  == gameMode)
+            if (turnOrder == "2")
             {
-                InitializeHumanPlayers();
-            }
-            else
-            {
-                InitializeHumanVsCompuerPlayers();
+                players = new Player[] { SecondPlayer(), FirstPlayer() };
             }
         }
-
-        public void Start()
-        {
-            string gameMode = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode);
-            ReadGameModeAndInitializePlayers(gameMode);
-            SetUp(gameMode);
-            Player lastPlayerToMove = Moves();
-            WonOrTiedMessage(lastPlayerToMove);
-        }
-
-        public void WonOrTiedMessage(Player lastPlayerToMove)
-        {
-            if (Rules.Won(board.spaces))
-            {
-                MessagePrinter.Winner(PlayerName(lastPlayerToMove));
-            }
-            else
-            {
-                MessagePrinter.Tied();
-            }
-        }
-
 
         public Player FirstPlayer()
         {
@@ -151,15 +158,6 @@ namespace TicTacToe
         {
             board.Mark(space, marker);
         }
-
-        public void AssignTurnOrder(string turnOrder)
-        {
-            if (turnOrder == "2")
-            {
-                players = new Player[] { SecondPlayer(), FirstPlayer() };
-            }
-        }
-
 
     }
 }
