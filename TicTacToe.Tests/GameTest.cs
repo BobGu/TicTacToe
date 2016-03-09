@@ -37,10 +37,16 @@ namespace TicTacToe.Tests
         [Test]
         public void GameSetAndReturnPlayerPiece()
         {
-            string piece = "X";
+            string marker = "X";
             Player player = new Human();
-            game.SetPlayerMarker(player, piece);
-            Assert.AreEqual(piece, game.PlayerMarker(player));
+            game.SetPlayerMarker(player, marker);
+            Assert.AreEqual(marker , game.PlayerMarker(player));
+        }
+
+        [Test]
+        public void ReturnsTheOppositeMarker()
+        {
+            Assert.AreEqual("O", Game.OppositeMarker("X"));
         }
 
     }

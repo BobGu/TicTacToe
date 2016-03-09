@@ -47,7 +47,7 @@ namespace TicTacToe
             string marker = Prompt.GetInput(MessageHandler.AskPlayerForMarker, Validator.Marker);
             SetPlayerMarker(FirstPlayer(), marker);
             SetSecondPlayerName();
-            SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
+            SetPlayerMarker(SecondPlayer(), OppositeMarker(PlayerMarker(FirstPlayer())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
         }
        
@@ -159,5 +159,9 @@ namespace TicTacToe
             board.Mark(space, marker);
         }
 
+        public static string OppositeMarker(string marker)
+        {
+            return marker == GlobalConstants.XMarker ? GlobalConstants.OMarker : GlobalConstants.XMarker; 
+        }
     }
 }
