@@ -65,7 +65,7 @@ namespace TicTacToe
 
         private string[] FilterSetForEmptySpaces(string[] set)
         {
-            return set.Where(space => !BoardEvaluator.IsNotAnEmptySpace(space)).ToArray();
+            return set.Where(space => BoardEvaluator.IsAnEmptySpace(space)).ToArray();
         }
 
     }

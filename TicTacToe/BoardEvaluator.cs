@@ -7,19 +7,19 @@ namespace TicTacToe
 {
     public class BoardEvaluator
     {
-        public static bool IsNotAnEmptySpace(string space)
+        public static bool IsAnEmptySpace(string space)
         {
-            return space == GlobalConstants.XMarker || space == GlobalConstants.OMarker;
+            return space != GlobalConstants.XMarker && space != GlobalConstants.OMarker;
         }
 
         public static bool AllSpacesNotEmpty(string[] spaces)
         {
-            return spaces.All(space => IsNotAnEmptySpace(space));
+            return spaces.All(space => !IsAnEmptySpace(space));
         }
 
         public static string[] AvailableSpaces(string[] spaces)
         {
-            return spaces.Where(space => !IsNotAnEmptySpace(space)).ToArray();
+            return spaces.Where(space => IsAnEmptySpace(space)).ToArray();
         }
 
         public static bool AnySetsTheSame(string[] spaces)

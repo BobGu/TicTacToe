@@ -40,7 +40,7 @@ namespace TicTacToe
 
         private static bool MoveIsInboundsAndSpaceIsEmpty(int index, string[] spaces)
         {
-            return InBoundsMove(index, spaces.Length) && !BoardEvaluator.IsNotAnEmptySpace(spaces[index]);
+            return InBoundsMove(index, spaces.Length) && BoardEvaluator.IsAnEmptySpace(spaces[index]);
         }
 
         private static bool InBoundsMove(int index, int spacesLength)

@@ -11,16 +11,16 @@ namespace TicTacToeTests
         public void SpaceThatReturnMarkersAreNotEmpty()
         {
             string space = "X";
-            bool result = BoardEvaluator.IsNotAnEmptySpace(space);
-            Assert.IsTrue(result);
+            bool result = BoardEvaluator.IsAnEmptySpace(space);
+            Assert.IsFalse(result);
         }
 
         [Test]
         public void SpaceThatReturnsANonMarkerIsNotEmpty()
         {
             string space = "4";
-            bool result = BoardEvaluator.IsNotAnEmptySpace(space);
-            Assert.IsFalse(result);
+            bool result = BoardEvaluator.IsAnEmptySpace(space);
+            Assert.IsTrue(result);
         }
 
         [Test]
