@@ -29,7 +29,7 @@ namespace TicTacToe
             WonOrTiedMessage(lastPlayerToMove);
         }
 
-        public void ReadGameModeAndInitializePlayers(string gameMode)
+        private void ReadGameModeAndInitializePlayers(string gameMode)
         {
             if (GlobalConstants.HumanVsHuman  == gameMode)
             {

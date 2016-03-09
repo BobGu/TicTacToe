@@ -43,24 +43,6 @@ namespace TicTacToe.Tests
             Assert.AreEqual(piece, game.PlayerMarker(player));
         }
 
-        [Test]
-        public void GamesPlayersAreHumanIfHumanvsHumanGame()
-        {
-            game.ReadGameModeAndInitializePlayers("HH");
-            Assert.IsInstanceOf(typeof(Human), game.FirstPlayer());
-            Assert.IsInstanceOf(typeof(Human), game.SecondPlayer());
-        }
-
-        [Test]
-        public void GamesSecondPlayerIsComputerIfComputerVsComputerGameMode()
-        {
-            TestHelper.TestHelper.SetInput("E");
-            game.ReadGameModeAndInitializePlayers("HC");
-            Assert.IsInstanceOf(typeof(Computer), game.SecondPlayer());
-        }
-
-        
-
     }
     
 }
