@@ -46,7 +46,7 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Get_Turn_Order()
+        public void GetTurnOrder()
         {
             TestHelper.SetInput("1\n");
             string turnOrder = Prompt.GetTurnOrder("Bob");
@@ -54,7 +54,7 @@ namespace TicTacToeTest
         }
 
         [Test]
-        public void Does_Not_Accept_An_Invalid_Turn_Order()
+        public void DoesNotAcceptAnInvalid_Turn_Order()
         {
             TestHelper.SetInput("3\n2\n");
             string turnOrder = Prompt.GetTurnOrder("Robert");

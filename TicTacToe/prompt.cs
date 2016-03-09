@@ -33,21 +33,15 @@ namespace TicTacToe
         {
             MessagePrinter.AskPlayerForMove(name);
             string move = Console.ReadLine();
-            int index;
-            if (!Int32.TryParse(move, out index))
-            {
-                Console.WriteLine(move + " is not a valid input");
-                return GetPlayerMove(name, spaces);
-            }
 
-            if (!Validator.Move(index, spaces))
+            if (!Validator.Move(move, spaces))
             {
                 Console.WriteLine(move + " is not a valid input");
                 return GetPlayerMove(name, spaces);
             }
             else
             {
-                return index;
+                return ConvertMoveToIndex(move);
             }
 
         }
@@ -113,6 +107,11 @@ namespace TicTacToe
             {
                 return input;
             }
+        }
+
+        private static int ConvertMoveToIndex(string move)
+        {
+            return Int32.Parse(move);
         }
 
     }
