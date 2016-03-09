@@ -22,7 +22,7 @@ namespace TicTacToe
 
         public void Start()
         {
-            string gameMode = Prompt.GetInput(MessagePrinter.AskPlayerForGameMode, Validator.GameMode);
+            string gameMode = Prompt.GetInput(MessageHandler.AskPlayerForGameMode, Validator.GameMode);
             ReadGameModeAndInitializePlayers(gameMode);
             SetUp(gameMode);
             Player lastPlayerToMove = Moves();
@@ -44,7 +44,7 @@ namespace TicTacToe
         private void SetUp(string gameMode)
         {
             SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            string marker = Prompt.GetInput(MessagePrinter.AskPlayerForMarker, Validator.Marker);
+            string marker = Prompt.GetInput(MessageHandler.AskPlayerForMarker, Validator.Marker);
             SetPlayerMarker(FirstPlayer(), marker);
             SetSecondPlayerName();
             SetPlayerMarker(SecondPlayer(), Helper.OppositeMarker(PlayerMarker(FirstPlayer())));
@@ -60,7 +60,7 @@ namespace TicTacToe
                 currentPlayer = currentPlayer == FirstPlayer() ? SecondPlayer() : FirstPlayer();
                 Turn(currentPlayer);
             }
-                MessagePrinter.PrintBoard(board.spaces);
+                MessageHandler.PrintBoard(board.spaces);
             return currentPlayer;
         }
 
@@ -68,17 +68,17 @@ namespace TicTacToe
         {
             if (Rules.Won(board.spaces))
             {
-                MessagePrinter.Winner(PlayerName(lastPlayerToMove));
+                MessageHandler.Winner(PlayerName(lastPlayerToMove));
             }
             else
             {
-                MessagePrinter.Tied();
+                MessageHandler.Tied();
             }
         }
 
         private void Turn(Player currentPlayer)
         {
-            MessagePrinter.PrintBoard(board.spaces);
+            MessageHandler.PrintBoard(board.spaces);
             int move = currentPlayer.Move(board.spaces);
             MarkBoard(board, move, currentPlayer.marker);
         }
@@ -104,7 +104,7 @@ namespace TicTacToe
 
         private void InitializeHumanVsCompuerPlayers()
         {
-            string strategyLevel= Prompt.GetInput(MessagePrinter.AskPlayerForStrategyLevel, Validator.StrategyLevel);
+            string strategyLevel= Prompt.GetInput(MessageHandler.AskPlayerForStrategyLevel, Validator.StrategyLevel);
 
             if (strategyLevel == GlobalConstants.EasyStrategy) 
             {

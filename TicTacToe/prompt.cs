@@ -10,18 +10,18 @@ namespace TicTacToe
     {
         public static string GetPlayerName()
         {
-            MessagePrinter.AskPlayerForName();
-            return Console.ReadLine();
+            MessageHandler.AskPlayerForName();
+            return MessageHandler.ReadInput();
         }
 
         public static int GetPlayerMove(string name, string[] spaces)
         {
-            MessagePrinter.AskPlayerForMove(name);
-            string move = Console.ReadLine();
+            MessageHandler.AskPlayerForMove(name);
+            string move = MessageHandler.ReadInput();
 
             if (!Validator.Move(move, spaces))
             {
-                MessagePrinter.Invalid(move);
+                MessageHandler.Invalid(move);
                 return GetPlayerMove(name, spaces);
             }
             else
@@ -33,11 +33,11 @@ namespace TicTacToe
 
         public static string GetTurnOrder(string name)
         {
-            MessagePrinter.AskForTurnOrder(name);
-            string turnOrder = Console.ReadLine();
+            MessageHandler.AskForTurnOrder(name);
+            string turnOrder = MessageHandler.ReadInput();
             if (!Validator.TurnOrder(turnOrder))
             {
-                MessagePrinter.Invalid(turnOrder);
+                MessageHandler.Invalid(turnOrder);
                 return GetTurnOrder(name);
             }
             else
@@ -50,10 +50,10 @@ namespace TicTacToe
         public static string GetInput(Action message, Func<string, bool> validator)
         {
             message();
-            string input = Console.ReadLine();
+            string input = MessageHandler.ReadInput();
             if(!validator(input))
             {
-                MessagePrinter.Invalid(input);
+                MessageHandler.Invalid(input);
                 return GetInput(message, validator);
             }
 

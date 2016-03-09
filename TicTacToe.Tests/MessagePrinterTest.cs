@@ -20,7 +20,7 @@ namespace TicTacToeTests
         public void MessageFactoryAskForMove()
         {
             StringWriter sw = CaptureTheOutput();
-            MessagePrinter.AskPlayerForMove("Robert");
+            MessageHandler.AskPlayerForMove("Robert");
             StringAssert.Contains("Where would you like to move Robert?", sw.ToString());
         }
 
@@ -28,7 +28,7 @@ namespace TicTacToeTests
         public void MessageFactoryAskForAName()
         {
             StringWriter sw = CaptureTheOutput();
-            MessagePrinter.AskPlayerForName();
+            MessageHandler.AskPlayerForName();
             StringAssert.Contains("What is your name?", sw.ToString());
         }
 
@@ -36,7 +36,7 @@ namespace TicTacToeTests
         public void MessageFactoryAskForAMarker()
         {
             StringWriter sw = CaptureTheOutput();
-            MessagePrinter.AskPlayerForMarker();
+            MessageHandler.AskPlayerForMarker();
             StringAssert.Contains("What piece would you like to be, X or O?", sw.ToString());
         }
 
@@ -44,7 +44,7 @@ namespace TicTacToeTests
         public void MessageFactoryAskForTurnOrder()
         {
             StringWriter sw = CaptureTheOutput();
-            MessagePrinter.AskForTurnOrder("Tony");
+            MessageHandler.AskForTurnOrder("Tony");
             string expected = "Type 1 if you would like Tony to go first, and 2 to go second";
             StringAssert.Contains(expected, sw.ToString());
         }
@@ -54,7 +54,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            MessagePrinter.PrintBoard(spaces);
+            MessageHandler.PrintBoard(spaces);
             string expected =
                 @"              
 
@@ -74,7 +74,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
-            MessagePrinter.PrintBoard(spaces);
+            MessageHandler.PrintBoard(spaces);
             string expected =
                 @"              
 
@@ -95,7 +95,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string winnersMessage = "Robert has won the game";
-            MessagePrinter.Winner("Robert");
+            MessageHandler.Winner("Robert");
             StringAssert.Contains(winnersMessage, sw.ToString());
         }
 
@@ -104,7 +104,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string tiedMessage = "The game is a tie";
-            MessagePrinter.Tied();
+            MessageHandler.Tied();
             StringAssert.Contains(tiedMessage, sw.ToString()); 
         }
 
@@ -113,7 +113,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string invalidMessage = "P is not a valid input";
-            MessagePrinter.Invalid("P");
+            MessageHandler.Invalid("P");
             StringAssert.Contains(invalidMessage, sw.ToString());
         }
 
@@ -122,7 +122,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string gameModeMessage = "Type in hh to play human vs human, and hc for human vs computer";
-            MessagePrinter.AskPlayerForGameMode();
+            MessageHandler.AskPlayerForGameMode();
             StringAssert.Contains(gameModeMessage, sw.ToString());
         }
 
@@ -131,7 +131,7 @@ namespace TicTacToeTests
         {
             StringWriter sw = CaptureTheOutput();
             string message = "Type in E for easy or H for hard difficulty";
-            MessagePrinter.AskPlayerForStrategyLevel();
+            MessageHandler.AskPlayerForStrategyLevel();
             StringAssert.Contains(message, sw.ToString());
         }
     }

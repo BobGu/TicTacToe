@@ -2,7 +2,7 @@
 
 namespace TicTacToe
 {
-    public class MessagePrinter
+    public class MessageHandler
     {
         public static void AskPlayerForName()
         {
@@ -65,6 +65,11 @@ namespace TicTacToe
         public static void AskPlayerForStrategyLevel()
         {
             Console.WriteLine("Type in E for easy or H for hard difficulty");
+        }
+
+        public static string ReadInput()
+        {
+            return Console.ReadLine();
         }
     }
 }
