@@ -17,7 +17,7 @@ namespace TicTacToe
             }
 
             maximizingPlayer = !maximizingPlayer;
-            string oppositeMarker = Game.OppositeMarker(marker);
+            string oppositeMarker = OppositeMarker.Marker(marker);
             List<string[]> children = FindNextBoards(spaces, oppositeMarker);
 
             if (maximizingPlayer)

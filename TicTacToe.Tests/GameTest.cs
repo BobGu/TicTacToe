@@ -43,11 +43,6 @@ namespace TicTacToe.Tests
             Assert.AreEqual(marker , game.PlayerMarker(player));
         }
 
-        [Test]
-        public void ReturnsTheOppositeMarker()
-        {
-            Assert.AreEqual("O", Game.OppositeMarker("X"));
-        }
 
     }
     

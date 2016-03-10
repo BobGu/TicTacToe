@@ -121,6 +121,7 @@
     <Compile Include="ComputerTest.cs" />
     <Compile Include="EasyStrategyTest.cs" />
     <Compile Include="MinimaxTest.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>

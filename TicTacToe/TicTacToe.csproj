@@ -71,6 +71,7 @@
     <Compile Include="BoardEvaluator.cs" />
     <Compile Include="MessageHandler.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="OppositeMarker.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
