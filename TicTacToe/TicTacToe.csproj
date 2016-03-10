@@ -59,24 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Computer.cs" />
-    <Compile Include="EasyStrategy.cs" />
-    <Compile Include="GlobalConstants.cs" />
-    <Compile Include="HardStrategy.cs" />
-    <Compile Include="Human.cs" />
-    <Compile Include="IComputerStrategy.cs" />
-    <Compile Include="Minimax.cs" />
-    <Compile Include="MyExtensions\ArrayExtensions.cs" />
-    <Compile Include="Board.cs" />
-    <Compile Include="BoardEvaluator.cs" />
-    <Compile Include="MessageHandler.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="OppositeMarker.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Prompt.cs" />
+    <Compile Include="Games\Players\Computer.cs" />
+    <Compile Include="Games\Players\Strategies\EasyStrategy.cs" />
+    <Compile Include="GlobalConstants\GlobalConstant.cs" />
+    <Compile Include="Games\Players\Strategies\HardStrategy.cs" />
+    <Compile Include="Games\Players\Human.cs" />
+    <Compile Include="Games\Players\Strategies\IComputerStrategy.cs" />
+    <Compile Include="Games\Players\Strategies\Minimax.cs" />
+    <Compile Include="Games\RulesAndEvalutator\ArrayExtensions.cs" />
+    <Compile Include="Games\Board.cs" />
+    <Compile Include="Games\RulesAndEvalutator\BoardEvaluator.cs" />
+    <Compile Include="Games\IOValidator\MessageHandler.cs" />
+    <Compile Include="Games\Game.cs" />
+    <Compile Include="Games\OppositeMarkers\OppositeMarker.cs" />
+    <Compile Include="Games\Players\Player.cs" />
+    <Compile Include="Games\IOValidator\Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="Games\RulesAndEvalutator\Rules.cs" />
+    <Compile Include="Games\IOValidator\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

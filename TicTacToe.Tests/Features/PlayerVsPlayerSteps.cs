@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
 using TechTalk.SpecFlow;
-using TicTacToe;
 using System.IO;
 using NUnit.Framework;
-using System.Text.RegularExpressions;
+using TicTacToe.Games;
 using TicTacToe.Tests.TestHelper;
 
 namespace UnitTestProject1
