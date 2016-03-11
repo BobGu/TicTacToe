@@ -96,7 +96,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BoardTest.cs" />
+    <Compile Include="Games\BoardTest.cs" />
     <Compile Include="Features\PlayerVsComputerSteps.cs" />
     <Compile Include="Features\PlayerVsPlayer.feature.cs">
       <AutoGen>True</AutoGen>
@@ -108,21 +108,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PlayerVsComputer.feature</DependentUpon>
     </Compile>
-    <Compile Include="HumanTest.cs" />
-    <Compile Include="MessagePrinterTest.cs" />
+    <Compile Include="Games\Players\HumanTest.cs" />
+    <Compile Include="Games\IOValidator\MessageHandlerTest.cs" />
     <Compile Include="Features\PlayerVsPlayerSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GameTest.cs" />
-    <Compile Include="BoardEvaluatorTest.cs" />
-    <Compile Include="PromptTest.cs" />
+    <Compile Include="Games\GameTest.cs" />
+    <Compile Include="Games\RulesAndEvaluator\BoardEvaluatorTest.cs" />
+    <Compile Include="Games\IOValidator\PromptTest.cs" />
     <Compile Include="TestHelper\TestHelper.cs" />
-    <Compile Include="HardStrategyTest.cs" />
-    <Compile Include="RulesTest.cs" />
-    <Compile Include="ComputerTest.cs" />
-    <Compile Include="EasyStrategyTest.cs" />
-    <Compile Include="MinimaxTest.cs" />
-    <Compile Include="UnitTest1.cs" />
-    <Compile Include="ValidatorTest.cs" />
+    <Compile Include="Games\Players\Strategies\HardStrategyTest.cs" />
+    <Compile Include="Games\RulesAndEvaluator\RulesTest.cs" />
+    <Compile Include="Games\Players\ComputerTest.cs" />
+    <Compile Include="Games\Players\Strategies\EasyStrategyTest.cs" />
+    <Compile Include="Games\Players\Strategies\MinimaxTest.cs" />
+    <Compile Include="Games\OppositeMarkers\OppositeMarker.cs" />
+    <Compile Include="Games\IOValidator\ValidatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj">
