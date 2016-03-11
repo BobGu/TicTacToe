@@ -5,13 +5,14 @@ using TicTacToe.Games.Players.Strategies;
 using TicTacToe.Games.RulesAndEvaluator;
 using TicTacToe.Games.IOValidator;
 using TicTacToe.GlobalConstants;
-using TicTacToe.Games.OppositeMarkers;
+using TicTacToe.Games.Setups;
 
 namespace TicTacToe.Games
 {
     public class Game
     {
         private Board board;
+        private PlayerSetup setup;
         private Player[] players;
 
         public static void Main()
@@ -29,9 +30,16 @@ namespace TicTacToe.Games
         {
             string gameMode = Prompt.GetInput(MessageHandler.AskPlayerForGameMode, Validator.GameMode);
             ReadGameModeAndInitializePlayers(gameMode);
-            SetUp(gameMode);
+            PlayerSetup(gameMode);
             Player lastPlayerToMove = Moves();
             WonOrTiedMessage(lastPlayerToMove);
+        }
+
+        private void PlayerSetup(string gameMode)
+        {
+            setup = new PlayerSetup(players);
+            setup.Setup(gameMode);
+            players = setup.players;
         }
 
         private void ReadGameModeAndInitializePlayers(string gameMode)
@@ -46,16 +54,6 @@ namespace TicTacToe.Games
             }
         }
 
-        private void SetUp(string gameMode)
-        {
-            SetPlayerName(FirstPlayer(), Prompt.GetPlayerName());
-            string marker = Prompt.GetInput(MessageHandler.AskPlayerForMarker, Validator.Marker);
-            SetPlayerMarker(FirstPlayer(), marker);
-            SetSecondPlayerName();
-            SetPlayerMarker(SecondPlayer(), OppositeMarker.Marker(PlayerMarker(FirstPlayer())));
-            AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(FirstPlayer())));
-        }
-       
         private Player Moves()
         {
             Player currentPlayer = FirstPlayer();
@@ -69,11 +67,11 @@ namespace TicTacToe.Games
             return currentPlayer;
         }
 
-        public void WonOrTiedMessage(Player lastPlayerToMove)
+        private void WonOrTiedMessage(Player lastPlayerToMove)
         {
             if (Rules.Won(board.spaces))
             {
-                MessageHandler.Winner(PlayerName(lastPlayerToMove));
+                MessageHandler.Winner(lastPlayerToMove.name);
             }
             else
             {
@@ -88,19 +86,6 @@ namespace TicTacToe.Games
             MarkBoard(board, move, currentPlayer.marker);
         }
 
-        private void SetSecondPlayerName()
-        {
-            bool twoPlayerGame =  SecondPlayer() is Human;
-
-            if(twoPlayerGame)
-            {
-                SetPlayerName(SecondPlayer(), Prompt.GetPlayerName());
-            }
-            else
-            {
-                SecondPlayer().AssignName("Johnny 5");
-            }
-        }
 
         private void InitializeHumanPlayers()
         {
@@ -121,45 +106,17 @@ namespace TicTacToe.Games
             }
         }
 
-        public void AssignTurnOrder(string turnOrder)
-        {
-            if (turnOrder == "2")
-            {
-                players = new Player[] { SecondPlayer(), FirstPlayer() };
-            }
-        }
-
-        public Player FirstPlayer()
+        private Player FirstPlayer()
         {
             return players.First();
         }
 
-        public Player SecondPlayer()
+        private Player SecondPlayer()
         {
             return players.Last();
         }
 
-        public void SetPlayerName(Player player, string name)
-        {
-            player.AssignName(name);
-        }
-
-        public string PlayerName(Player player)
-        {
-            return player.name;
-        }
-
-        public void SetPlayerMarker(Player player, string marker)
-        {
-            player.AssignMarker(marker);
-        }
-
-        public string PlayerMarker(Player player)
-        {
-            return player.marker;
-        }
-
-        public void MarkBoard(Board board, int space, string marker)
+        private void MarkBoard(Board board, int space, string marker)
         {
             board.Mark(space, marker);
         }

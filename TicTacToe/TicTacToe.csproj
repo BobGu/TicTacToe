@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Games\Players\Computer.cs" />
     <Compile Include="Games\Players\Strategies\EasyStrategy.cs" />
+    <Compile Include="Games\Setups\PlayerSetup.cs" />
     <Compile Include="GlobalConstants\GlobalConstant.cs" />
     <Compile Include="Games\Players\Strategies\HardStrategy.cs" />
     <Compile Include="Games\Players\Human.cs" />
