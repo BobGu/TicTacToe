@@ -29,10 +29,14 @@ namespace TicTacToe.Games.RulesAndEvaluator
 
         public static string[][] RowsColumnsDiagonals(string[] spaces)
         {
-            string[][] rowsColumnsDiagonals = new string[8][];
+            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
+            int lengthOfRow = Convert.ToInt32(squareRootOfBoardLength);
+            int numberOfRowsColumnsDiagoals = lengthOfRow + lengthOfRow + 2;
+
+            string[][] rowsColumnsDiagonals = new string[numberOfRowsColumnsDiagoals][];
             Rows(spaces).CopyTo(rowsColumnsDiagonals, 0);
-            Columns(spaces).CopyTo(rowsColumnsDiagonals, 3);
-            Diagonals(spaces).CopyTo(rowsColumnsDiagonals, 6);
+            Columns(spaces).CopyTo(rowsColumnsDiagonals, lengthOfRow);
+            Diagonals(spaces).CopyTo(rowsColumnsDiagonals, lengthOfRow + lengthOfRow);
             return rowsColumnsDiagonals;
         } 
 
@@ -43,9 +47,7 @@ namespace TicTacToe.Games.RulesAndEvaluator
 
         private static string[][] Rows(string[] spaces)
         {
-
-            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
-            int lengthOfRow = Convert.ToInt32(squareRootOfBoardLength);
+            int lengthOfRow = WidthOfBoard(spaces);
             string[][] rows = new string[lengthOfRow][];
 
             for (int i = 0; i < lengthOfRow; i += 1)
@@ -56,10 +58,9 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return rows;
         }
 
-        public static string[][] Columns(string[] spaces)
+        private static string[][] Columns(string[] spaces)
         {
-            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
-            int lengthOfColumn = Convert.ToInt32(squareRootOfBoardLength);
+            int lengthOfColumn = WidthOfBoard(spaces);
             string[][] columns = new string[lengthOfColumn][];
 
             for(int i = 0; i < lengthOfColumn; i += 1)
@@ -80,10 +81,49 @@ namespace TicTacToe.Games.RulesAndEvaluator
         private static string[][] Diagonals(string[] spaces)
         {
             string[][] diagonals = new string[2][];
-            diagonals[0] = new string[] { spaces[0], spaces[4], spaces[8] };
-            diagonals[1] = new string[] { spaces[2], spaces[4], spaces[6] };
+            int lengthOfDiagonal = WidthOfBoard(spaces);
+
+            diagonals[0] = FirstDiagonal(spaces);
+            diagonals[1] = SecondDiagonal(spaces);
+
             return diagonals;
         }
+
+        private static int WidthOfBoard(string[] spaces)
+        {
+            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
+            return Convert.ToInt32(squareRootOfBoardLength);
+        }
+
+        private static string[] FirstDiagonal(string[] spaces)
+        {
+            int lengthOfDiagonal = WidthOfBoard(spaces);
+            int numberOfSpacesBetweenNextIndex = lengthOfDiagonal + 1;
+            string[] diagonal = new string[lengthOfDiagonal];
+
+            for(int j = 0; j < lengthOfDiagonal; j += 1)
+            {
+                int index = j * numberOfSpacesBetweenNextIndex;
+                diagonal[j] = spaces[index];
+            }
+
+            return diagonal;
+        }
+        private static string[] SecondDiagonal(string[] spaces)
+        {
+            int lengthOfDiagonal = WidthOfBoard(spaces);
+            int numberOfSpacesBetweenNextIndex = lengthOfDiagonal + -1;
+            string[] diagonal = new string[lengthOfDiagonal];
+
+            for(int j = 0; j < lengthOfDiagonal; j += 1)
+            {
+                int index = numberOfSpacesBetweenNextIndex + (j * numberOfSpacesBetweenNextIndex);
+                diagonal[j] = spaces[index];
+            }
+
+            return diagonal;
+        }
+
 
     }
 

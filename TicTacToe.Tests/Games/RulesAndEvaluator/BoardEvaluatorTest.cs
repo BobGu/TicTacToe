@@ -65,36 +65,19 @@ namespace TicTacToe.Tests.Games.RulesAndEvaluator
                                "8", "9", "10", "11",
                                "12", "13", "14", "15"};
 
-            string[][] rowsColumnsDiagonals = new String[12][];
+            string[][] rowsColumnsDiagonals = new String[10][];
             rowsColumnsDiagonals[0] = new string[] { "0", "1", "2", "3" };
             rowsColumnsDiagonals[1] = new string[] { "4", "5", "6", "7" };
             rowsColumnsDiagonals[2] = new string[] { "8", "9", "10", "11" };
             rowsColumnsDiagonals[3] = new string[] { "12", "13", "14", "15" };
             rowsColumnsDiagonals[4] = new string[] { "0", "4", "8", "12" };
-            rowsColumnsDiagonals[5] = new string[] { "1", "5", "0", "13" };
+            rowsColumnsDiagonals[5] = new string[] { "1", "5", "9", "13" };
             rowsColumnsDiagonals[6] = new string[] { "2", "6", "10", "14" };
             rowsColumnsDiagonals[7] = new string[] { "3", "7", "11", "15" };
             rowsColumnsDiagonals[8] = new string[] { "0", "5", "10", "15" };
             rowsColumnsDiagonals[9] = new string[] { "3", "6", "9", "12" };
 
             CollectionAssert.AreEqual(rowsColumnsDiagonals, BoardEvaluator.RowsColumnsDiagonals(spaces));
-        }
-
-        [Test]
-        public void ReturnsColumnsReagardlessOfBoardSize()
-        {
-            string[] spaces = {"0", "1", "2", "3",
-                               "4", "5", "6", "7",
-                               "8", "9", "10", "11",
-                               "12", "13", "14", "15"};
-
-            string[][] columns = new String[4][];
-            columns[0] = new string[] { "0", "4", "8", "12" };
-            columns[1] = new string[] { "1", "5", "9", "13" };
-            columns[2] = new string[] { "2", "6", "10", "14" };
-            columns[3] = new string[] { "3", "7", "11", "15" };
-
-            CollectionAssert.AreEqual(columns, BoardEvaluator.Columns(spaces));
         }
 
         [Test]
