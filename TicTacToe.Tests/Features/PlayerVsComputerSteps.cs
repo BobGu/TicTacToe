@@ -77,7 +77,7 @@ namespace UnitTestProject1.Features
         [Given(@"all other info is entered for the game")]
         public void GivenAllOtherInfoIsEnteredForTheGame()
         {
-            gameInput = gameInput + "0\n1\n2\n3\n4\n5\n6\n7\n8\n";
+            gameInput = gameInput + "3\n0\n1\n2\n3\n4\n5\n6\n7\n8\n";
         }
 
         [Then(@"I expect the computer player to be asked for their name")]
@@ -85,7 +85,7 @@ namespace UnitTestProject1.Features
         {
             EnterInputRunGameStartCaptureOutput();
             string expect = "Where would you like to move Johnny 5?";
-            StringAssert.Contains(expect, gameOutput[15]);
+            StringAssert.Contains(expect, gameOutput[16]);
         }
     }
 }

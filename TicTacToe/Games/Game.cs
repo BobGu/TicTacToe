@@ -12,13 +12,8 @@ namespace TicTacToe.Games
     public class Game
     {
         private Board board;
-        private PlayerSetup setup;
+        private Setup setup;
         private Player[] players;
-
-        public Game()
-        {
-            board = new Board();
-        }
 
         public static void Main()
         {
@@ -30,16 +25,17 @@ namespace TicTacToe.Games
         {
             string gameMode = Prompt.GetInput(MessageHandler.AskPlayerForGameMode, Validator.GameMode);
             ReadGameModeAndInitializePlayers(gameMode);
-            PlayerSetup(gameMode);
+            Setup(gameMode);
             Player lastPlayerToMove = Moves();
             WonOrTiedMessage(lastPlayerToMove);
         }
 
-        private void PlayerSetup(string gameMode)
+        private void Setup(string gameMode)
         {
-            setup = new PlayerSetup(players);
-            setup.Setup(gameMode);
+            setup = new Setup(players);
+            setup.Start(gameMode);
             players = setup.players;
+            board = new Board(setup.GetBoardDimmensions());
         }
 
         private void ReadGameModeAndInitializePlayers(string gameMode)

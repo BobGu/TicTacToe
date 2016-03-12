@@ -11,9 +11,9 @@ namespace TicTacToe.Games
 
         public string[] spaces { get; }
 
-        public Board()
+        public Board(int boardDimmensions)
         {
-            spaces = new string[] { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
+            spaces = CreateSpaces(boardDimmensions);
         }
         
         public void Mark(int space, string piece)
@@ -25,5 +25,13 @@ namespace TicTacToe.Games
         {
             return spaces[space];
         }
+
+        private string[] CreateSpaces(int boardDimmensions)
+        {
+            int numberOfSpaces = boardDimmensions * boardDimmensions;
+            int[] intSpaces = Enumerable.Range(0, numberOfSpaces).ToArray();
+            return intSpaces.Select(number => number.ToString()).ToArray();
+        }
+
     }
 }

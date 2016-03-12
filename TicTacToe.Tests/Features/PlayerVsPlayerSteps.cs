@@ -190,12 +190,18 @@ namespace UnitTestProject1
             gameInput = gameInput + "1\n";
         }
 
+        [Given(@"player enters board dimmensions")]
+        public void PlayerEntersBoardDimmensions()
+        {
+            gameInput = gameInput + "3\n";
+        }
+
         [Then(@"I expect player one to be asked where they would like to move")]
         public void IExpectPlayerOneToBeAskedWhereTheyWouldLikeToMove()
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move Robert?";
-            StringAssert.Contains(expected, gameOutput[15]);
+            StringAssert.Contains(expected, gameOutput[16]);
         }
 
         [Given(@"player one chooses to go second")]
@@ -209,7 +215,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move John?";
-            StringAssert.Contains(expected, gameOutput[15]);
+            StringAssert.Contains(expected, gameOutput[16]);
         }
 
         [Given(@"game setup is already done")]
@@ -218,6 +224,7 @@ namespace UnitTestProject1
             Given("the game has started");
             Given("players have entered all their info");
             Given("player one chooses to go first");
+            Given("player enters board dimmensions");
         }
 
         [Given(@"game mode is skipped")]

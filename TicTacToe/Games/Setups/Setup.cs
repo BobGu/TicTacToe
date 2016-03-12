@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using TicTacToe.Games.Players;
 using TicTacToe.Games.IOValidator;
 using TicTacToe.Games.OppositeMarkers;
@@ -6,17 +7,27 @@ using System.Linq;
 
 namespace TicTacToe.Games.Setups
 {
-    public class PlayerSetup
+    public class Setup
     {
         public Player[] players { get; private set; }
-        private Board board;
+        private int boardDimmensions;
 
-        public PlayerSetup(Player[] players)
+        public Setup(Player[] players)
         {
             this.players = players;
         }
 
-        public void Setup(string gameMode)
+        public int GetBoardDimmensions()
+        {
+            return boardDimmensions;
+        }
+
+        public void SetBoardDimmensions(string boardDimmensions)
+        {
+            this.boardDimmensions = Int32.Parse(boardDimmensions);
+        }
+
+        public void Start(string gameMode)
         {
             SetPlayerName(players.First(), Prompt.GetPlayerName());
             string marker = Prompt.GetInput(MessageHandler.AskPlayerForMarker, Validator.Marker);
@@ -24,6 +35,8 @@ namespace TicTacToe.Games.Setups
             SetSecondPlayerName();
             SetPlayerMarker(players.Last(), OppositeMarker.Marker(PlayerMarker(players.First())));
             AssignTurnOrder(Prompt.GetTurnOrder(PlayerName(players.First())));
+            string boardDimmensions = Prompt.GetInput(MessageHandler.AskPlayerForBoardDimmensions, Validator.BoardDimmensions);
+            SetBoardDimmensions(boardDimmensions);
         }
 
         private void SetSecondPlayerName()

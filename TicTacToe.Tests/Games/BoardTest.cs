@@ -11,9 +11,9 @@ namespace TicTacToe.Tests.Games
         Board board;
 
         [SetUp]
-        public void CreateEmptyBoard()
+        public void CreateBoardWithDimmensions()
         {
-            board = new Board();
+            board = new Board(3);
         }
 
         [Test]
@@ -29,7 +29,6 @@ namespace TicTacToe.Tests.Games
             board.Mark(4, "X");
             Assert.AreEqual("X", board.GetSpaceAt(4));
         }
-
 
     }
 }

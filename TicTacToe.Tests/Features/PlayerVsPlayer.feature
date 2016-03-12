@@ -37,6 +37,7 @@ Scenario: Player entering an invalid marker
 	And I enter a valid marker
 	And I enter a second players name
 	And I enter a turn order
+    And player enters board dimmensions 
 	And players have made the necessary moves
 	Then I am told my marker was invalid
 	And I am asked again which marker I would like to be
@@ -45,6 +46,7 @@ Scenario: Player one chooses to go first
     Given the game has started
 	And game setup is already done
 	And player one chooses to go first
+	And player enters board dimmensions
 	And players have made the necessary moves
 	Then I expect player one to be asked where they would like to move
 
@@ -52,6 +54,7 @@ Scenario: Player one chooses to go second
     Given the game has started
 	And players have entered all their info
 	And player one chooses to go second
+	And player enters board dimmensions
 	And players have made the necessary moves
 	Then I expect player two to be asked where they would like to move
 
