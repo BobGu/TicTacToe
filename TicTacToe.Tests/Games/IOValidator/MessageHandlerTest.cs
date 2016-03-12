@@ -135,6 +135,15 @@ namespace TicTacToe.Tests.Games.IOValidator
             MessageHandler.AskPlayerForStrategyLevel();
             StringAssert.Contains(message, sw.ToString());
         }
+
+        [Test]
+        public void MessageForDimmensionsOfBoard()
+        {
+            StringWriter sw = CaptureTheOutput();
+            string message = "Type in 3 to play on a 3 by 3 board, or 4 for a 4 by 4 board";
+            MessageHandler.AskPlayerForBoardDimmensions();
+            StringAssert.Contains(message, sw.ToString());
+        }
     }
 
 }

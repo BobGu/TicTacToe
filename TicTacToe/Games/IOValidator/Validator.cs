@@ -36,6 +36,11 @@ namespace TicTacToe.Games.IOValidator
             return isANumber ? MoveIsInboundsAndSpaceIsEmpty(index, spaces) : false;
         }
 
+        public static bool BoardDimmensions(string dimmension)
+        {
+            return dimmension == "3" || dimmension == "4";
+        }
+
         private static bool MoveIsInboundsAndSpaceIsEmpty(int index, string[] spaces)
         {
             return InBoundsMove(index, spaces.Length) && BoardEvaluator.IsAnEmptySpace(spaces[index]);

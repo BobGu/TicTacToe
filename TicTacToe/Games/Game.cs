@@ -15,15 +15,15 @@ namespace TicTacToe.Games
         private PlayerSetup setup;
         private Player[] players;
 
+        public Game()
+        {
+            board = new Board();
+        }
+
         public static void Main()
         {
             Game game = new Game();
             game.Start();
-        }
-
-        public Game()
-        {
-            board = new Board();
         }
 
         public void Start()

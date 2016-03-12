@@ -71,5 +71,10 @@ namespace TicTacToe.Games.IOValidator
         {
             return Console.ReadLine();
         }
+
+        public static void AskPlayerForBoardDimmensions()
+        {
+            Console.WriteLine("Type in 3 to play on a 3 by 3 board, or 4 for a 4 by 4 board");
+        }
     }
 }

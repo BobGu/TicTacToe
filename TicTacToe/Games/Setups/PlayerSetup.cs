@@ -9,6 +9,7 @@ namespace TicTacToe.Games.Setups
     public class PlayerSetup
     {
         public Player[] players { get; private set; }
+        private Board board;
 
         public PlayerSetup(Player[] players)
         {

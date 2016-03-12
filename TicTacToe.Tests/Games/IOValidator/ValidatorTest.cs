@@ -84,5 +84,17 @@ namespace TicTacToe.Tests.Games.IOValidator
             Assert.IsTrue(Validator.StrategyLevel("E"));
         }
 
+        [Test]
+        public void ReturnsTrueIfValidBoardDimmensions()
+        {
+            Assert.IsTrue(Validator.BoardDimmensions("3"));
+        }
+
+        [Test]
+        public void ReturnFalseIfNotValidBoardDimmensions()
+        {
+            Assert.IsFalse(Validator.BoardDimmensions("5"));
+        }
+
     }
 }
