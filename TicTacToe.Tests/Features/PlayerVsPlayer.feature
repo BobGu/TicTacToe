@@ -63,6 +63,14 @@ Scenario: Expect to see an empty board
 	And players have made the necessary moves
 	Then I expect the first board to be an empty board
 
+Scenario: I can play a four by four game of tic tac toe
+	Given the game has started
+	And players have entered all their info
+	And player one chooses to go second
+	And I choose a four by four board
+	And players have made the necessary moves
+	Then I expect the first board to be an empty four by four board
+
 Scenario: Player can mark a space
     Given game setup is already done
 	And I choose the center space 

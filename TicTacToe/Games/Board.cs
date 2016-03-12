@@ -8,7 +8,6 @@ namespace TicTacToe.Games
 {
     public class Board
     {
-
         public string[] spaces { get; }
 
         public Board(int boardDimmensions)

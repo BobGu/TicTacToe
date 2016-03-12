@@ -239,19 +239,42 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("I can play a four by four game of tic tac toe")]
+        public virtual void ICanPlayAFourByFourGameOfTicTacToe()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("I can play a four by four game of tic tac toe", ((string[])(null)));
+#line 66
+this.ScenarioSetup(scenarioInfo);
+#line 67
+ testRunner.Given("the game has started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 68
+ testRunner.And("players have entered all their info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 69
+ testRunner.And("player one chooses to go second", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 70
+ testRunner.And("I choose a four by four board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 71
+ testRunner.And("players have made the necessary moves", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 72
+ testRunner.Then("I expect the first board to be an empty four by four board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Player can mark a space")]
         public virtual void PlayerCanMarkASpace()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Player can mark a space", ((string[])(null)));
-#line 66
+#line 74
 this.ScenarioSetup(scenarioInfo);
-#line 67
+#line 75
     testRunner.Given("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 68
+#line 76
  testRunner.And("I choose the center space", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 69
+#line 77
  testRunner.And("players have made the necessary moves", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 70
+#line 78
  testRunner.Then("I expect to see that space marked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -262,17 +285,17 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void SecondPlayerCanMarkASpace()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Second Player can mark a space", ((string[])(null)));
-#line 72
+#line 80
 this.ScenarioSetup(scenarioInfo);
-#line 73
+#line 81
     testRunner.Given("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 74
+#line 82
  testRunner.And("I choose the center space", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 75
+#line 83
  testRunner.And("second player chooses the top left space", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 76
+#line 84
  testRunner.And("players have filled the rest of the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 77
+#line 85
  testRunner.Then("I expect to see the top left space filled with the correct marker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -283,15 +306,15 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void FirstPlayerWins()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("First player wins", ((string[])(null)));
-#line 79
+#line 87
 this.ScenarioSetup(scenarioInfo);
-#line 80
+#line 88
     testRunner.Given("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 81
+#line 89
  testRunner.And("board is setup so player one can win", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 82
+#line 90
  testRunner.And("player one makes a winning move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 83
+#line 91
  testRunner.Then("I expect to see a message congratualting player one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -302,13 +325,13 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void TieGame()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tie game", ((string[])(null)));
-#line 85
+#line 93
 this.ScenarioSetup(scenarioInfo);
-#line 86
+#line 94
     testRunner.Given("game setup is already done", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 87
+#line 95
  testRunner.And("players move so that they are tied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 88
+#line 96
  testRunner.Then("I expect to see a message saying the game is tied", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -57,16 +57,7 @@ namespace TicTacToe.Tests.Games.IOValidator
             string[] spaces= { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
             MessageHandler.PrintBoard(spaces);
             string expected =
-                @"              
-
-                   0   |  1  |  2  |
-                  _____|_____|_____|
-                       |     |     |
-                   3   |  4  |  5  |
-                  _____|_____|_____|
-                       |     |     |
-                   6   |  7  |  8  |
-                  _____|_____|_____|";
+                @"0 |  1 |  2 |";
             StringAssert.Contains(expected, sw.ToString());
         }
 
@@ -77,19 +68,33 @@ namespace TicTacToe.Tests.Games.IOValidator
             string[] spaces= { "X", "O", "2", "3", "4", "5", "6", "7", "8" };
             MessageHandler.PrintBoard(spaces);
             string expected =
-                @"              
-
-                   X   |  O  |  2  |
-                  _____|_____|_____|
-                       |     |     |
-                   3   |  4  |  5  |
-                  _____|_____|_____|
-                       |     |     |
-                   6   |  7  |  8  |
-                  _____|_____|_____|";
+                @"X |  O |  2";
             StringAssert.Contains(expected, sw.ToString());
 
         }
+
+        [Test]
+        public void CanPrintAnySizeBoard()
+        {
+            StringWriter sw = CaptureTheOutput();
+            string[] spaces= { "0", "1", "2", "3",
+                               "4", "5", "6", "7",
+                               "8", "9", "10", "11",
+                               "12", "13", "14", "15" };
+
+            MessageHandler.PrintBoard(spaces);
+            string expected =
+                        @"  0 |  1 |  2 |  3 |
+
+                            4 |  5 |  6 |  7 |
+
+                            8 |  9 |  10 |  11 |
+
+                            12 |  13 |  14 |  15 |";
+                        
+            StringAssert.Contains("15", expected) ;
+        }
+
 
         [Test]
         public void AMessageForTheWinner()

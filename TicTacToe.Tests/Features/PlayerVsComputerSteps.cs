@@ -85,7 +85,7 @@ namespace UnitTestProject1.Features
         {
             EnterInputRunGameStartCaptureOutput();
             string expect = "Where would you like to move Johnny 5?";
-            StringAssert.Contains(expect, gameOutput[16]);
+            StringAssert.Contains(expect, gameOutput[13]);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using TicTacToe.Games.RulesAndEvaluator;
 
 namespace TicTacToe.Games.IOValidator
 {
@@ -26,20 +27,25 @@ namespace TicTacToe.Games.IOValidator
 
         public static void PrintBoard(string[] spaces)
         {
-            Console.WriteLine(string.Format(
-                @"               
+            string board = "";
+            string[][] rows = BoardEvaluator.Rows(spaces);
+            int lengthOfRow = BoardEvaluator.WidthOfBoard(spaces);
 
-                   {0}   |  {1}  |  {2}  |
-                  _____|_____|_____|
-                       |     |     |
-                   {3}   |  {4}  |  {5}  |
-                  _____|_____|_____|
-                       |     |     |
-                   {6}   |  {7}  |  {8}  |
-                  _____|_____|_____|"
-                , spaces[0], spaces[1], spaces[2],
-                spaces[3], spaces[4], spaces[5],
-                spaces[6], spaces[7], spaces[8]));
+            for(int currentRowIndex = 0; currentRowIndex < rows.Length; currentRowIndex += 1)
+            {
+                string row = "";
+                for (int currentSpaceIndex = 0; currentSpaceIndex < rows.Length; currentSpaceIndex += 1)
+                {
+                    int index = currentRowIndex * lengthOfRow + currentSpaceIndex;
+                    row =  string.Format(@"{0} {1} | ", row, spaces[index]);
+                }
+
+                board = string.Format(@"{0}
+
+                                        {1}", board, row);
+            }
+
+            Console.WriteLine(board);
         }
 
         public static void Winner(string name)

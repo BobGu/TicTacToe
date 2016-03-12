@@ -201,7 +201,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move Robert?";
-            StringAssert.Contains(expected, gameOutput[16]);
+            StringAssert.Contains(expected, gameOutput[13]);
         }
 
         [Given(@"player one chooses to go second")]
@@ -215,7 +215,7 @@ namespace UnitTestProject1
         {
             EnterInputRunGameStartCaptureOutput();
             string expected = "Where would you like to move John?";
-            StringAssert.Contains(expected, gameOutput[16]);
+            StringAssert.Contains(expected, gameOutput[13]);
         }
 
         [Given(@"game setup is already done")]
@@ -238,16 +238,7 @@ namespace UnitTestProject1
         {
             string output = EnterInputStartGameBoardOutput();
             string expected =
-                @"               
-
-                   0   |  1  |  2  |
-                  _____|_____|_____|
-                       |     |     |
-                   3   |  4  |  5  |
-                  _____|_____|_____|
-                       |     |     |
-                   6   |  7  |  8  |
-                  _____|_____|_____|";
+                @"0 |  1 |  2 |";
             StringAssert.Contains(expected, output);
 
         }
@@ -264,6 +255,18 @@ namespace UnitTestProject1
             gameInput = gameInput + "0\n1\n2\n3\n4\n5\n6\n7\n8\n";
         }
 
+        [Given(@"I choose a four by four board")]
+        public void IChooseAFourByFourBoard()
+        {
+            gameInput = gameInput + "4\n";
+        }
+
+        [Then(@"I expect the first board to be an empty four by four board")]
+        public void IExpectTheFirstBoardToBeAnEmptyFourByFourBoard()
+        {
+
+        }
+
         [Given(@"I choose the center space")]
         public void IChooseTheCenterSpace()
         {
@@ -274,17 +277,7 @@ namespace UnitTestProject1
         public void IExpectToSeeThatSpaceMarked()
         {
             string output = EnterInputStartGameBoardOutput();
-            string expected =
-                @"               
-
-                   0   |  1  |  2  |
-                  _____|_____|_____|
-                       |     |     |
-                   3   |  X  |  5  |
-                  _____|_____|_____|
-                       |     |     |
-                   6   |  7  |  8  |
-                  _____|_____|_____|";
+            string expected = "3 |  X |  5";
             StringAssert.Contains(expected, output);
         }
 
@@ -299,16 +292,7 @@ namespace UnitTestProject1
         {
             string output = EnterInputStartGameBoardOutput();
             string expected =
-                @"               
-
-                   O   |  1  |  2  |
-                  _____|_____|_____|
-                       |     |     |
-                   3   |  X  |  5  |
-                  _____|_____|_____|
-                       |     |     |
-                   6   |  7  |  8  |
-                  _____|_____|_____|";
+                @" O |  X |  O";
             StringAssert.Contains(expected, output);
         }
 

@@ -45,7 +45,7 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return 1 == spaces.Distinct().Count();
         }
 
-        private static string[][] Rows(string[] spaces)
+        public static string[][] Rows(string[] spaces)
         {
             int lengthOfRow = WidthOfBoard(spaces);
             string[][] rows = new string[lengthOfRow][];
@@ -89,7 +89,7 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return diagonals;
         }
 
-        private static int WidthOfBoard(string[] spaces)
+        public static int WidthOfBoard(string[] spaces)
         {
             double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
             return Convert.ToInt32(squareRootOfBoardLength);
