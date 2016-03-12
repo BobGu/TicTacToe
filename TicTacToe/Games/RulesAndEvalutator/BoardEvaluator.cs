@@ -41,12 +41,15 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return 1 == spaces.Distinct().Count();
         }
 
-        private static string[][] Rows(string[] spaces)
+        public static string[][] Rows(string[] spaces)
         {
-            string[][] rows = new string[3][];
-            for (int i = 0; i < 3; i += 1)
+
+            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
+            int lengthOfRow = Convert.ToInt32(squareRootOfBoardLength);
+            string[][] rows = new string[lengthOfRow][];
+            for (int i = 0; i < lengthOfRow; i += 1)
             {
-                string[] row = spaces.SubArray(i * 3, 3);
+                string[] row = spaces.SubArray(i * lengthOfRow, lengthOfRow);
                 rows[i] = row;
             }
             return rows;
