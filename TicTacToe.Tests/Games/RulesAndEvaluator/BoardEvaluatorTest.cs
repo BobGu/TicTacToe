@@ -81,21 +81,20 @@ namespace TicTacToe.Tests.Games.RulesAndEvaluator
         }
 
         [Test]
-        public void ReturnsRowsReagardlessOfBoardSize()
+        public void ReturnsColumnsReagardlessOfBoardSize()
         {
             string[] spaces = {"0", "1", "2", "3",
                                "4", "5", "6", "7",
                                "8", "9", "10", "11",
                                "12", "13", "14", "15"};
 
-            string[][] rows = new String[4][];
-            rows[0] = new string[] { "0", "1", "2", "3" };
-            rows[1] = new string[] { "4", "5", "6", "7" };
-            rows[2] = new string[] { "8", "9", "10", "11" };
-            rows[3] = new string[] { "12", "13", "14", "15" };
+            string[][] columns = new String[4][];
+            columns[0] = new string[] { "0", "4", "8", "12" };
+            columns[1] = new string[] { "1", "5", "9", "13" };
+            columns[2] = new string[] { "2", "6", "10", "14" };
+            columns[3] = new string[] { "3", "7", "11", "15" };
 
-            CollectionAssert.AreEqual(rows, BoardEvaluator.Rows(spaces));
-
+            CollectionAssert.AreEqual(columns, BoardEvaluator.Columns(spaces));
         }
 
         [Test]

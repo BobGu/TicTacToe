@@ -41,12 +41,13 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return 1 == spaces.Distinct().Count();
         }
 
-        public static string[][] Rows(string[] spaces)
+        private static string[][] Rows(string[] spaces)
         {
 
             double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
             int lengthOfRow = Convert.ToInt32(squareRootOfBoardLength);
             string[][] rows = new string[lengthOfRow][];
+
             for (int i = 0; i < lengthOfRow; i += 1)
             {
                 string[] row = spaces.SubArray(i * lengthOfRow, lengthOfRow);
@@ -55,12 +56,24 @@ namespace TicTacToe.Games.RulesAndEvaluator
             return rows;
         }
 
-        private static string[][] Columns(string[] spaces)
+        public static string[][] Columns(string[] spaces)
         {
-            string[][] columns = new string[3][];
-            columns[0] = new string[] { spaces[0], spaces[3], spaces[6] };
-            columns[1] = new string[] { spaces[1], spaces[4], spaces[7] };
-            columns[2] = new string[] { spaces[2], spaces[5], spaces[8] };
+            double squareRootOfBoardLength = Math.Sqrt(spaces.Length);
+            int lengthOfColumn = Convert.ToInt32(squareRootOfBoardLength);
+            string[][] columns = new string[lengthOfColumn][];
+
+            for(int i = 0; i < lengthOfColumn; i += 1)
+            {
+                string[] column = new string[lengthOfColumn];
+                for(int j = 0; j < lengthOfColumn; j += 1)
+                {
+                    int index = i + (j * lengthOfColumn);
+                    column[j] = spaces[index];
+                }
+
+                columns[i] = column;
+            }
+
             return columns;
         }
 
