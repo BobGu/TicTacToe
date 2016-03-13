@@ -54,18 +54,18 @@ namespace TicTacToe.Games
         {
             Player currentPlayer = FirstPlayer();
             Turn(currentPlayer);
-            while (!Rules.Over(board.spaces))
+            while (!Rules.Over(board.GetSpaces()))
             {
                 currentPlayer = currentPlayer == FirstPlayer() ? SecondPlayer() : FirstPlayer();
                 Turn(currentPlayer);
             }
-                MessageHandler.PrintBoard(board.spaces);
+                MessageHandler.PrintBoard(board.GetSpaces());
             return currentPlayer;
         }
 
         private void WonOrTiedMessage(Player lastPlayerToMove)
         {
-            if (Rules.Won(board.spaces))
+            if (Rules.Won(board.GetSpaces()))
             {
                 MessageHandler.Winner(lastPlayerToMove.name);
             }
@@ -77,8 +77,8 @@ namespace TicTacToe.Games
 
         private void Turn(Player currentPlayer)
         {
-            MessageHandler.PrintBoard(board.spaces);
-            int move = currentPlayer.Move(board.spaces);
+            MessageHandler.PrintBoard(board.GetSpaces());
+            int move = currentPlayer.Move(board.GetSpaces());
             MarkBoard(board, move, currentPlayer.marker);
         }
 

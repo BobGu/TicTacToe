@@ -8,7 +8,7 @@ namespace TicTacToe.Games
 {
     public class Board
     {
-        public string[] spaces { get; }
+        private string[] spaces;
 
         public Board(int boardDimmensions)
         {
@@ -23,6 +23,11 @@ namespace TicTacToe.Games
         public string GetSpaceAt(int space)
         {
             return spaces[space];
+        }
+
+        public string[] GetSpaces()
+        {
+            return spaces;
         }
 
         private string[] CreateSpaces(int boardDimmensions)

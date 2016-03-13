@@ -20,7 +20,7 @@ namespace TicTacToe.Tests.Games
         public void SpacesAreEmptyUponCreation()
         {
             string[] emptyBoard = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            Assert.AreEqual(emptyBoard, board.spaces);
+            Assert.AreEqual(emptyBoard, board.GetSpaces());
         }
 
         [Test]
