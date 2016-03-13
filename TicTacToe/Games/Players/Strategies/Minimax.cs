@@ -8,9 +8,10 @@ namespace TicTacToe.Games.Players.Strategies
 {
     public class Minimax
     {
-        public static int MinOrMaxScore(string[] spaces, string marker, int depth, bool maximizingPlayer, int minValue = 1000, int maxValue = -1000)
+
+        public static int MinOrMaxScore(string[] spaces, string marker, int depth, bool maximizingPlayer, int alpha = -1000, int beta = 1000)
         {
-            if (Rules.Over(spaces) || depth > 8)
+            if (Rules.Over(spaces) || depth > 14)
             {
                 int score = Score(spaces) * depth;
                 return maximizingPlayer ? score : score * -1;
@@ -22,21 +23,33 @@ namespace TicTacToe.Games.Players.Strategies
 
             if (maximizingPlayer)
             {
+                int value;
                 foreach (string[] child in children)
                 {
-                    maxValue = Math.Max(maxValue, MinOrMaxScore(child, oppositeMarker, depth - 1, true, minValue, maxValue));
+                    if(alpha >= beta)
+                    {
+                        break;
+                    }
+                    value = MinOrMaxScore(child, oppositeMarker, depth - 1, true, alpha, beta);
+                    alpha = Math.Max(alpha, value);
                 }
 
-                return maxValue;
+                return alpha;
             }
             else
             {
+                int value;
                 foreach (string[] child in children)
                 {
-                    minValue = Math.Min(minValue, MinOrMaxScore(child, oppositeMarker, depth - 1, false, minValue, maxValue));
+                    if(alpha >= beta)
+                    {
+                        break;
+                    }
+                    value = MinOrMaxScore(child, oppositeMarker, depth - 1, false, alpha, beta);
+                    beta = Math.Min(beta, value);
                 }
 
-                return minValue;
+                return beta;
             }
         }
 
