@@ -37,6 +37,17 @@ namespace TicTacToe.Tests.Players.Strategies
         }
 
         [Test]
+        public void BestMoveIsAWinningMooveIfAvaialble()
+        {
+            string[] spaces = {"X", "X", "2", "X",
+                               "4", "5", "6", "7",
+                               "8", "9", "10", "11",
+                               "12", "13", "14", "15"};
+
+            Assert.AreEqual(2, easyStrategy.BestMove(spaces, "X"));
+        }
+
+        [Test]
         public void ReturnsRandomMoveIfNoWinningMoveAvailable()
         {
             string[] spaces = {"X", "1", "O",

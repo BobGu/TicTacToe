@@ -46,7 +46,7 @@ namespace TicTacToe.Games.Players.Strategies
         }
         private bool PossibleWinningSet(string[] set, string marker)
         {
-            return TwoMarkersInSet(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
+            return AllSpacesSameMarkerExceptOneSpace(set, marker) && FilterSetForEmptySpaces(set).Count() == 1;
         }
 
         private string FindWinningMove(string[] winningSet)
@@ -59,9 +59,11 @@ namespace TicTacToe.Games.Players.Strategies
             return set.Where(space => space == marker).ToArray();
         }
 
-        private bool TwoMarkersInSet(string[] set, string marker)
+        private bool AllSpacesSameMarkerExceptOneSpace(string[] set, string marker)
         {
-            return FilterSetForMarker(set, marker).Count() == 2;
+            int lengthOfRow = set.Length;
+            int numberOfMarkersRequired = lengthOfRow - 1;
+            return FilterSetForMarker(set, marker).Count() == numberOfMarkersRequired;
         }
 
         private string[] FilterSetForEmptySpaces(string[] set)

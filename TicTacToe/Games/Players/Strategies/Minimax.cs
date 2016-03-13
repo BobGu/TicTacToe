@@ -11,7 +11,7 @@ namespace TicTacToe.Games.Players.Strategies
 
         public static int MinOrMaxScore(string[] spaces, string marker, int depth, bool maximizingPlayer, int originalDepth, int alpha = -1000, int beta = 1000)
         {
-            if (Rules.Over(spaces) || originalDepth - depth == 5)
+            if (Rules.Over(spaces) || originalDepth - depth == 6)
             {
                 int score = Score(spaces) * depth;
                 return maximizingPlayer ? score : score * -1;
