@@ -28,7 +28,7 @@ namespace TicTacToe.Games.Players.Strategies
             {
                 int depth = availableSpaces.Count();
                 int move = Int32.Parse(space);
-                int score = Minimax.MinOrMaxScore(nextBoards[index], marker, depth, true);
+                int score = Minimax.MinOrMaxScore(nextBoards[index], marker, depth, true, depth, -1000, 1000);
                 ScoresByMove.Add(move, score);
                 index += 1;
             }
