@@ -7,6 +7,7 @@ Next you want to take the `bin/TicTacToe.exe` file and run that in your command 
 ## Features ##
 
 * You can play human vs human or computer vs computer
+* You can play on a 3x3 or 4x4 board
 * You can play an easy computer or hard computer which never loses
 * Computer makes use of the minmax algorithim
 
