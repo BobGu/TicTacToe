@@ -79,7 +79,7 @@ namespace TicTacToe.Games
         {
             MessageHandler.PrintBoard(board.GetSpaces());
             int move = currentPlayer.Move(board.GetSpaces());
-            MarkBoard(board, move, currentPlayer.marker);
+            MarkBoard(move, currentPlayer.marker);
         }
 
 
@@ -112,7 +112,7 @@ namespace TicTacToe.Games
             return players.Last();
         }
 
-        private void MarkBoard(Board board, int space, string marker)
+        private void MarkBoard(int space, string marker)
         {
             board.Mark(space, marker);
         }
