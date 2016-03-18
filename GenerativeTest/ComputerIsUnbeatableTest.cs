@@ -68,7 +68,7 @@ namespace TicTacToe.ComputerIsUnbeatable
                     else
                     {
                         int move = computerPlayer.Move(board);
-                        board[move] = computerPlayer.marker;
+                        board[move] = computerPlayer.GetMarker();
                         List<string[]> nextGroupOfBoards = Minimax.FindNextBoards(board, "X");
                         GameResults(nextGroupOfBoards);
                     }

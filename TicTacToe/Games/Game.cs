@@ -67,7 +67,7 @@ namespace TicTacToe.Games
         {
             if (Rules.Won(board.GetSpaces()))
             {
-                MessageHandler.Winner(lastPlayerToMove.name);
+                MessageHandler.Winner(lastPlayerToMove.GetName());
             }
             else
             {
@@ -79,7 +79,7 @@ namespace TicTacToe.Games
         {
             MessageHandler.PrintBoard(board.GetSpaces());
             int move = currentPlayer.Move(board.GetSpaces());
-            MarkBoard(move, currentPlayer.marker);
+            MarkBoard(move, currentPlayer.GetMarker());
         }
 
 

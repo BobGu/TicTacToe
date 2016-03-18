@@ -73,12 +73,12 @@ namespace TicTacToe.Games.Setups
 
         private string PlayerMarker(Player player)
         {
-            return player.marker;
+            return player.GetMarker();
         }
 
         private string PlayerName(Player player)
         {
-            return player.name;
+            return player.GetName();
         }
 
     }

@@ -15,7 +15,7 @@ using TicTacToe.Tests.TestHelper;
         {
             Human human = new Human();
             human.AssignName("Bob");
-            Assert.AreEqual("Bob", human.name);
+            Assert.AreEqual("Bob", human.GetName());
         }
 
         [Test]
@@ -23,7 +23,7 @@ using TicTacToe.Tests.TestHelper;
         {
             Human human = new Human();
             human.AssignMarker("X");
-            Assert.AreEqual("X", human.marker);
+            Assert.AreEqual("X", human.GetMarker());
         }
 
         [Test]

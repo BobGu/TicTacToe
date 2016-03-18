@@ -8,8 +8,18 @@ namespace TicTacToe.Games.Players
 {
     public abstract class Player
     {
-        public string name { get; private set; }
-        public string marker { get; private set; }
+        private string name;
+        private string marker;
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public string GetMarker()
+        {
+            return marker;
+        }
 
         public void AssignName(string name)
         {

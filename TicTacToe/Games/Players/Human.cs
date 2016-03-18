@@ -7,7 +7,7 @@ namespace TicTacToe.Games.Players
     {
         public override int Move(string[] spaces)
         {
-            return Prompt.GetPlayerMove(name, spaces);
+            return Prompt.GetPlayerMove(GetName(), spaces);
         }
     }
 }
