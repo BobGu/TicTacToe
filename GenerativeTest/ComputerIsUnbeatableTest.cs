@@ -5,6 +5,7 @@ using System.Linq;
 using TicTacToe.Games.RulesAndEvaluator;
 using TicTacToe.Games.Players.Strategies;
 using TicTacToe.Games.Players;
+using System.IO;
 
 
 namespace TicTacToe.ComputerIsUnbeatable
@@ -18,33 +19,49 @@ namespace TicTacToe.ComputerIsUnbeatable
         [SetUp]
         public void TestSetup()
         {
+            StringWriter sw = new StringWriter();
+            Console.SetOut(sw);
             computerPlayer = new Computer(new HardStrategy());
-
             computerPlayer.AssignMarker("O");
-
         }
 
         [Test]
-        public void ComputerPlayerAlwaysWinsOrTies()
+        public void ComputerPlayerAlwaysWinsOrTiesThreeByThreeBoard()
         {
-            string[] spaces = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-            GameResults(spaces);
-            Console.WriteLine(gameResults.First());
+            string[] emptyThreeByThreeBoard = {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+            List<string[]> initialBoards = Minimax.FindNextBoards(emptyThreeByThreeBoard, "X");
+            GameResults(initialBoards);
             Assert.IsTrue(gameResults.All(gameResult => gameResult == "Computer has won or tied"));
         }
 
-        private void GameResults(string[] spaces)
+        [Test]
+        public void ComputerPlayerAlwaysWinsOrTiesFourByFourBoard()
         {
-            List<string[]> nextBoards = Minimax.FindNextBoards(spaces, "X");
-            while (nextBoards.Count != 0)
+            List<string[]> initialBoards = CreateAndAddInitialBoards();
+            GameResults(initialBoards);
+            Assert.IsTrue(gameResults.All(gameResult => gameResult == "Computer has won or tied"));
+        }
+
+        private void GameResults(List<string[]> boards)
+        {
+            foreach (string[] board in boards)
             {
-                foreach (string[] board in nextBoards)
+                if (gameResults.Count == 20000)
                 {
-                    if (ComputerHasLostTheGame(board))
-                    {
-                        throw new Exception("The computer player has lost the game");
-                    }
-                    else if (GameIsTied(board))
+                    break;
+                }
+
+                if (ComputerHasLostTheGame(board))
+                {
+                    throw new Exception("The computer player has lost the game");
+                }
+                else if (GameIsTied(board))
+                {
+                    gameResults.Add("Computer has won or tied");
+                }
+                else
+                {
+                    if (ComputerHasWonTheGame(board))
                     {
                         gameResults.Add("Computer has won or tied");
                     }
@@ -52,15 +69,8 @@ namespace TicTacToe.ComputerIsUnbeatable
                     {
                         int move = computerPlayer.Move(board);
                         board[move] = computerPlayer.marker;
-
-                        if (ComputerHasWonTheGame(board) || GameIsTied(board))
-                        {
-                            gameResults.Add("Computer has won or tied");
-                        }
-                        else
-                        {
-                            GameResults(board);
-                        }
+                        List<string[]> nextGroupOfBoards = Minimax.FindNextBoards(board, "X");
+                        GameResults(nextGroupOfBoards);
                     }
                 }
             }
@@ -85,6 +95,37 @@ namespace TicTacToe.ComputerIsUnbeatable
         private bool GameIsTied(string[] spaces)
         {
             return !Rules.Won(spaces) && Rules.Over(spaces);
+        }
+
+        private List<string[]> CreateAndAddInitialBoards()
+        {
+            List<string[]> initialBoards = new List<string[]>();
+            string[] spaceZeroMarkedBoard = {"X", "1", "2", "3",
+                                             "4", "5", "6", "7",
+                                             "8", "9", "10", "11",
+                                             "12", "13", "14", "15"};
+
+            string[] spaceOneMarkedBoard = {"0", "X", "2", "3",
+                                            "4", "5", "6", "7",
+                                            "8", "9", "10", "11",
+                                            "12", "13", "14", "15"};
+
+            string[] spaceTwoMarkedBoard = {"0", "1", "X", "3",
+                                            "4", "5", "6", "7",
+                                            "8", "9", "10", "11",
+                                            "12", "13", "14", "15"};
+
+            string[] spaceFiveMarkedBoard = {"0", "1", "2", "3",
+                                              "4", "X", "6", "7",
+                                              "8", "9", "10", "11",
+                                              "12", "13", "14", "15"};
+
+            initialBoards.Add(spaceZeroMarkedBoard);
+            initialBoards.Add(spaceOneMarkedBoard);
+            initialBoards.Add(spaceTwoMarkedBoard);
+            initialBoards.Add(spaceFiveMarkedBoard);
+
+            return initialBoards;
         }
 
     }
